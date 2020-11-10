@@ -1,0 +1,13 @@
+<p>auth works!</p>
+Welcome {{ name }}
+<br>
+<button (click) = "onLogin();">Login</button>
+<br>
+<button (click) = "onSignUp()">Sign up</button>
+
+<div *ngIf="isLogin">
+    <app-login>Loading Login</app-login>
+</div>
+    <div *ngIf="isSignUp">
+    <app-signup>Loading Sign up</app-signup>
+</div>
