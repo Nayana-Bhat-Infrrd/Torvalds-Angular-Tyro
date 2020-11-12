@@ -1,0 +1,45 @@
+.form-group{
+    width:385px;
+    margin-left:auto;
+    margin-right: auto;
+    
+}
+.form-group > input{
+    background-color:#dbe1e9;
+}
+.signup
+{
+    margin-left: 220px;
+    margin-top: 20px;
+}
+.btn
+{
+    width:160px; 
+    color:white;
+    background-color:#1c437e; 
+    font-family: 'Open Sans',sans-serif;
+    font-weight: bold;
+    border-radius: 0;
+}
+
+.form-group{
+    width:385px;
+    margin-left:auto;
+    margin-right: auto;
+    
+}
+.form-group > input{
+    background-color:#dbe1e9;
+}
+.signup
+{
+    margin-left: 220px;
+    margin-top: 20px;
+}
+.btn
+{
+    width:160px; 
+    color:white;
+    background-color:#1c437e; 
+}
+

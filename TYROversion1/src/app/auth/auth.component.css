@@ -1,0 +1,112 @@
+.flex-container{
+    display:flex;
+    flex-direction: row;
+    height:100vh;
+  }
+
+.first{
+  
+    width:800px;
+    background-color:#1c437e;
+    display:flex;
+    flex-direction:column;
+
+    /* position: relative; */
+  }
+.second
+  {
+    
+    width:640px;
+    background-color: #f7f5f9;
+    
+  }
+  
+  
+  .tyro {
+    width: 154px;  
+    height: 70px;
+    font-family: 'Lucida Grande',Tahoma,Verdana,Arial,sans-serif;
+    font-size: 60px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: white;
+    margin-left: 25px;
+  }
+  .box
+  {
+    display:flex;
+    flex-direction: row;
+    /* margin: 0 auto; */
+    margin-left:240px;
+    margin-top:255px;
+    /* position: absolute;
+    top: 50%;
+    left: 25%; */
+    
+  }
+
+  img{
+    width:120px;
+    height: 90px;
+  }
+  .medium
+  {
+    
+    font-family: 'Open Sans',sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.3px;
+    text-align: center;
+    color: #272727;
+    margin-top:100px;
+  }
+  .who
+  {
+   
+    font-family: 'Open Sans',sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.64;
+    letter-spacing: 0.26px;
+    text-align: center;
+    color: rgba(39, 39, 39, 0.85);
+  }
+  
+  .Login{
+  margin-top: 10px;
+  font-family: 'Open Sans',sans-serif;
+ 
+  
+ 
+  
+  }
+  .Signup{
+    margin-left: 30px;
+    margin-top: 10px;
+    font-family: 'Open Sans',sans-serif;
+    
+  }
+
+  
+  .form-build
+  {
+    margin-top: 30px;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+   
+  }
+  .inner-form-build{
+    display: flex;
+    border-bottom: 2px solid #dbe1e9;
+    margin-bottom: 30px;
+  }
+ 

@@ -1,0 +1,107 @@
+<div class="form-container">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div class="form-group" [ngClass]="{'has-error': signUpForm.get('Name').errors && (signUpForm.get('Name').touched || signUpForm.get('Name').dirty)}">
+            <input type="text" class="form-control" formControlName="Name"  placeholder="NAME" >
+            <span  *ngIf="signUpForm.get('Name').errors && (signUpForm.get('Name').touched || signUpForm.get('Name').dirty)"> 
+              <span *ngIf="signUpForm.get('Name').errors.required">Name is required
+              </span></span>
+          </div>
+        <div class="form-group" [ngClass]="{'has-error': signUpForm.get('Email').errors && (signUpForm.get('Email').touched || signUpForm.get('Email').dirty)}">
+          <input type="email" class="form-control" formControlName="Email" placeholder="EMAIL" >
+          <span  *ngIf="signUpForm.get('Email').errors && (signUpForm.get('Email').touched || signUpForm.get('Email').dirty)"> 
+            <span *ngIf="signUpForm.get('Email').errors.required">Email is required
+            </span>
+            <span *ngIf="signUpForm.get('Email').errors.email">Email must follow convention
+            </span>
+    
+          </span>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': signUpForm.get('Password').errors && (signUpForm.get('Password').touched || signUpForm.get('Password').dirty)}">
+          <input type="password" class="form-control"  formControlName="Password" placeholder="PASSWORD" required>
+          <span  *ngIf="signUpForm.get('Password').errors && (signUpForm.get('Password').touched || signUpForm.get('Password').dirty)"> 
+            <span *ngIf="signUpForm.get('Password').errors.required">Password is required
+            </span>
+            <span *ngIf="signUpForm.get('Password').errors.minlength||signUpForm.get('Password').errors.maxlength">Password must be between 8 to 100 characters
+            </span>
+            </span>
+        </div>
+        <div class="signup">            
+        <button type="submit" class="btn">SIGNUP</button>
+      </div>
+      </form>
+    </div>
+
+
+<!-- <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <input type="text" class="form-control" formControlName="username" id="Name" aria-describedby="Name" placeholder="NAME" [ngClass]="{ 'is-invalid': submitted && sf.password.errors }" required>
+        <div *ngIf="submitted && sf.username.errors" class="invalid-feedback">
+            <div *ngIf="sf.username.errors.required">Name is required</div>
+        </div>
+      </div>
+    <div class="form-group">
+      <input type="email" class="form-control" formControlName="email" id="Email" aria-describedby="emailHelp" placeholder="EMAIL" [ngClass]="{ 'is-invalid': submitted && sf.password.errors }" required>
+      <div *ngIf="submitted && sf.email.errors" class="invalid-feedback">
+        <div *ngIf="sf.email.errors.required">E-mail is required</div>
+    </div>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" formControlName="password" id="Password" placeholder="PASSWORD" [ngClass]="{ 'is-invalid': submitted && sf.password.errors }" required>
+      <div *ngIf="submitted && sf.password.errors" class="invalid-feedback">
+        <div *ngIf="sf.password.errors.required">Password is required</div>
+    </div>
+    </div>            
+    <button type="submit" id="SignupEx" class="btn btn-primary"><label>SIGNUP</label></button>
+    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error.value}}</div>
+  </form>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p>signup works!</p>
+
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="card">
+        <h4 class="card-header">Sign Up Example</h4>
+        <div class="card-body">
+            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && sf.username.errors }" />
+                    <div *ngIf="submitted && sf.username.errors" class="invalid-feedback">
+                        <div *ngIf="sf.username.errors.required">Username is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && sf.username.errors }" />
+                    <div *ngIf="submitted && sf.username.errors" class="invalid-feedback">
+                        <div *ngIf="sf.username.errors.required">Email is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && sf.password.errors }" /> 
+                    <div *ngIf="submitted && sf.password.errors" class="invalid-feedback">
+                        <div *ngIf="sf.password.errors.required">Password is required</div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error.vlaue}}</div>
+            </form>
+        </div>
+    </div>
+</div> -->
