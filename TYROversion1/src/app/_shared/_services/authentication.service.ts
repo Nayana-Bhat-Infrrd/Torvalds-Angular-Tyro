@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { User } from 'src/app/_shared/models/user';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -26,14 +25,10 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    console.log("Called login in auth.service");
     const loginData = { email: username, password: password };
     console.log("Post Data: " + loginData);
 
     return this.http.post<any>('https://torvalds-nodejs-tyro.herokuapp.com/login/', loginData)
-      // {
-      //   observe: 'response'
-      // })
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
@@ -41,38 +36,21 @@ export class AuthenticationService {
         return user;
       },
         error => {
-          // const errorResponse = { code : 404 , message : 'invalid' };
           return error;
         }))
-
-    // console.log("Called login in auth.service");
-    // // return {username: "1nayana", password: "Nayanapwd" }
-    // return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
-    //     .pipe(map(user => {
-    //         // store user details and jwt token in local storage to keep user logged in between page refreshes
-    //         localStorage.setItem('currentUser', JSON.stringify(user));
-    //         this.currentUserSubject.next(user);
-    //         return user;
-    //     }));
   }
 
   logout() {
-    console.log("Called logout in auth.service");
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
 
   signUp(username: string, email: string, password: string) {
-    console.log("Called in signup from authentication service");
-
     const signupData = { name: username, email: email, password: password };
     console.log("Signup Data: " + signupData);
 
     return this.http.post<any>('https://torvalds-nodejs-tyro.herokuapp.com/register/', signupData)
-      // {
-      //   observe: 'response'
-      // })
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
@@ -80,7 +58,7 @@ export class AuthenticationService {
         return user;
       },
         error => {
-          // const errorResponse = { code : 404 , message : 'invalid' };
+          // console.log("In error in map pipe " + error);
           return error;
         }))
   }

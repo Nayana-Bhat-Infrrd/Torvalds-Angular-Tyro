@@ -3,52 +3,23 @@
 
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-    <!-- <div class="form-group"
-      [ngClass]="{'has-error': loginForm.get('email').errors && (loginForm.get('email').touched || loginForm.get('email').dirty)}">
-
-      <input type="email" class="form-control" formControlName="email" placeholder="EMAIL">
-      <span *ngIf="loginForm.get('email').errors && (loginForm.get('email').touched || loginForm.get('email').dirty)">
-        <span *ngIf="loginForm.get('email').errors.required">Email is required
-        </span>
-        <span *ngIf="loginForm.get('email').errors.email">Email must follow the convention
-        </span>
-      </span>
-    </div>
-    <div class="form-group"
-      [ngClass]="{'has-error': loginForm.get('password').errors && (loginForm.get('password').touched || loginForm.get('password').dirty)}">
-      <input type="password" class="form-control" id="Password" formControlName="password" placeholder="PASSWORD">
-
-      <span
-        *ngIf="loginForm.get('password').errors && (loginForm.get('password').touched || loginForm.get('password').dirty)">
-        <span *ngIf="loginForm.get('password').errors.required">
-          Password is required
-
-        </span>
-        <span *ngIf="loginForm.get('password').errors.minlength || loginForm.get('password').errors.maxlength">Password
-          must be between 8 to 100 characters
-
-        </span>
-      </span>
-    </div>
-    <div class="login">
-      <button type="submit" class="btn">LOGIN</button>
-
-    </div> -->
-
-    <div class="form-group" >
-      <input type="email" class="form-control" formControlName="email" id="Email" aria-describedby="emailHelp" placeholder="EMAIL" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
+    <div class="form-group">
+      <input type="email" class="form-control" formControlName="email" id="Email" aria-describedby="emailHelp"
+        placeholder="EMAIL" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
       <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
         <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Email format should be followed</div>
       </div>
     </div>
     <div class="form-group">
-      <input type="password" class="form-control" id="Password" formControlName="password" placeholder="PASSWORD" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
+      <input type="password" class="form-control" id="Password" formControlName="password" placeholder="PASSWORD"
+        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
       <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
         <div *ngIf="f.password.errors.required">Password is required</div>
         <div *ngIf="f.password.errors.minlength">Password is minlength</div>
         <div *ngIf="f.password.errors.maxlength">Password is maxlength</div>
       </div>
-    </div>            
+    </div>
     <div class="login">
       <button type="submit" class="btn">LOGIN</button>
 
@@ -68,145 +39,3 @@
     <img src="../assets/facebook.png" alt="facebook" width="30px" height="30px">
   </div>
 </div>
-
-
-
-<!-- <div class="form-container">
-
-
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
-      
-      <div class="form-group" [ngClass]="{'has-error': loginForm.get('email').errors && (loginForm.get('email').touched || loginForm.get('email').dirty)}">
-        
-        <input type="email" class="form-control" formControlName="email"   placeholder="EMAIL">
-        <span *ngIf= "loginForm.get('email').errors && (loginForm.get('email').touched || loginForm.get('email').dirty)" > 
-      <span *ngIf="loginForm.get('email').errors.required">Email is required
-      </span>
-      <span *ngIf="loginForm.get('email').errors.email">Email must follow the convention
-      </span>
-    </span>
-      </div>
-      <div class="form-group"  [ngClass]="{'has-error': loginForm.get('password').errors && (loginForm.get('password').touched || loginForm.get('password').dirty)}">
-        <input type="password" class="form-control" id="Password" formControlName="password" placeholder="PASSWORD">
-        
-        <span *ngIf= "loginForm.get('password').errors && (loginForm.get('password').touched || loginForm.get('password').dirty)"> 
-          <span *ngIf="loginForm.get('password').errors.required">
-            Password is required
-
-          </span>
-          <span *ngIf="loginForm.get('password').errors.minlength || loginForm.get('password').errors.maxlength">Password must be between 8 to 100 characters
-
-          </span>
-        </span>
-      </div>
-      <div class="login">
-      <button type="submit" class="btn">LOGIN</button>
-      
-  </div>
-    </form>
-  </div>
-  <div class="or">
-    <p>--OR--</p>
-  </div>
-  <div class="social">
-    <div class="google">
-    <img src="../assets/search.png" alt="google" width="30px" height="30px">
-    </div>
-    <div class="facebook">
-    
-      <img src="../assets/facebook.png" alt="facebook" width="30px" height="30px">
-    </div>
-  </div>
-  
-          
-     -->
-
-
-
-
-<!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="form-group" >
-      <input type="email" class="form-control" formControlName="email" id="Email" aria-describedby="emailHelp" placeholder="EMAIL" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
-      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-        <div *ngIf="f.email.errors.required">Email is required</div>
-      </div>
-    </div>
-    <div class="form-group">
-      <input type="password" class="form-control" id="Password" formControlName="password" placeholder="PASSWORD" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
-      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-        <div *ngIf="f.password.errors.required">Password is required</div>
-      </div>
-    </div>            
-    <button type="submit" id="LoginEx" class="btn btn-primary">LOGIN</button>
-    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error.value}}</div>
-  </form>
-    <div class="or">
-      — OR — 
-     
-    </div>
-     <div class="social">
-           <a href="#" class="google"><img src="../assets/search.png"></a>
-           <a href="#" class="facebook"><img src="../assets/facebook.png"></a>
-     </div>
-
-      -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <p>login works!</p>
-
-<div class="col-md-6 offset-md-3 mt-5">
-    <div class="card">
-        <h4 class="card-header">Angular 9 JWT Login Example</h4>
-        <div class="card-body">
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                        <div *ngIf="f.username.errors.required">Username is required</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" /> 
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
-                    </div>
-                </div>
-                <button [disabled]="loading" class="btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Login
-                </button>
-                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error.vlaue}}</div>
-            </form>
-            <div *ngIf="loggedIn">
-                <button (click)="logOut()">LOGOUT</button>
-            </div>
-        </div>
-    </div>
-</div> -->

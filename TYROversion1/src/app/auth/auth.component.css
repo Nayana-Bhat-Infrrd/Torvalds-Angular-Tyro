@@ -34,6 +34,7 @@
     letter-spacing: normal;
     color: white;
     margin-left: 25px;
+    margin-top: 15px;
   }
   .box
   {
@@ -50,7 +51,7 @@
 
   img{
     width:120px;
-    height: 90px;
+    height: 100px;
   }
   .medium
   {
@@ -110,3 +111,27 @@
     margin-bottom: 30px;
   }
  
+  .topnav {
+    display: flex;
+    overflow: hidden;
+    background-color: #f7f5f9;
+    margin-bottom: 30px;
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border-bottom: 2px solid #dbe1e9;
+    font-family: 'Open Sans',sans-serif;
+    color:#1c437e;
+    font-weight:700;
+  }
+  
+  .topnav a.active {
+    border-bottom: 3px solid #1c437e;
+  }
