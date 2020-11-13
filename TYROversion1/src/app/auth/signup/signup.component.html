@@ -1,4 +1,70 @@
 <div class="form-container">
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <!-- <div class="form-group"
+      [ngClass]="{'has-error': signUpForm.get('Name').errors && (signUpForm.get('Name').touched || signUpForm.get('Name').dirty)}">
+      <input type="text" class="form-control" formControlName="Name" placeholder="NAME">
+      <span *ngIf="signUpForm.get('Name').errors && (signUpForm.get('Name').touched || signUpForm.get('Name').dirty)">
+        <span *ngIf="signUpForm.get('Name').errors.required">Name is required
+        </span></span>
+    </div>
+    <div class="form-group"
+      [ngClass]="{'has-error': signUpForm.get('Email').errors && (signUpForm.get('Email').touched || signUpForm.get('Email').dirty)}">
+      <input type="email" class="form-control" formControlName="Email" placeholder="EMAIL">
+      <span
+        *ngIf="signUpForm.get('Email').errors && (signUpForm.get('Email').touched || signUpForm.get('Email').dirty)">
+        <span *ngIf="signUpForm.get('Email').errors.required">Email is required
+        </span>
+        <span *ngIf="signUpForm.get('Email').errors.email">Email must follow convention
+        </span>
+
+      </span>
+    </div>
+    <div class="form-group"
+      [ngClass]="{'has-error': signUpForm.get('Password').errors && (signUpForm.get('Password').touched || signUpForm.get('Password').dirty)}">
+      <input type="password" class="form-control" formControlName="Password" placeholder="PASSWORD" required>
+      <span
+        *ngIf="signUpForm.get('Password').errors && (signUpForm.get('Password').touched || signUpForm.get('Password').dirty)">
+        <span *ngIf="signUpForm.get('Password').errors.required">Password is required
+        </span>
+        <span *ngIf="signUpForm.get('Password').errors.minlength||signUpForm.get('Password').errors.maxlength">Password
+          must be between 8 to 100 characters
+        </span>
+      </span>
+    </div>
+    <div class="signup">
+      <button type="submit" class="btn">SIGNUP</button> -->
+
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="Name" id="Name" aria-describedby="Name" placeholder="NAME" [ngClass]="{ 'is-invalid': submitted && sf.Name.errors }" required>
+        <div *ngIf="submitted && sf.Name.errors" class="invalid-feedback">
+            <div *ngIf="sf.Name.errors.required">Name is required</div>
+        </div>
+      </div>
+    <div class="form-group">
+      <input type="email" class="form-control" formControlName="Email" id="Email" aria-describedby="emailHelp" placeholder="EMAIL" [ngClass]="{ 'is-invalid': submitted && sf.Email.errors }" required>
+      <div *ngIf="submitted && sf.Email.errors" class="invalid-feedback">
+        <div *ngIf="sf.Email.errors.email">E-mail format to be followed</div>
+        <div *ngIf="sf.Email.errors.required">E-mail is required</div>
+    </div>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" formControlName="Password" id="Password" placeholder="PASSWORD" [ngClass]="{ 'is-invalid': submitted && sf.Password.errors }" required>
+      <div *ngIf="submitted && sf.Password.errors" class="invalid-feedback">
+        <div *ngIf="sf.Password.errors.required">Password is required</div>
+        <div *ngIf="sf.Password.errors.minlength">Password should contain minimum of 8 characters</div>
+        <div *ngIf="sf.Password.errors.maxlength">Password is maxlength</div>
+      </div>
+    </div>           
+    <div class="signup">
+      <button type="submit" class="btn">SIGNUP</button>
+
+    </div>
+    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error.value}}</div>
+
+  </form>
+</div>
+
+<!-- <div class="form-container">
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
         <div class="form-group" [ngClass]="{'has-error': signUpForm.get('Name').errors && (signUpForm.get('Name').touched || signUpForm.get('Name').dirty)}">
             <input type="text" class="form-control" formControlName="Name"  placeholder="NAME" >
@@ -29,7 +95,7 @@
         <button type="submit" class="btn">SIGNUP</button>
       </div>
       </form>
-    </div>
+    </div> -->
 
 
 <!-- <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">

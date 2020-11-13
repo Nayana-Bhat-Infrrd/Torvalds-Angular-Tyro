@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { AuthenticationService } from 'src/app/_shared/_services/authentication.service';
 
 @Component({
   selector: 'app-signup',
@@ -17,6 +19,7 @@ export class SignupComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private authenticationService : AuthenticationService
     ) { }
 
   ngOnInit(): void {
@@ -46,6 +49,21 @@ console.log("DATA: \n" + this.sf.Email.value+ " - " +this.sf.Name.value + " - " 
 }
 
 this.loading = true;
+const resp = this.authenticationService.signUp(this.sf.Name.value, this.sf.Email.value,this.sf.Password.value)
+  .pipe(first())
+  .subscribe( data => {
+    console.log("from onSubmit in signupComp : " + this.returnUrl +"blogger");
+    
+    this.router.navigate([this.returnUrl+"blogger"]);
+},
+error => {
+    this.error = error;
+    this.loading = false;
+});
+  console.log("Response : " + resp);
+  
+console.log("Back to Sign p ts");
+// this.router.navigate([this.returnUrl+"blogger"]);
 
 }
 }
