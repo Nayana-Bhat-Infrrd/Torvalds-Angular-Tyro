@@ -30,13 +30,18 @@ export class AuthenticationService {
 
     return this.http.post<any>('https://torvalds-nodejs-tyro.herokuapp.com/login/', loginData)
       .pipe(map(user => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        return user;
-      },
-        error => {
-          return error;
+        if(JSON.stringify(user).includes('token')){
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentUserSubject.next(user);
+          return user;
+        }
+        else{
+          throw new Error(user.error.message)
+        }
+      // },
+      //   error => {
+      //     return error;
         }))
   }
 
@@ -52,14 +57,19 @@ export class AuthenticationService {
 
     return this.http.post<any>('https://torvalds-nodejs-tyro.herokuapp.com/register/', signupData)
       .pipe(map(user => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        return user;
-      },
-        error => {
-          // console.log("In error in map pipe " + error);
-          return error;
+        if(JSON.stringify(user).includes('token')){
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentUserSubject.next(user);
+          return user;
+        }
+        else{
+          throw new Error(user.error.message)
+        }
+      // },
+      //   error => {
+      //     // console.log("In error in map pipe " + error);
+      //     return error;
         }))
   }
 }

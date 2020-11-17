@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
   this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     console.log("Logout in dashboard");
     this.authenticationService.logout();
-    this.router.navigate([this.returnUrl+"auth"]);
+    this.router.navigate([this.returnUrl+"auth/login"]);
     
   }
 }

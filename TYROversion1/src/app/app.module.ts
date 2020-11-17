@@ -11,6 +11,8 @@ import { AuthComponent } from './auth/auth.component';
 import { JwtInterceptor } from './core/_helper/jwt.interceptor';
 import { AuthguardGuard } from './core/_helper/authguard.guard';
 import { ErrorComponent } from './error/error.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; 
+
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { ErrorComponent } from './error/error.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgbModule
   ],
   providers: [
     AuthguardGuard,
