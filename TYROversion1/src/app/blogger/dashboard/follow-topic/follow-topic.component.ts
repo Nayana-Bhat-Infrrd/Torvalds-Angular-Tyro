@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { error } from 'protractor';
+import { Topic } from 'src/app/_shared/models/topic';
 import { DashboardService } from 'src/app/_shared/_services/dashboard.service';
+import { FollowService } from 'src/app/_shared/_services/follow.service';
 
 @Component({
   selector: 'app-follow-topic',
@@ -10,10 +12,12 @@ import { DashboardService } from 'src/app/_shared/_services/dashboard.service';
 })
 export class FollowTopicComponent implements OnInit {
   moreTopics : boolean = false;
+  listOfTopics : Array<Topic> = [];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private followService : FollowService
   ) { }
 
   ngOnInit(): void {
@@ -21,6 +25,7 @@ export class FollowTopicComponent implements OnInit {
     .subscribe(
       data=>{
         console.log("Topics : " + data);
+        this.listOfTopics = data;
       },
       error=>{
         console.log("error : " + error);
@@ -32,7 +37,7 @@ export class FollowTopicComponent implements OnInit {
   onMoreTopics(){
     this.moreTopics = true;
     console.log("in onMoreTopics : " + this.moreTopics);
-    
+    this.followService.setTopics(this.listOfTopics);
   }
 
 }
