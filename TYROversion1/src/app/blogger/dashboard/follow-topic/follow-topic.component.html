@@ -1,1 +1,26 @@
-<p>follow-topic works!</p>
+<div class="container my-follow-topic-container">
+    <p class="title">TOPICS TO FOLLOW</p>
+    <table class="table table-sm table-borderless">
+        <!-- <tbody> -->
+        <tr>
+            <td class="topics">Science</td>
+            <td>
+                <button type="button" class="btn btn-sm follow">Follow</button>
+            </td>
+        </tr>
+        <!-- <hr> -->
+
+        <tr>
+            <td class="topics">Technology</td>
+            <td>
+                <button type="button" class="btn btn-sm following">Following</button>
+            </td>
+        </tr>
+    </table>
+    <a href="#" (click)="onMoreTopics()">See More</a>
+    <!-- <button (click)="onMoreTopics()">See More</button> -->
+    <!-- <app-sidebar>Loading Sidebar</app-sidebar> -->
+</div>
+<!-- <div class="sidebar" *ngIf="moreTopics">
+    <app-sidebar>Loading sidebar</app-sidebar>
+</div> -->

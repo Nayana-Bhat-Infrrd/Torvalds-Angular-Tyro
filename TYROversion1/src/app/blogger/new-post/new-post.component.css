@@ -1,0 +1,266 @@
+*{
+    box-sizing: border-box;
+}
+nav
+{
+    background-color: #1c437e;
+    /* height: 70px; */
+    width:100%;
+    height:70px;
+    padding:0px 74px; 
+}
+
+.navbar-brand
+{
+    margin-top:21px;
+    margin-bottom:21px;
+    margin-right:16px;
+    
+}
+
+.navbar-brand img
+{
+    width:33px;
+    height:28px;
+}
+.tyro
+{
+    width: 41px;
+    height: 25px;
+    margin: 21px 27.5px 21px 0px;
+    font-family: 'Lucida Grande',Tahoma,Verdana,Arial,sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color:white;
+}
+
+a:hover{
+    text-decoration: none;
+}
+.line
+{
+    /* width: 1px; */
+  height: 28px;
+  margin: 21px 27.5px 21px 0px;
+  border: solid 1px #dbe1e9;
+}
+
+.good
+{
+    width: 233px;
+    height: 28px;
+    margin: 21px 623px 21px 0px;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 21px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #f7f8f9;
+}
+
+/* .nav-item
+{
+    margin-right:39px;
+} */
+
+.notification
+{
+    
+    margin: 23px 18px 23px 0px;
+  
+}
+
+.notification img
+{
+    width: 18px;
+    height: 23px;
+    object-fit: contain;
+    
+}
+
+.bookmark
+{
+    
+    margin: 23px 18px 23px 0px ;
+    
+}
+.bookmark img
+{
+    width: 16px;
+    height: 23px;
+    object-fit: contain;
+}
+.post
+{
+    
+    margin: 21px 0px 21px 0px; 
+    
+}
+.post button
+{
+    border-radius: 5px;
+    padding: 7px 30px 8px;
+    background-color:#ff9800;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color:#333333;
+}
+.profile
+{
+    margin: 21px 0px 21px 18px;
+}
+
+
+.profile img
+{
+    border-radius: 50%;
+    width:34px;
+    height:34px;
+    border: solid 1px #979797;
+    
+}
+
+.container-fluid
+{   width:100%;
+    padding: 30px 74px 0px 74px;
+}
+.title
+{
+    /*width: 83px;*/
+    height: 33px; 
+    width:100%;
+    
+    font-family: 'Open Sans',sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color:#5d5d5d;
+    border:none;
+    outline:none;
+     overflow-x: visible; 
+    
+}
+
+.title:focus
+{
+    border:0;
+    outline:none;
+}
+
+
+ .typeSomething
+{
+    width: 100%;
+    height:100%;
+    margin-top:14px;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    border:none;
+    outline:none;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow:hidden;    
+    text-align: justify;
+}
+.typesomething:focus
+{
+    border:0;
+    outline:none;
+    overflow:hiden;
+} 
+
+
+
+.full {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:#1c437e;
+    z-index: 2;
+    
+    opacity: 1;
+  }
+  
+  #text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+  }
+
+.topics{
+    margin-bottom:37px;
+    height: 19px;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #f7f5f9;
+  }
+
+  .area
+  {  width: 600px;
+     height: 50px;
+     margin-left:100px;
+     margin-right:70px;
+     margin-bottom: 37px;
+     border-radius: 5px;
+    background-color:#dbe1e9;
+  }
+
+
+  .publish
+  {
+
+    font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+   width: 115px;
+   height: 36px;
+   margin:0px 342px;
+
+  border-radius: 5px;
+  background-color:#ff8900;   
+  }
+#close
+{
+    margin-left:700px;
+    margin-bottom:37px;
+    width:18px;
+    height:18px;
+}

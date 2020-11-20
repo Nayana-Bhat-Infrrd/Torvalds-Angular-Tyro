@@ -7,6 +7,11 @@ import { NewPostComponent } from './new-post/new-post.component';
 import { ReadPostComponent } from './read-post/read-post.component';
 import { RouterModule } from '@angular/router';
 import { BloggerRoutingModule } from './blogger-routing.module';
+import { TrendingPostsComponent } from './dashboard/trending-posts/trending-posts.component';
+import { FollowPeopleComponent } from './dashboard/follow-people/follow-people.component';
+import { FollowTopicComponent } from './dashboard/follow-topic/follow-topic.component';
+import { LatestPostsComponent } from './dashboard/latest-posts/latest-posts.component';
+import { SharedModule } from '../_shared/shared.module';
 
 
 
@@ -16,12 +21,17 @@ import { BloggerRoutingModule } from './blogger-routing.module';
     ProfileComponent,
     BookmarkComponent,
     NewPostComponent,
-    ReadPostComponent
+    ReadPostComponent,
+    TrendingPostsComponent,
+    FollowPeopleComponent,
+    FollowTopicComponent,
+    LatestPostsComponent
   ],
   imports: [
     RouterModule,
     BloggerRoutingModule,
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   exports:[
     DashboardComponent

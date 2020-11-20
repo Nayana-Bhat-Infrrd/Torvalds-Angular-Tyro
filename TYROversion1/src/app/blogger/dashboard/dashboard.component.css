@@ -1,0 +1,40 @@
+.my-container{
+    background-color: #f7f5f9;
+    /* width: 100vw; */
+    /* height: auto; */
+    /* max-height: 5000px; */
+    margin-top: 5%;
+}
+/* .follow-row{
+    border-left: 1px solid black;
+    margin-top: 2px;
+    margin-bottom: 2px;
+} */
+.my-row1{
+    height: 220px;
+    /* width: 100vw; */
+    /* margin-left: 0;
+    margin-right: 0; */
+    border-bottom: 1px solid rgba(93, 93, 93, 0.3);
+}
+.my-row2{
+    /* height: 280px; */
+    /* width: 100vw; */
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 40px;
+}
+.col-follow-topic, .col-follow-people{
+    border-left: 1px solid rgba(93, 93, 93, 0.3);
+    padding-left: 40px;
+    padding-bottom: 13px;
+    margin: 0 auto;
+    background-color: #f7f5f9;
+    
+}
+.my-trending-posts{
+    align-content: center;
+    justify-content: center;
+}
+.sticky-top { top: 8em; }
+

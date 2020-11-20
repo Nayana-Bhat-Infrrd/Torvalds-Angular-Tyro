@@ -15,7 +15,7 @@ const routes: Routes = [
     { 
       path: '', component: DashboardComponent,
       children:[
-        { path:'' , component: FollowPeopleComponent},
+        { path:'followpeople' , component: FollowPeopleComponent},
         { path:'followtopic', component: FollowTopicComponent},
         { path:'latestposts', component: LatestPostsComponent},
         { path:'trendingposts', component: TrendingPostsComponent}

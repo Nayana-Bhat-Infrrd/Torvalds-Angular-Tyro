@@ -1,0 +1,33 @@
+.title{
+    font-family: 'Open Sans',sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--color-neutral-black);
+    padding-bottom: 20px;
+  }
+  .img-circular{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+  }
+  figure{
+      display: inline;
+      float: left;
+      padding-right: 45px;
+  }
+  figcaption{
+    font-family: 'Open Sans',sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    padding-top: 8px;
+    color: var(--color-neutral-black);
+  }
+  

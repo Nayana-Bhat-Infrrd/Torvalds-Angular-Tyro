@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+declare var $:any;
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
@@ -11,5 +12,14 @@ export class NewPostComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  on()
+    {
+      $("#overlay").css("display","block");
+    }
+    off()
+    {  
+      $("#overlay").css("display","none");
+    }
 
 }
