@@ -1,26 +1,19 @@
 <div class="container my-follow-topic-container">
     <p class="title">TOPICS TO FOLLOW</p>
-    <table class="table table-sm table-borderless">
+    <table *ngFor="let topic of listOfTopics.slice(0, 3); let i = index" class="table table-sm table-borderless">
         <!-- <tbody> -->
         <tr>
-            <td class="topics">Science</td>
+            <td class="topics">{{ topic.name }}</td>
             <td>
-                <button type="button" class="btn btn-sm follow">Follow</button>
-            </td>
-        </tr>
-        <!-- <hr> -->
-
-        <tr>
-            <td class="topics">Technology</td>
-            <td>
-                <button type="button" class="btn btn-sm following">Following</button>
+                <button id="{{ 'topic ' + i }}" *ngIf="!topic.isFollowing" type="button" class="btn btn-sm follow" (click)="onTopicFollow(i)">Follow</button>
+                <button id="{{ 'topic ' + i }}" *ngIf="topic.isFollowing" type="button" class="btn btn-sm following" (click)="onTopicUnfollow(i)">Following</button>
             </td>
         </tr>
     </table>
-    <a (click)="onMoreTopics()">See More</a>
+    <a routerLink="/" (click)="onMoreTopics()">See More</a>
     <!-- <button (click)="onMoreTopics()">See More</button> -->
     <!-- <app-sidebar>Loading Sidebar</app-sidebar> -->
 </div>
-<div class="sidebar" *ngIf="moreTopics">
+<!-- <div class="sidebar" *ngIf="moreTopics">
     <app-sidebar>Loading sidebar</app-sidebar>
-</div>
+</div> -->

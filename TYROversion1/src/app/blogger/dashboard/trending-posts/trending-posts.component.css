@@ -44,10 +44,10 @@ img{
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
-    color: var(--color-neutral-black)
+    color: #333333;
 }
 .titleOfArticle{
-    padding-top: 10px;
+    padding-top: 0px;
     padding-right: 25px;
     font-family: 'Open Sans',sans-serif;
   font-size: 14px;
@@ -56,7 +56,7 @@ img{
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: var(--color-neutral-black);
+  color: #333333;
 }
 .dateOfArticle{
     padding-top: 7px;

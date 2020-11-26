@@ -1,86 +1,18 @@
-<div class="container my-latest-posts-container">
+<div *ngFor="let post of latestPosts" class="container my-latest-posts-container">
+    <!-- {{ post.title }} -->
     <div class="post">
         <div class="authorimg">
             <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
-            <span class="author">Siddhanth Jain</span>
+            <span class="author"> {{ post.author.name }} </span>
         </div>
-        <p class="title">Fundamentals of software architecture
+        <p class="title">{{ post.title }}
         </p>
-        <p class="intro"> Software architecture refers to the fundamental structures of a software system and the
+        <p class="intro"> {{ post.description }}
+            <!-- Software architecture refers to the fundamental structures of a software system and the
             discipline of creating such structures and systems. Each structure comprises software elements, relations
-            among them, and properties of both elements and relations.</p>
-        <p class="timestamp">10minutes ago</p>
-    </div>
-    <div class="post">
-        <div class="authorimg">
-            <img class="img-circular" src="../assets/profilepicture.png" alt="profilepicture">
-            <span class="author">Shiv Vignesh</span>
-        </div>
-        <p class="title">Fundamentals of software architecture</p>
-        <p class="intro"> Software architecture refers to the fundamental structures of a software system and the
-            discipline of creating such structures and systems. Each structure comprises software elements, relations
-            among them, and properties of both elements and relations.</p>
-        <p class="timestamp">10 minutes ago</p>
-
-    </div>
-    <div class="post">
-        <div class="authorimg">
-            <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
-            <span class="author">Sachin Ramesh</span>
-        </div>
-        <p class="title">Fundamentals of software architecture
+            among them, and properties of both elements and relations. -->
         </p>
-        <p class="intro"> Software architecture refers to the fundamental structures of a software system and the
-            discipline of creating such structures and systems. Each structure comprises software elements, relations
-            among them, and properties of both elements and relations.</p>
-        <p class="timestamp">10minutes ago</p>
-    </div>
-    <div class="post">
-        <div class="authorimg">
-            <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
-            <span class="author">Sachin Ramesh</span>
-        </div>
-        <p class="title">Fundamentals of software architecture
-        </p>
-        <p class="intro"> Software architecture refers to the fundamental structures of a software system and the
-            discipline of creating such structures and systems. Each structure comprises software elements, relations
-            among them, and properties of both elements and relations.</p>
-        <p class="timestamp">10minutes ago</p>
-    </div>
-    <div class="post">
-        <div class="authorimg">
-            <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
-            <span class="author">Sachin Ramesh</span>
-        </div>
-        <p class="title">Fundamentals of software architecture
-        </p>
-        <p class="intro"> Software architecture refers to the fundamental structures of a software system and the
-            discipline of creating such structures and systems. Each structure comprises software elements, relations
-            among them, and properties of both elements and relations.</p>
-        <p class="timestamp">10minutes ago</p>
-    </div>
-    <div class="post">
-        <div class="authorimg">
-            <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
-            <span class="author">Sachin Ramesh</span>
-        </div>
-        <p class="title">Fundamentals of software architecture
-        </p>
-        <p class="intro"> Software architecture refers to the fundamental structures of a software system and the
-            discipline of creating such structures and systems. Each structure comprises software elements, relations
-            among them, and properties of both elements and relations.</p>
-        <p class="timestamp">10minutes ago</p>
-    </div>
-    <div class="post">
-        <div class="authorimg">
-            <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
-            <span class="author">Sachin Ramesh</span>
-        </div>
-        <p class="title">Fundamentals of software architecture
-        </p>
-        <p class="intro"> Software architecture refers to the fundamental structures of a software system and the
-            discipline of creating such structures and systems. Each structure comprises software elements, relations
-            among them, and properties of both elements and relations.</p>
-        <p class="timestamp">10minutes ago</p>
+        <!-- <p class="timestamp">{{ post.date.toLocaleString('default',{ month : 'short'}) }} {{ post.date.getDate()+','}} {{ post.date.getFullYear()}}</p> -->
+        <p class="timestamp">{{ post.timeAgoDate }}</p>
     </div>
 </div>

@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
         data => {
           // console.log("from onSubmit in loginComp : " + this.returnUrl + "blogger");
           // console.log("data from loginComp : "  + data.token);
+          // console.log("headers : " + data.headers.keys());
           
           this.loggedIn = true;
           this.router.navigate([this.returnUrl + "blogger"]);

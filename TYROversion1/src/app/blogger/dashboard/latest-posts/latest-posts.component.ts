@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
+import { element } from 'protractor';
+import { DashboardService } from 'src/app/_shared/_services/dashboard.service';
+import { format, render, cancel, register } from 'timeago.js';
 
 @Component({
   selector: 'app-latest-posts',
@@ -6,10 +10,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./latest-posts.component.css']
 })
 export class LatestPostsComponent implements OnInit {
-
-  constructor() { }
+  
+  public latestPosts : Array<any> = []
+  constructor(
+    private dashboardService : DashboardService,
+  ) { }
 
   ngOnInit(): void {
+    
+    console.log("In latest Posts");
+    this.dashboardService.getFeed()
+    .subscribe(
+      data => {
+        // var oneDay = 24 * 60 * 60 * 1000;
+        console.log("Feed data : " +JSON.stringify(data));
+        this.latestPosts = data;
+        this.latestPosts.forEach(element => {
+          element.date = new Date(element.date);    
+          // console.log("Format from timeAgo : " + format(element.date));
+          element.timeAgoDate = format(element.date);
+          
+        })
+      },
+      error=> {
+        console.log("Error from feed");
+        
+      }
+    )
+    
   }
 
 }

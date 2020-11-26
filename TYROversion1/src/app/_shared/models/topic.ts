@@ -1,4 +1,5 @@
 export class Topic{
     id: number;
-    topicname: string;
+    name: string;
+    isFollowing: boolean;
 }

@@ -18,6 +18,8 @@
       display: inline;
       float: left;
       padding-right: 45px;
+      align-content: center;
+      text-align: center;
   }
   figcaption{
     font-family: 'Open Sans',sans-serif;

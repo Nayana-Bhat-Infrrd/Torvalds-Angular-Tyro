@@ -11,8 +11,12 @@ import { AuthComponent } from './auth/auth.component';
 import { JwtInterceptor } from './core/_helper/jwt.interceptor';
 import { AuthguardGuard } from './core/_helper/authguard.guard';
 import { ErrorComponent } from './error/error.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
+import { MatSidenavModule } from '@angular/material/sidenav'
+// import {OverlayModule} from '@angular/cdk/overlay';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatSidenavModule
   ],
   providers: [
     AuthguardGuard,

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { error } from 'protractor';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
 
 @Injectable({
@@ -17,10 +18,10 @@ export class DashboardService {
   ) { }
 
   getPeople() {
-    return this.http.get<any>('https://node-torvalds.herokuapp.com/people/')
+    return this.http.get<any>(`${environment.apiUrl}/people/`)
       .pipe(map(data => {
         data.forEach(element => {
-          this.listOfPeople.push({ 'id': element._id, 'name': element.name })
+          this.listOfPeople.push({ 'id': element.id, 'name': element.name ,'isFollowing': element.isFollowing })
         });
         return this.listOfPeople;
       }))
@@ -50,27 +51,56 @@ export class DashboardService {
     console.log("from dashboardService : " + id);
 
     const postData = { name: id }
-    return this.http.post<any>('https://node-torvalds.herokuapp.com/people/follow', postData)
-      .subscribe(
-        data => {
-          console.log("in data");
-          console.log("data : " + JSON.stringify(data));
-          alert(JSON.stringify(data))
-        },
-        error => {
-          console.log("error : " + error);
+    return this.http.post<any>(`${environment.apiUrl}/people/follow`, postData)
+      
+  }
 
-        }
-      )
+  onUnfollowPerson(id){
+    console.log("from dashboardService : " + id);
+    const postData = { id : id}
+    return this.http.post(`${environment.apiUrl}/people/unfollow`,postData)
+     
   }
 
   getTopics() {
-    return this.http.get<any>('https://node-torvalds.herokuapp.com/topic')
+    return this.http.get<any>(`${environment.apiUrl}/topics`)
       .pipe(map(data => {
         data.forEach(element => {
-          this.listOfTopics.push({ 'id': element._id, 'name': element.name })
+          this.listOfTopics.push({ 'id': element.id, 'name': element.name ,'isFollowing': element.isFollowing})
         });
         return this.listOfTopics;
       }));
+  }
+
+  onFollowTopic(id){
+    console.log("from dashboardService onFollowTopic: " + id);
+    const postData = { id : id };
+    return this.http.post<any>(`${environment.apiUrl}/topics/follow/`,postData)
+   
+  }
+
+  onTopicUnfollow(id){
+    console.log("from dashboardService onTopicUnfollow: " + id);
+    const postData = { id : id };
+    return this.http.post(`${environment.apiUrl}/topics/unfollow/`,postData)
+    
+  }
+
+  getFeed(){
+    console.log("In feed");
+    return this.http.get<any>(`${environment.apiUrl}/feed/`)
+    
+  }
+
+  getTrending(){
+    console.log("In trending");
+    return this.http.get<any>(`${environment.apiUrl}/posts/trending`);
+    // .subscribe(
+    //   data => {console.log("Trending data: " + data);
+    //   },
+    //   error => {console.log("Error from trending");
+    //   }
+    // )
+    
   }
 }

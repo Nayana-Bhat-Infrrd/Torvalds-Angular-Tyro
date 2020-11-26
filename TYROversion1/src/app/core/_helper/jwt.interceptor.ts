@@ -21,7 +21,11 @@ export class JwtInterceptor implements HttpInterceptor {
     const currentUser = this.authenticationService.currentUserValue;
     const isLoggedIn = currentUser && currentUser.token;
     //  console.log("Request from JWT 1: " + JSON.stringify(request.headers));
+    // console.log("In JWT interceptors");
+    
     if (isLoggedIn) {
+      // console.log("currentUser.token : " + currentUser.token);
+      
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${currentUser.token}`

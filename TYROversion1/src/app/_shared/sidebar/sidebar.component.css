@@ -1,0 +1,192 @@
+.sidebarForTopic{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    float: right;
+}
+.sidebarForPeople{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 50px;
+  float: right;
+}
+.topicsToFollow{
+  background-color: #f7f5f9;
+    border: 1px solid  rgba(93, 93, 93, 0.3);;
+    width: 370px;
+    height: 90vh;
+    overflow-y: scroll;
+    background-color: #f7f5f9;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+.peopleToFollow{
+  background-color: #f7f5f9;
+    border: 1px solid  rgba(93, 93, 93, 0.3);;
+    width: 300px;
+    height: 90vh;
+    overflow-y: scroll;
+    padding-top: 30px;    
+    background-color: #f7f5f9;
+}
+.headerForTopics{
+    border: 1px solid  rgba(93, 93, 93, 0.3);;
+    height:70px;
+    text-align: center;
+    background-color: #f7f5f9;
+}
+.headerForPeople{
+  border: 1px solid  rgba(93, 93, 93, 0.3);;
+  height: 70px;
+  text-align: center;
+  width: 300px;
+  margin-right: 0px;
+  /* float: right; */
+  background-color: #f7f5f9;
+}
+.heading{
+  font-family: 'Open Sans',sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: black;
+  padding-top: 20px;
+}
+.topicsRow{
+    border-bottom: 1px solid rgba(93, 93, 93, 0.3);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.topic{
+    font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: black;
+}
+.endOfTopics{
+    /* margin: 19.8px 69.8px 18px 4px; */
+  font-family: 'Open Sans',sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: black;
+  overflow-x: hidden;
+  text-align: center;
+  padding-top: 20px;
+}
+.endOfPeople{
+  /* margin: 19.8px 69.8px 18px 4px; */
+  font-family: 'Open Sans',sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: black;
+  width: 290px;
+  text-align: center;
+  overflow-x: hidden;
+}
+.followTopic{
+    border-color: #1c437e;
+    background-color: #f7f5f9;
+    color: #1c437e; 
+    height: 24px;
+    width: 80px;
+    display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
+}
+.followingTopic{
+    border-color: #1c437e;
+    background-color: #1c437e;
+    color: #f7f5f9; 
+    height: 24px;
+    width: 80px;
+    display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
+}
+.followPeople{
+  border-color: #1c437e;
+  background-color: #f7f5f9;
+  color: #1c437e; 
+  height: 24px;
+  width: 80px;
+  display: inline-flex;
+align-items: center;
+justify-content: center;
+/* float: right; */
+}
+.followingPeople{
+  border-color: #1c437e;
+  background-color: #1c437e;
+  color: #f7f5f9; 
+  height: 24px;
+  width: 80px;
+  display: inline-flex;
+align-items: center;
+justify-content: center;
+/* float: right; */
+}
+
+.img-circular{
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  /* padding-left: 42px;
+  padding-right: 0px; */
+}
+/* .personRow{ */
+  /* padding-left: 20%; */
+  /* align-content: center; */
+  /* padding-top: 10%;
+  padding-bottom: 10%; */
+/* } */
+td{
+  text-align: left;
+  padding-top: 0px;
+}
+tr{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  height: 80px;
+}
+.name{
+  padding-top: 0px;
+  padding-bottom: 5px;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--color-neutral-black);
+  width: 70px;
+}
+.profileimage{
+  vertical-align: middle;
+}
+.profiledetails{
+  padding-left: 10px;
+}
+/* .peopleTable{
+  margin-right: 0px;
+  float: right;
+} */

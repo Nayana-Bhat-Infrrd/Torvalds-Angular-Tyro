@@ -4,18 +4,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { User } from 'src/app/_shared/models/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
 
   constructor(private http: HttpClient) {
-
-    //     console.log("In AuthenticationService");
-
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -28,21 +26,22 @@ export class AuthenticationService {
     const loginData = { email: username, password: password };
     console.log("Post Data: " + loginData);
 
-    return this.http.post<any>('https://torvalds-nodejs-tyro.herokuapp.com/login/', loginData)
+    return this.http.post<any>(`${environment.apiUrl}/login/`, loginData, { observe: 'response' })
+      // return this.http.post<any>('https://torvalds-nodejs-tyro.herokuapp.com/login/', loginData)//{observe: 'response'}
       .pipe(map(user => {
-        if(JSON.stringify(user).includes('token')){
+
+        if (JSON.stringify(user.body.message)) {
+          const data = { 'token': user.headers.get('authorization').substring(7) }
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.currentUserSubject.next(user);
-          return user;
+          localStorage.setItem('currentUser', JSON.stringify(data));
+          this.currentUserSubject.next(data);
+          return data;
         }
-        else{
-          throw new Error(user.error.message)
+        else {
+          console.log("In error : " + JSON.stringify(user.body.error.message));
+          throw new Error(JSON.stringify(user.body.error.message))
         }
-      // },
-      //   error => {
-      //     return error;
-        }))
+      }))
   }
 
   logout() {
@@ -53,23 +52,19 @@ export class AuthenticationService {
 
   signUp(username: string, email: string, password: string) {
     const signupData = { name: username, email: email, password: password };
-    console.log("Signup Data: " + signupData);
-
-    return this.http.post<any>('https://torvalds-nodejs-tyro.herokuapp.com/register/', signupData)
+    return this.http.post<any>(`${environment.apiUrl}/register/`, signupData,{ observe: 'response' })
       .pipe(map(user => {
-        if(JSON.stringify(user).includes('token')){
+        if (JSON.stringify(user.body.message)) {
+          const data = { 'token': user.headers.get('authorization').substring(7) }
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.currentUserSubject.next(user);
-          return user;
+          localStorage.setItem('currentUser', JSON.stringify(data));
+          this.currentUserSubject.next(data);
+          return data;
         }
-        else{
-          throw new Error(user.error.message)
+        else {
+          console.log("In error : " + JSON.stringify(user.body.error.message));
+          throw new Error(JSON.stringify(user.body.error.message))
         }
-      // },
-      //   error => {
-      //     // console.log("In error in map pipe " + error);
-      //     return error;
-        }))
+      }))
   }
 }

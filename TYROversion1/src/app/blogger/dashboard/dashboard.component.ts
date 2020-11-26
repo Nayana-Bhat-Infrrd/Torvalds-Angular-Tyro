@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/_shared/_services/authentication.service';
 
+// import {MatSidenavModule} from '@angular/material/sidenav'
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

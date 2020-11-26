@@ -14,6 +14,9 @@ import { LatestPostsComponent } from './dashboard/latest-posts/latest-posts.comp
 import { SharedModule } from '../_shared/shared.module';
 
 
+import { OverlayModule } from '@angular/cdk/overlay';
+
+// import { MatSidenavModule } from '@angular/material/sidenav'
 
 @NgModule({
   declarations: [
@@ -31,10 +34,11 @@ import { SharedModule } from '../_shared/shared.module';
     RouterModule,
     BloggerRoutingModule,
     CommonModule,
-    SharedModule
+    SharedModule,
   ],
   exports:[
-    DashboardComponent
+    DashboardComponent,
+    OverlayModule
   ]
   
 })

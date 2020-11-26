@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
+import { ComponentPortal } from '@angular/cdk/portal';
+import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { error } from 'protractor';
+import { SidebarComponent } from 'src/app/_shared/sidebar/sidebar.component';
 import { DashboardService } from 'src/app/_shared/_services/dashboard.service';
+import { FollowService } from 'src/app/_shared/_services/follow.service';
+
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-follow-people',
@@ -11,9 +17,14 @@ import { DashboardService } from 'src/app/_shared/_services/dashboard.service';
 export class FollowPeopleComponent implements OnInit {
   listOfPeople: Array<any> = [];
   constructor(
+    private overlay: Overlay,
+    public viewContainerRef: ViewContainerRef,
     private route: ActivatedRoute,
     private router: Router,
-    private dashboardService: DashboardService
+    private followService: FollowService,
+    private dashboardService: DashboardService,
+
+    @Inject(DOCUMENT) private document: Document
   ) { }
 
   ngOnInit(): void {
@@ -21,7 +32,7 @@ export class FollowPeopleComponent implements OnInit {
       .subscribe(
         data => {
           this.listOfPeople = data;
-          console.log("data data : " + data);
+          console.log("People data : " + JSON.stringify(data));
 
         },
         error => {
@@ -29,21 +40,50 @@ export class FollowPeopleComponent implements OnInit {
 
         }
       );
-
-    console.log("Data from ts : " + this.listOfPeople);
-
-
   }
 
-  onFollowPerson(id){
+  onFollowPerson(id) {
     console.log(("follow : " + id));
     console.log("_id : " + this.listOfPeople[id].id);
-    
-    this.dashboardService.onFollowPerson(this.listOfPeople[id].id);
+
+    this.dashboardService.onFollowPerson(this.listOfPeople[id].id)
+      .subscribe(
+        data => {
+          console.log("Response from onFollowPerson " + JSON.stringify(data));
+          alert(JSON.stringify(data))
+          this.document.location.reload();
+        },
+        error => {
+          console.log("error : " + error);
+
+        }
+      )
   }
 
-  callSidebar(){
+  onMorePeople() {
     console.log("Call side bar");
-    this.router.navigate(['/blogger/newpost'])
+    // this.router.navigate(['/blogger/newpost'])
+    // this.followService.setPeople(this.listOfPeople)
+
+    this.followService.setValue(this.listOfPeople, "PEOPLE")
+    console.log("List of people : " + this.listOfPeople);
+
+    let config = new OverlayConfig();
+    config.scrollStrategy = this.overlay.scrollStrategies.block();
+    config.positionStrategy = this.overlay
+      .position()
+      .global()
+      .right();
+
+    config.hasBackdrop = true;
+    // config.backdropClass = "cdk-overlay-transparent-backdrop";
+    let overlayRef = this.overlay.create(config);
+
+    overlayRef.backdropClick().subscribe(() => {
+      overlayRef.dispose();
+      this.document.location.reload();
+    });
+
+    overlayRef.attach(new ComponentPortal(SidebarComponent, this.viewContainerRef));
   }
 }
