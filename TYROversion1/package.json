@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -29,14 +29,16 @@
     "@ng-bootstrap/ng-bootstrap": "^8.0.0",
     "@types/jquery": "^3.5.4",
     "bootstrap": "^4.5.3",
+    "express": "^4.17.1",
     "jquery": "^3.5.1",
     "moment": "^2.29.1",
     "ngx-ellipsis": "^3.0.0",
+    "path": "^0.12.7",
     "rxjs": "~6.6.0",
     "timeago.js": "^4.0.2",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2",
-    "typescript": "~4.0.2"
+    "typescript": "~4.0.2",
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1002.0",
