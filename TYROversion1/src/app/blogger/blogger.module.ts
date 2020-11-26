@@ -22,6 +22,7 @@ import { MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { OverlayModule } from '@angular/cdk/overlay';
+import { EllipsisModule } from 'ngx-ellipsis';
 
 // import { MatSidenavModule } from '@angular/material/sidenav'
 
@@ -49,6 +50,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     MatInputModule,
     MatChipsModule,
     MatIconModule,
+    EllipsisModule
   ],
   exports:[
     DashboardComponent,

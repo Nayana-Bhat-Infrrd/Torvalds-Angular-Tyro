@@ -7,12 +7,25 @@
         </div>
         <p class="title">{{ post.title }}
         </p>
-        <p class="intro"> {{ post.description }}
+        <p *ngIf="post.description.length > 200" class="intro" style="height: 40px;" ellipsis> {{ post.description }}</p>
+            <p *ngIf="post.description.length <= 200" class="intro"> {{ post.description }}
             <!-- Software architecture refers to the fundamental structures of a software system and the
             discipline of creating such structures and systems. Each structure comprises software elements, relations
             among them, and properties of both elements and relations. -->
         </p>
+        <!-- <div id="fos">
+            <p>
+                {{ post.description }}
+            </p>  
+        </div> -->
         <!-- <p class="timestamp">{{ post.date.toLocaleString('default',{ month : 'short'}) }} {{ post.date.getDate()+','}} {{ post.date.getFullYear()}}</p> -->
         <p class="timestamp">{{ post.timeAgoDate }}</p>
     </div>
 </div>
+
+
+<p style="width: 400px; height: 60px;" ellipsis>
+    Your very long text Your very long text Your very long text
+    Your very long text Your very long text Your very long text
+    Your very long text Your very long text Your very long text
+</p>

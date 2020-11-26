@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
-import { element } from 'protractor';
+
+import * as $ from 'jquery'
 import { DashboardService } from 'src/app/_shared/_services/dashboard.service';
 import { format, render, cancel, register } from 'timeago.js';
 
@@ -37,7 +37,15 @@ export class LatestPostsComponent implements OnInit {
         
       }
     )
+    // var p=$('#fos p');
+    // var divh=$('#fos').height();
+    // while ($(p).outerHeight()>divh) {
+    //     $(p).text(function (index, text) {
+    //         return text.replace(/\W*\s(\S)*$/, '.....');
+    //     });
+    // }
     
   }
 
+ 
 }

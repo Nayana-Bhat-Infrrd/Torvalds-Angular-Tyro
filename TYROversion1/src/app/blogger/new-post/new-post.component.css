@@ -264,6 +264,8 @@ textarea
      height: 54px;
      padding-top: 11px;
      padding-bottom:11px;
+     padding-left: 4px;
+     padding-right: 4px;
      margin-left:100px;
      margin-right:70px;
      margin-bottom: 37px;
@@ -282,5 +284,6 @@ textarea
 .list
 {
    background-color: #007500;
+   border-radius: 5px;
 }
 
