@@ -14,7 +14,8 @@ import { ErrorComponent } from './error/error.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
-import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // import {OverlayModule} from '@angular/cdk/overlay';
 import { from } from 'rxjs';
 
@@ -33,7 +34,8 @@ import { from } from 'rxjs';
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    FontAwesomeModule
   ],
   providers: [
     AuthguardGuard,

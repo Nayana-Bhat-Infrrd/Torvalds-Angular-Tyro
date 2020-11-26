@@ -14,6 +14,13 @@ import { LatestPostsComponent } from './dashboard/latest-posts/latest-posts.comp
 import { SharedModule } from '../_shared/shared.module';
 
 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatFormFieldModule} from '@angular/material/form-field'; 
+import { MatInputModule } from '@angular/material/input';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule} from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { OverlayModule } from '@angular/cdk/overlay';
 
 // import { MatSidenavModule } from '@angular/material/sidenav'
@@ -35,6 +42,13 @@ import { OverlayModule } from '@angular/cdk/overlay';
     BloggerRoutingModule,
     CommonModule,
     SharedModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatChipsModule,
+    MatIconModule,
   ],
   exports:[
     DashboardComponent,
