@@ -52,6 +52,7 @@ export class DashboardService {
 
     const postData = { name: id }
     return this.http.post<any>(`${environment.apiUrl}/people/follow`, postData)
+    
       
   }
 

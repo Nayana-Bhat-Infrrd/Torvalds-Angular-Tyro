@@ -33,7 +33,7 @@ export class NewpostService {
         data => {
           console.log("in data");
           console.log("data : " + JSON.stringify(data));
-          alert(JSON.stringify(data))
+         // alert(JSON.stringify(data))
         },
         error => {
           console.log("error : " + error);

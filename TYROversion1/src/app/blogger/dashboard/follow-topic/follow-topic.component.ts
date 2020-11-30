@@ -13,6 +13,7 @@ import { ViewContainerRef } from '@angular/core';
 
   
 import { DOCUMENT } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 // import {
 //   Overlay,
 //   // OverlayOrigin,
@@ -36,6 +37,7 @@ export class FollowTopicComponent implements OnInit {
     private router: Router,
     private dashboardService: DashboardService,
     private followService: FollowService,
+    public toastr:ToastrService,
     @Inject(DOCUMENT) private document: Document
     
   ) { }
@@ -64,12 +66,17 @@ export class FollowTopicComponent implements OnInit {
     .subscribe(
       data => { console.log("Response from onTopicFollow : "+JSON.stringify(data))
       this.listOfTopics[id].isFollowing = true;
-      alert("You are now following : " + this.listOfTopics[id].name)
+     // alert("You are now following : " + this.listOfTopics[id].name)
+      
       this.document.location.reload();
       },
       error => {console.log("Error from onTopicFollow : " + JSON.stringify(error));
       }
     )
+    this.toastr.success(this.listOfTopics[id].name,'You are following',{
+      positionClass:'toast-top-center',
+      timeOut:2000,
+    })
   }
 
   onTopicUnfollow(id){
@@ -81,12 +88,16 @@ export class FollowTopicComponent implements OnInit {
     .subscribe(
       data => {console.log("Response from onUnfollowTopic : " + JSON.stringify(data));
       this.listOfTopics[id].isFollowing = false;
-      alert("You unfollowed : " + this.listOfTopics[id].name)
+      //alert("You unfollowed : " + this.listOfTopics[id].name)
       this.document.location.reload();
       },
       error => {console.log("Error from onUnFollowTopic : " + JSON.stringify(error));
       }
     )
+    this.toastr.warning(this.listOfTopics[id].name,'You Unfollowed',{
+      positionClass:'toast-top-center',
+      timeOut:2000,
+    })
   }
 
 
