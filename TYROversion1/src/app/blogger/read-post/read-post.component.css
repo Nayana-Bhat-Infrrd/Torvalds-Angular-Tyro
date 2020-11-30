@@ -63,4 +63,5 @@ overflow-y: auto;
   }
   .bookmark{
     padding-left: 1em;
+    cursor: pointer;
   }

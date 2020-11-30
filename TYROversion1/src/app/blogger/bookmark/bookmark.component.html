@@ -1,1 +1,31 @@
-<p>bookmark works!</p>
+<app-title></app-title>
+
+<div class="bookmark-conatiner">
+    <div class="title">BOOKMARKS({{totalBookamrks}})</div>
+
+
+
+
+
+    <div class="wrapper">
+
+        <div *ngFor="let post of bookmarks" class="post">
+            <div class="authorimg">
+                <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
+                <span class="author"> {{ post.author.name }} </span>
+            </div>
+            <p class="postTitle"> {{ post.title }}</p>
+            <!-- <p *ngIf="post.description.length > 200" class="intro" style="height: 40px;" ellipsis> {{ post.description }}</p>
+        <p *ngIf="post.description.length <= 200" class="intro"> {{ post.description }} -->
+            <p class="description"> {{post.description}}
+                <!-- architecture refers to the fundamental structures of a software system and the
+                discipline of creating such structures and systems. Each structure comprises software elements,
+                relations
+                among them, and properties of both elements and relations. -->
+            </p>
+            <span class="postTimeAgo">Just now</span>
+            <img (click)="ondeleteBookmark()" class="deletebookmark" src="../assets/delete.png" alt="deletebookmark">
+        </div>
+    </div>
+
+</div>
