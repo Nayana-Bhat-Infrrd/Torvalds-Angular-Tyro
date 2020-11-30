@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { error } from 'protractor';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
@@ -9,7 +10,10 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class DashboardService {
-  user: User;
+  // user: User;
+  reloadFeed = new EventEmitter();    
+  subsFeed: Subscription;   
+
   listOfPeople: Array<any> = [];
   listOfTopics: Array<any> = [];
 
@@ -17,6 +21,10 @@ export class DashboardService {
     private http: HttpClient,
   ) { }
 
+  onFeedChange(){
+    this.reloadFeed.emit();
+  }
+  
   getPeople() {
     return this.http.get<any>(`${environment.apiUrl}/people/`)
       .pipe(map(data => {

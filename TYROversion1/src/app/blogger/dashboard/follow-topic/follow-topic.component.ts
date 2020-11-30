@@ -27,6 +27,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class FollowTopicComponent implements OnInit {
   istitle : boolean = true;
+  showSpinner = false;
   moreTopics: boolean = false;
   listOfTopics: Array<Topic> = [];
   constructor(
@@ -41,10 +42,12 @@ export class FollowTopicComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.showSpinner = true;
     this.dashboardService.getTopics()
       .subscribe(
         data => {
           // console.log("Topics from ngOnInit in .ts : " + JSON.stringify(data));
+          this.showSpinner = false;
           this.listOfTopics = data;
         },
         error => {
@@ -112,7 +115,8 @@ export class FollowTopicComponent implements OnInit {
     let overlayRef = this.overlay.create(config);
     overlayRef.backdropClick().subscribe(() => {
       overlayRef.dispose();
-      this.document.location.reload();
+      this.dashboardService.onFeedChange();
+      // this.document.location.reload();
     });
 
     overlayRef.attach(new ComponentPortal(SidebarComponent, this.viewContainerRef));

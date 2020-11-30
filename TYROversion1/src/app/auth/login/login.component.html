@@ -1,6 +1,7 @@
 <div class="form-container">
   <div *ngIf="error" class="alert-danger">{{error}}</div>
-
+  <mat-spinner [diameter] = "50" class="login-spinner" mode="indeterminate" *ngIf="showspinner"></mat-spinner>
+  
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
     <div class="inputFields">
       <div class="form-group">
@@ -31,9 +32,9 @@
 
     <div class="login">
       <button type="submit" class="btn">LOGIN</button>
-
+      
     </div>
-   
+   <div class="login-spinner-background" *ngIf="showspinner"></div>
   </form>
 </div>
 <div class="or">

@@ -14,7 +14,8 @@ import { LatestPostsComponent } from './dashboard/latest-posts/latest-posts.comp
 import { SharedModule } from '../_shared/shared.module';
 
 
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
@@ -43,6 +44,7 @@ import { EllipsisModule } from 'ngx-ellipsis';
     BloggerRoutingModule,
     CommonModule,
     SharedModule,
+    MatProgressSpinnerModule,
     MatAutocompleteModule,
     MatFormFieldModule,
     FormsModule,

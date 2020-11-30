@@ -1,5 +1,7 @@
 <div class="container">
     <p class="title">PEOPLE TO FOLLOW</p>
+    <mat-spinner [diameter]="50" class="followPeople-spinner" mode="indeterminate" *ngIf="showSpinner"></mat-spinner>
+    
 <!-- {{ listOfPeople }} -->
     <div *ngFor="let person of listOfPeople.slice(0, 3); let i = index">
         <!-- {{ person }} -->
@@ -23,7 +25,7 @@
         <figcaption>Rachita</figcaption>
     </figure> -->
 
-    <figure>
+    <figure *ngIf="!showSpinner">
         <input type="image" class="img-circular" src="../assets/group_2.png" alt="profilepicture" (click)="onMorePeople()">
         <figcaption>See more</figcaption>
     </figure> 

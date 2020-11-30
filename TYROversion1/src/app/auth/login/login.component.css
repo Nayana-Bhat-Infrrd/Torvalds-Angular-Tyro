@@ -65,3 +65,15 @@
     width: 28.5%;
     margin-left: 35%;
 }
+.login-spinner-background{
+    margin: 0 auto;
+    background-color: rgba(97, 105, 177, 0.7);
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100vw;
+    min-height:100vh;
+}
+.login-spinner{
+    margin: 0 auto;
+}

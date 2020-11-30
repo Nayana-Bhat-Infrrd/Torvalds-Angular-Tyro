@@ -1,5 +1,6 @@
 <div class="container my-follow-topic-container">
     <p class="title">TOPICS TO FOLLOW</p>
+    <mat-spinner [diameter]="50" class="followTopic-spinner" mode="indeterminate" *ngIf="showSpinner"></mat-spinner>
     <table *ngFor="let topic of listOfTopics.slice(0, 3); let i = index" class="table table-sm table-borderless">
         <!-- <tbody> -->
         <tr>
@@ -10,7 +11,7 @@
             </td>
         </tr>
     </table>
-    <a routerLink="/" (click)="onMoreTopics()">See More</a>
+    <a *ngIf="!showSpinner" routerLink="/" (click)="onMoreTopics()">See More</a>
     <!-- <button (click)="onMoreTopics()">See More</button> -->
     <!-- <app-sidebar>Loading Sidebar</app-sidebar> -->
 </div>

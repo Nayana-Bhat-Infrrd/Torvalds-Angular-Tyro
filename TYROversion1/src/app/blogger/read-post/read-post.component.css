@@ -1,0 +1,66 @@
+.read-posts-conatiner{
+  margin-left: 12em;
+  margin-right: 12em;
+  margin-top: 10em;
+}
+.title{
+  font-family: 'Open Sans',sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+}
+.authorimg{
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+.img-circular{
+    border-radius: 50%;
+    height: 18px;
+    width: 18px;
+    /* padding-left: 42px;
+    padding-right: 0px; */
+  }
+  .author{
+    font-family: 'Open Sans',sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+  }
+  .timeAgo{
+    display: inline;
+    font-family: 'Open Sans',sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+  }
+  .description{
+    font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+overflow-y: auto; 
+}
+  .like-bookmark{
+    display: inline;
+    float: right;
+    padding-right: 1em;
+  }
+  .bookmark{
+    padding-left: 1em;
+  }

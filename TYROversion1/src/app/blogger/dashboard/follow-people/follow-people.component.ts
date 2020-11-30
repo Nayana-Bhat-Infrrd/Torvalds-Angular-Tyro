@@ -15,6 +15,7 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./follow-people.component.css']
 })
 export class FollowPeopleComponent implements OnInit {
+  showSpinner = false;
   listOfPeople: Array<any> = [];
   constructor(
     private overlay: Overlay,
@@ -28,9 +29,11 @@ export class FollowPeopleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.showSpinner = true;
     this.dashboardService.getPeople()
       .subscribe(
         data => {
+          this.showSpinner = false
           this.listOfPeople = data;
           console.log("People data : " + JSON.stringify(data));
 
@@ -61,6 +64,7 @@ export class FollowPeopleComponent implements OnInit {
   }
 
   onMorePeople() {
+    
     console.log("Call side bar");
     // this.router.navigate(['/blogger/newpost'])
     // this.followService.setPeople(this.listOfPeople)
@@ -81,7 +85,8 @@ export class FollowPeopleComponent implements OnInit {
 
     overlayRef.backdropClick().subscribe(() => {
       overlayRef.dispose();
-      this.document.location.reload();
+      this.dashboardService.onFeedChange();
+      // this.document.location.reload();
     });
 
     overlayRef.attach(new ComponentPortal(SidebarComponent, this.viewContainerRef));

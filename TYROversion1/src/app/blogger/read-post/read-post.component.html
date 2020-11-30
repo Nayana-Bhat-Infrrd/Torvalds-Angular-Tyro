@@ -1,1 +1,19 @@
-<p>read-post works!</p>
+<app-title></app-title>
+
+<div class="read-posts-conatiner">
+    <div class="title">{{ post.title }}</div>
+
+    <div class="authorimg">
+        <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
+        <span class="author"> {{ post.author.name }} </span>
+        <div class="timeAgo"> {{ post.timeAgoDate }}</div>
+        <div class="like-bookmark">
+            <img class="like" src="../assets/heart.png" alt="like">
+            100
+            <img class="bookmark" src="../assets/wish-list.png" alt="bookmark">
+        </div>
+    </div>
+    <div class="description">
+        {{post.description}}
+    </div>
+</div>

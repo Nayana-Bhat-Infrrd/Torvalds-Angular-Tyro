@@ -32,4 +32,6 @@
     padding-top: 8px;
     color: var(--color-neutral-black);
   }
-  
+  .followPeople-spinner{
+    margin: 0 auto;
+  }

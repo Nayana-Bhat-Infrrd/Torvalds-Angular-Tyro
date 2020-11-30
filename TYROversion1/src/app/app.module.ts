@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 // import {OverlayModule} from '@angular/cdk/overlay';
 import { from } from 'rxjs';
 
@@ -35,7 +36,8 @@ import { from } from 'rxjs';
     NgbModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     AuthguardGuard,

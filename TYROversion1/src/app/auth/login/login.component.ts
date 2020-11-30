@@ -11,6 +11,7 @@ import { AuthenticationService } from 'src/app/_shared/_services/authentication.
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  showspinner = false;
   loggedIn: boolean = false;
   loginForm: FormGroup;
   loading = false;
@@ -50,6 +51,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.showspinner = true;
     console.log("DATA: \n" + this.f.email.value + " - " + this.f.password.value);
 
     // stop here if form is invalid
@@ -65,7 +67,7 @@ export class LoginComponent implements OnInit {
           // console.log("from onSubmit in loginComp : " + this.returnUrl + "blogger");
           // console.log("data from loginComp : "  + data.token);
           // console.log("headers : " + data.headers.keys());
-          
+          this.showspinner = false;
           this.loggedIn = true;
           this.router.navigate([this.returnUrl + "blogger"]);
         },

@@ -74,10 +74,7 @@ hr{
   margin-bottom: 10px;
   display: block;
 }
-
-/* 
-#fos { 
-  width: 300px; height: 80px; overflow: hidden; 
+.latest-spinner{
+  
+  margin:0 auto;
 }
-
-#fos p { padding: 10px; margin: 0; } */
