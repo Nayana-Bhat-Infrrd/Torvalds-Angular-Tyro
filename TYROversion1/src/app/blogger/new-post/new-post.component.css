@@ -143,7 +143,7 @@ a:hover{
     
     font-family: 'Open Sans',sans-serif;
     font-size: 24px;
-    font-weight: normal;
+    font-weight: 400;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -173,7 +173,7 @@ textarea
     margin-top:14px;
     font-family: 'Open Sans',sans-serif;
     font-size: 14px;
-    font-weight: normal;
+    font-weight: 400;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -264,8 +264,8 @@ textarea
      height: 54px;
      padding-top: 11px;
      padding-bottom:11px;
-     padding-left: 4px;
-     padding-right: 4px;
+     /* padding-left: 2px; */
+     /* padding-right: 4px; */
      margin-left:100px;
      margin-right:70px;
      margin-bottom: 37px;
@@ -279,11 +279,27 @@ textarea
     border: none;
     outline: none;
     background-color:#dbe1e9;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 600px;
 } 
 
 .list
 {
    background-color: #007500;
    border-radius: 5px;
+   /* width: 100px;
+   height: 25px;
+  /* margin: 0 14px 0 0; 
+   padding: 5px 28px 5px 28px; */
+   border-radius: 5px;
+   font-family: OpenSans;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #f7f5f9;
 }
 

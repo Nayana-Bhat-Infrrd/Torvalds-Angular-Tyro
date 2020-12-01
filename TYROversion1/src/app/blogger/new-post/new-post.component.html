@@ -15,7 +15,7 @@
       </li>         
 
   <li class="nav-item post">
-    <a class="nav-link"><button type="submit"  [disabled]="!publishForm.valid" (click) = "on()" class="btn">PUBLISH</button></a>
+    <a class="nav-link" ><button type="submit" [disabled]="!publishForm.valid" (click) = "on()"  class="btn pubIt">PUBLISH</button></a>
   </li>
   
   <li class="nav-item profile">
@@ -35,16 +35,16 @@
 <div id="text">
   <a routerLink="/blogger/newpost" (click) = "off()" ><img id="close" img src="../assets/cancel.png"></a>
   <p class="topics1">Add upto 5 topics so that readers know what your post is about</p>
-  <form class="example-chip-list">
+  <form class="example-chip-list" #validForm="ngForm">
   <div class="wrap" >
     <mat-chip-list  #chipList aria-label="Topic selection" class="chiplists">
         <mat-chip 
          *ngFor="let Topic of Topics"
           [selectable]="selectable"
           [removable]="removable"
-          (removed)="remove(Topic)"  class="list">
+          (removed)="remove(Topic)" style="text-transform: capitalize;" class="list">
             {{Topic}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            <mat-icon class="icon" matChipRemove *ngIf="removable" style="color:#f7f5f9;">cancel</mat-icon>
           </mat-chip>
           <input
           #TopicInput
@@ -59,13 +59,13 @@
           >
         </mat-chip-list>
         <mat-autocomplete  #auto="matAutocomplete" (optionSelected)="selected($event)">
-          <mat-option class="autocomplete" *ngFor="let Topic of filteredTopics | async"  [value]="Topic">
+          <mat-option class="autocomplete" *ngFor="let Topic of filteredTopics | async" style="text-transform: capitalize;" [value]="Topic">
             {{Topic}}
           </mat-option>
         </mat-autocomplete> 
       </div> 
     </form>
-  <button routerLink="/blogger"  (click) = "addPost(title1.value,Content1.value)" type="submit"  class="btn publish">PUBLISH</button>       
+  <button routerLink="/blogger" [disabled]="!validForm.valid || this.Topics.length===0"  (click) = "addPost(title1.value,Content1.value)" type="submit"  class="btn publish">PUBLISH</button>       
 </div>
 </div>
 

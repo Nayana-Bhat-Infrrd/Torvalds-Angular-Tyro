@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-
+import {ToastrService} from 'ngx-toastr';
 import { AuthenticationService } from 'src/app/_shared/_services/authentication.service';
 
 @Component({
@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    public toastr:ToastrService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -70,9 +71,16 @@ export class LoginComponent implements OnInit {
           this.showspinner = false;
           this.loggedIn = true;
           this.router.navigate([this.returnUrl + "blogger"]);
+          this.toastr.success('Congrats!!!','Login Successfull',{
+            positionClass:'toast-top-center',
+            timeOut:1500,
+          })
         },
         error => {
-          console.log("error from onSubmit in loginComp : " + error);
+         this.toastr.error('Invalid Credentials','Try Again',{
+           positionClass:'toast-top-center',
+           timeOut:1500,
+         })
 
           this.error = error;
           this.loading = false;
