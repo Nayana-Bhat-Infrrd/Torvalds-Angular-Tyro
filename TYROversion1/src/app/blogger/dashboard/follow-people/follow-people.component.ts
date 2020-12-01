@@ -17,6 +17,8 @@ import { DOCUMENT } from '@angular/common';
 export class FollowPeopleComponent implements OnInit {
   showSpinner = false;
   listOfPeople: Array<any> = [];
+  fewPeople : Array<any> = [];
+
   constructor(
     private overlay: Overlay,
     public viewContainerRef: ViewContainerRef,
@@ -25,15 +27,35 @@ export class FollowPeopleComponent implements OnInit {
     private followService: FollowService,
     private dashboardService: DashboardService,
 
-    @Inject(DOCUMENT) private document: Document
   ) { }
 
   ngOnInit(): void {
+    this.getFewPeople("3")
+    this.getPeople();
+  }
+
+  getFewPeople(count){
     this.showSpinner = true;
+    this.dashboardService.getFewPeople(count)
+    .subscribe(
+      data => {
+        this.showSpinner = false;
+        this.fewPeople = data;
+        console.log("People data : " + JSON.stringify(this.fewPeople));
+
+      },
+      error => {
+        console.log("Error : " + error);
+
+      }
+    );
+  }
+  getPeople(){
+    // this.showSpinner = true;
     this.dashboardService.getPeople()
       .subscribe(
         data => {
-          this.showSpinner = false
+          // this.showSpinner = false
           this.listOfPeople = data;
           console.log("People data : " + JSON.stringify(data));
 
@@ -54,7 +76,8 @@ export class FollowPeopleComponent implements OnInit {
         data => {
           console.log("Response from onFollowPerson " + JSON.stringify(data));
           alert(JSON.stringify(data))
-          this.document.location.reload();
+          this.dashboardService.onFeedChange();
+          // this.document.location.reload();
         },
         error => {
           console.log("error : " + error);

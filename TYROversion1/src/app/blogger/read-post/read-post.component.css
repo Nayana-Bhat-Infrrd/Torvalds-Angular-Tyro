@@ -2,6 +2,7 @@
   margin-left: 12em;
   margin-right: 12em;
   margin-top: 10em;
+  margin-bottom: 10em;
 }
 .title{
   font-family: 'Open Sans',sans-serif;
@@ -26,7 +27,7 @@
   }
   .author{
     font-family: 'Open Sans',sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
@@ -63,5 +64,15 @@ overflow-y: auto;
   }
   .bookmark{
     padding-left: 1em;
+    /* cursor: pointer; */
+  }
+  .liked{
+    display : inline;
+    height: 3em;
+    width: 3em;
+    cursor: pointer;
+  }
+  .like{
+    display: inline;
     cursor: pointer;
   }

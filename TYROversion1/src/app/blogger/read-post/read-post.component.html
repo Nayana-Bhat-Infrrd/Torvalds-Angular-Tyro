@@ -1,16 +1,22 @@
 <app-title></app-title>
 
 <div class="read-posts-conatiner">
+    
     <div class="title">{{ post.title }}</div>
 
     <div class="authorimg">
         <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
-        <span class="author"> {{ post.author.name }} </span>
+        <span class="author"> {{ post.authorName }} </span>
         <div class="timeAgo"> {{ post.timeAgoDate }}</div>
+        <mat-spinner [diameter]="50" class="latest-spinner" mode="indeterminate" *ngIf="showSpinner"></mat-spinner>
+        <div *ngIf="showSpinner">Loading....</div>
         <div class="like-bookmark">
-            <img class="like" src="../assets/heart.png" alt="like">
-            100
-            <img (click)="addBookmark()" class="bookmark" src="../assets/wish-list.png" alt="bookmark">
+            <!-- <img class="like" [ngStyle]="{'src' : post.isLiked === true ? '../assets/liked.jpg' : '../assets/heart.png'}"> -->
+            <img *ngIf="postLiked === false" class="like" src="../assets/heart.png" alt="like" (click)="addLike()">
+            <img *ngIf="postLiked === true" class="liked" src="../assets/liked.jpg" alt="like" (click)="unLike()">
+            {{ likes }}
+            <!-- {{ post.isBookmarked }} -->
+            <img [ngStyle]="{'cursor': postBookmarked === true ? 'no-drop' : 'pointer' }"(click)="addBookmark()" class="bookmark" src="../assets/wish-list.png" alt="bookmark">
         </div>
     </div>
     <div class="description">

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { error } from 'protractor';
 import { Subscription } from 'rxjs';
@@ -11,8 +11,8 @@ import { User } from '../models/user';
 })
 export class DashboardService {
   // user: User;
-  reloadFeed = new EventEmitter();    
-  subsFeed: Subscription;   
+  reloadFeed = new EventEmitter(); 
+  subsFeed: Subscription;  
 
   listOfPeople: Array<any> = [];
   listOfTopics: Array<any> = [];
@@ -24,7 +24,21 @@ export class DashboardService {
   onFeedChange(){
     this.reloadFeed.emit();
   }
-  
+
+  getFewPeople(count){
+    let params = new HttpParams().set("count",count);
+    return this.http.get<any>(`${environment.apiUrl}/people`,{params : params})
+    .pipe(map(data => {
+      console.log("Few people : " + JSON.stringify(data));
+      data.forEach(element => {
+        
+        
+        this.listOfPeople.push({ 'id': element.id, 'name': element.name ,'isFollowing': element.isFollowing})
+      });
+      return this.listOfPeople;
+    }));
+  }
+
   getPeople() {
     return this.http.get<any>(`${environment.apiUrl}/people/`)
       .pipe(map(data => {
@@ -33,26 +47,6 @@ export class DashboardService {
         });
         return this.listOfPeople;
       }))
-    // .subscribe(
-    //   data=>{
-    //     console.log("data : " + JSON.stringify(data))
-    //     data.forEach(element => {
-    //       // console.log(element._id);
-    //       // console.log((element.name));
-
-    //       // this.user.id=element._id;
-    //       // this.user.username=element.name;
-    //       this.listOfPeople.push({'id':element._id,'name':element.name})
-
-
-    //     });
-    //     console.log("listOfPeople : " +this.listOfPeople);
-    //     return this.listOfPeople
-    //   },
-    //   error=>{
-    //     console.log("error : " + JSON.stringify(error))
-    //   }
-    // )
   }
 
   onFollowPerson(id) {
@@ -70,10 +64,22 @@ export class DashboardService {
      
   }
 
+  getFewTopics(count){
+    let params = new HttpParams().set("count",count);
+    return this.http.get<any>(`${environment.apiUrl}/topics`,{params : params})
+    .pipe(map(data => {
+      data.result.forEach(element => {
+        this.listOfTopics.push({ 'id': element.id, 'name': element.name ,'isFollowing': element.isFollowing})
+      });
+      return this.listOfTopics;
+    }));
+  }
+
+
   getTopics() {
     return this.http.get<any>(`${environment.apiUrl}/topics`)
       .pipe(map(data => {
-        data.forEach(element => {
+        data.result.forEach(element => {
           this.listOfTopics.push({ 'id': element.id, 'name': element.name ,'isFollowing': element.isFollowing})
         });
         return this.listOfTopics;

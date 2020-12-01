@@ -30,7 +30,7 @@ export class AuthenticationService {
       // return this.http.post<any>('https://torvalds-nodejs-tyro.herokuapp.com/login/', loginData)//{observe: 'response'}
       .pipe(map(user => {
 
-        if (JSON.stringify(user.body.message)) {
+        if (JSON.stringify(user.body.result.message)) {
           const data = { 'token': user.headers.get('authorization').substring(7) }
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(data));
@@ -54,7 +54,7 @@ export class AuthenticationService {
     const signupData = { name: username, email: email, password: password };
     return this.http.post<any>(`${environment.apiUrl}/register/`, signupData,{ observe: 'response' })
       .pipe(map(user => {
-        if (JSON.stringify(user.body.message)) {
+        if (JSON.stringify(user.body.result.message)) {
           const data = { 'token': user.headers.get('authorization').substring(7) }
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(data));

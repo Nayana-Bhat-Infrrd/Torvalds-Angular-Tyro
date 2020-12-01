@@ -23,7 +23,7 @@ export class TrendingPostsComponent implements OnInit {
         data => {
           // console.log("Trending data: " + data);
           this.showSpinner = false;
-          this.trendingPosts = data;
+          this.trendingPosts = data.result;
           this.trendingPosts.forEach(element => {
             element.date = new Date(element.date);
           });

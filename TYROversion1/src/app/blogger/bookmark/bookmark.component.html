@@ -15,9 +15,9 @@
                 <span class="author"> {{ post.author.name }} </span>
             </div>
             <p class="postTitle"> {{ post.title }}</p>
-            <!-- <p *ngIf="post.description.length > 200" class="intro" style="height: 40px;" ellipsis> {{ post.description }}</p>
-        <p *ngIf="post.description.length <= 200" class="intro"> {{ post.description }} -->
-            <p class="description"> {{post.description}}
+            <p *ngIf="post.description.length > 200" class="intro" style="height: 40px;" ellipsis> {{ post.description }}</p>
+        <p *ngIf="post.description.length <= 200" class="intro"> {{ post.description }}
+            <!-- <p class="description"> {{post.description}} -->
                 <!-- architecture refers to the fundamental structures of a software system and the
                 discipline of creating such structures and systems. Each structure comprises software elements,
                 relations

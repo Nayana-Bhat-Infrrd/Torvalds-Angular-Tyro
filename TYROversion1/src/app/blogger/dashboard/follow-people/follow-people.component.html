@@ -3,7 +3,7 @@
     <mat-spinner [diameter]="50" class="followPeople-spinner" mode="indeterminate" *ngIf="showSpinner"></mat-spinner>
     
 <!-- {{ listOfPeople }} -->
-    <div *ngFor="let person of listOfPeople.slice(0, 3); let i = index">
+    <div *ngFor="let person of fewPeople.slice(0, 3); let i = index">
         <!-- {{ person }} -->
         <figure>
             <input id="{{ 'person ' + i }}" type="image" class="img-circular" src="../assets/profilepicture.png" alt="profilepicture" (click)="onFollowPerson(i)">

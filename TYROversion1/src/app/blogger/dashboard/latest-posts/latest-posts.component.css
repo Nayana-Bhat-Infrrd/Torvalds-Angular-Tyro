@@ -21,6 +21,10 @@
     padding-top: 10px;
     margin-bottom: 5px;
 }
+.title:hover{
+  text-decoration: none;
+  color: #1c437e;
+}
 .intro{
   font-family: 'Open Sans',sans-serif;
   font-size: 13px;
