@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs/operators';
 
 import { AuthenticationService } from 'src/app/_shared/_services/authentication.service';
@@ -20,7 +21,8 @@ export class SignupComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    public toastr:ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -54,8 +56,13 @@ export class SignupComponent implements OnInit {
       .pipe(first())
       .subscribe(data => {
         this.router.navigate([this.returnUrl + "blogger"]);
+        this.toastr.success('Congrats!!!','Signup Successfull',{
+          positionClass:'toast-top-center',
+          timeOut:1500,
+        })
       },
         error => {
+         
           this.error = error;
           this.loading = false;
         });

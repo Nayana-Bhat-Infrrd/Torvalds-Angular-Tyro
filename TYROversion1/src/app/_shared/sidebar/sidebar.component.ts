@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { DashboardService } from '../_services/dashboard.service';
 import { FollowService } from '../_services/follow.service';
 
@@ -14,7 +15,8 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private followService: FollowService,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    public toastr:ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -30,11 +32,15 @@ export class SidebarComponent implements OnInit {
     .subscribe(
       data => { console.log("Response from sidebar onTopicFollow : "+JSON.stringify(data))
       this.list[id].isFollowing = true;
-      alert("You are now following : " + this.list[id].name)
+     // alert("You are now following : " + this.list[id].name)
       },
       error => {console.log("Error from sidebar onTopicFollow : " + JSON.stringify(error));
       }
     )
+    this.toastr.success(this.list[id].name,'You have started following',{
+      positionClass:'toast-top-center',
+      timeOut:2000,
+    })
   }
 
   toUnfollowTopic(id) {
@@ -46,11 +52,15 @@ export class SidebarComponent implements OnInit {
     .subscribe(
       data => {console.log("Response from sidebar onUnfollowTopic : " + JSON.stringify(data));
       this.list[id].isFollowing = false;
-      alert("You unfollowed : " + this.list[id].name)
+     // alert("You unfollowed : " + this.list[id].name)
       },
       error => {console.log("Error from sidebar onUnFollowTopic : " + JSON.stringify(error));
       }
     )
+    this.toastr.warning(this.list[id].name,'You have Unfollowed',{
+      positionClass:'toast-top-center',
+      timeOut:2000,
+    })
   }
 
   toFollowPeople(id){
@@ -63,13 +73,17 @@ export class SidebarComponent implements OnInit {
       data => {
         console.log("Response from onFollowPerson " + JSON.stringify(data));
         this.list[id].isFollowing = true;
-        alert("You are now following : " + this.list[id].name)
+    //    alert("You are now following : " + this.list[id].name)
       },
       error => {
         console.log("error : " + error);
 
       }
     )
+    this.toastr.success(this.list[id].name,'You have started following',{
+      positionClass:'toast-top-center',
+      timeOut:2000,
+    })
   }
 
 
@@ -82,10 +96,14 @@ export class SidebarComponent implements OnInit {
     .subscribe(
       data => {console.log("Response from onunfollowPerson : " + JSON.stringify(data));
       this.list[id].isFollowing = false;
-      alert("You unfollowed : " + this.list[id].name)
+   //   alert("You unfollowed : " + this.list[id].name)
       },
       error => {console.log("Error from onunfollowPerson : " + JSON.stringify(error));
       }
     )
+    this.toastr.warning(this.list[id].name,'You have Unfollowed',{
+      positionClass:'toast-top-center',
+      timeOut:2000,
+    })
   }
 }

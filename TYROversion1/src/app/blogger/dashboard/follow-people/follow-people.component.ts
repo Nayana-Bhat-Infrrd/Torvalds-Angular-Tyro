@@ -8,6 +8,7 @@ import { DashboardService } from 'src/app/_shared/_services/dashboard.service';
 import { FollowService } from 'src/app/_shared/_services/follow.service';
 
 import { DOCUMENT } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-follow-people',
@@ -26,6 +27,11 @@ export class FollowPeopleComponent implements OnInit {
     private router: Router,
     private followService: FollowService,
     private dashboardService: DashboardService,
+
+
+
+    public toastr:ToastrService,
+    @Inject(DOCUMENT) private document: Document
 
   ) { }
 
@@ -74,16 +80,25 @@ export class FollowPeopleComponent implements OnInit {
     this.dashboardService.onFollowPerson(this.listOfPeople[id].id)
       .subscribe(
         data => {
+
           console.log("Response from onFollowPerson " + JSON.stringify(data));
-          alert(JSON.stringify(data))
+         // alert(JSON.stringify(data))
           this.dashboardService.onFeedChange();
-          // this.document.location.reload();
+           this.document.location.reload();
+        //  console.log("Response from onFollowPerson " + JSON.stringify(data));
+         
+        //  this.document.location.reload();
+
         },
         error => {
           console.log("error : " + error);
 
         }
       )
+      this.toastr.success(this.listOfPeople[id].name,'You are following',{
+        positionClass:'toast-top-center',
+        timeOut:2000,
+      })
   }
 
   onMorePeople() {

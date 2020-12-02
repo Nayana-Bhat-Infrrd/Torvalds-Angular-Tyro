@@ -6,7 +6,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Component,OnInit, ElementRef, ViewChild} from '@angular/core';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
-
+import {ToastrService} from 'ngx-toastr';
 declare var $:any;
 @Component({
   selector: 'app-new-post',
@@ -51,22 +51,26 @@ export class NewPostComponent implements OnInit{
   }  
 
 
-constructor(private fb: FormBuilder,private newpostService: NewpostService) {
+constructor(private fb: FormBuilder,private newpostService: NewpostService,public toastr:ToastrService) {
     
   this.filteredTopics = this.TopicCtrl.valueChanges.pipe(
       startWith(''),
       map((Topic: string | null) => Topic ? this._filter(Topic) : this.allTopics.slice()));
+      
   }
 
 
   publishForm = this.fb.group({
-    Title: new FormControl('', Validators.required) ,
-    Content: new FormControl('', Validators.required),
+    Title: new FormControl('',[Validators.required,Validators.minLength(5)]) ,
+    Content: new FormControl('', [Validators.required,Validators.minLength(10)]),
     
   });
   
+ 
+
+ 
+
   
-   
   add(event: MatChipInputEvent): void {
     // Add Topic only when MatAutocomplete is not open
     // To make sure this does not conflict with OptionSelected Event
@@ -132,9 +136,10 @@ on()
   for(this.i=0;this.i<this.listOfTopics.length;this.i++)
   {
         this.allTopics[this.i] = this.listOfTopics[this.i].name; 
-        this.allIds[this.i] = this.listOfTopics[this.i].id;     
+        this.allIds[this.i] = this.listOfTopics[this.i].id; 
+            
   }
- 
+
 }
 off()
 {  
@@ -145,13 +150,15 @@ change()
 {
   $("#title").css("color","#333333");
   $("#title").css("font-weight","bold");
+  $("#title").css("font-size","24px");
+  $("#title").css("font-family","Open-sans,sans-serif;");
   // $("#title").removeAttr('placeholder');
 }
 
 addPost(title:string,Content:string){
-    console.log(title+" "+Content);
-    console.log(this.listOfTopics);
-    console.log(this.Topics);
+ //   console.log(title+" "+Content);
+   // console.log(this.listOfTopics);
+   // console.log(this.Topics);
     for(this.j=0;this.j<this.Topics.length;this.j++)
       {
              for(this.i=0;this.i<this.allTopics.length;this.i++)
@@ -163,10 +170,9 @@ addPost(title:string,Content:string){
             }
             this.i=0;
       }
-      console.log(this.FilteredIds);
+    //  console.log(this.FilteredIds);
           
        this.newpostService.addPost(title,Content,this.FilteredIds); 
-
        this.FilteredIds.length=0; 
        this.listOfTopics.length=0;
        this.allTopics.length=0;
