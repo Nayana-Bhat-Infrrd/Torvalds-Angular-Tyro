@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import {ToastrService} from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from 'src/app/_shared/_services/authentication.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    public toastr:ToastrService
+    public toastr: ToastrService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.showspinner = true;
     console.log("DATA: \n" + this.f.email.value + " - " + this.f.password.value);
 
     // stop here if form is invalid
@@ -60,28 +59,30 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    this.showspinner = true;
     this.loading = true;
     this.authenticationService.login(this.f.email.value, this.f.password.value)
-      .pipe(first())
+      // .pipe(first())
       .subscribe(
         data => {
+          // console.log("login data error : " + JSON.stringify(data));
           // console.log("from onSubmit in loginComp : " + this.returnUrl + "blogger");
           // console.log("data from loginComp : "  + data.token);
           // console.log("headers : " + data.headers.keys());
           this.showspinner = false;
           this.loggedIn = true;
           this.router.navigate([this.returnUrl + "blogger"]);
-          this.toastr.success('Congrats!!!','Login Successfull',{
-            positionClass:'toast-top-center',
-            timeOut:1500,
+          this.toastr.success('Congrats!!!', 'Login Successfull', {
+            positionClass: 'toast-top-center',
+            timeOut: 1500,
           })
         },
         error => {
-         this.toastr.error('Invalid Credentials','Try Again',{
-           positionClass:'toast-top-center',
-           timeOut:1500,
-         })
-
+          this.toastr.error('Credentials Error : ' + error.message, 'Try Again', {
+            positionClass: 'toast-top-center',
+            timeOut: 3500,
+          })
+          this.showspinner = false;
           this.error = error;
           this.loading = false;
         });

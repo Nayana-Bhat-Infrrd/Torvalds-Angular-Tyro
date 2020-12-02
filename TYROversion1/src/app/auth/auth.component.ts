@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -6,14 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  isLogin: boolean = true;
-  isSignUp: boolean = false;
+  isLogin: boolean;
+  isSignUp: boolean;
 
-  constructor() {
+  constructor(
+    private router : Router
+  ) {
     // console.log("in auth const");
   }
 
   ngOnInit(): void {
+    console.log(this.router.url);
+    this.isLogin = this.router.url === "/auth/login" ? true : false ;
+    this.isSignUp = !this.isLogin;
   }
 
   onLogin(): void {

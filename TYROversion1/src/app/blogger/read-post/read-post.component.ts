@@ -4,6 +4,8 @@ import { error } from 'protractor';
 import { ReadpostService } from 'src/app/_shared/_services/readpost.service';
 import { format, render, cancel, register } from 'timeago.js';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-read-post',
   templateUrl: './read-post.component.html',
@@ -11,14 +13,15 @@ import { format, render, cancel, register } from 'timeago.js';
 })
 export class ReadPostComponent implements OnInit {
   showSpinner = true;
-  public post;
+  public post = null;
   public postLiked;
   public postBookmarked;
   public likes;
   displayMessage: string = "Post";
   displayBookMark: boolean = false;
   constructor(
-    private readpostService: ReadpostService
+    private readpostService: ReadpostService,
+    public toastr:ToastrService,
   ) {this.showSpinner = true; }
 
   ngOnInit(): void {
@@ -58,13 +61,18 @@ export class ReadPostComponent implements OnInit {
       .subscribe(
         data => {
           console.log("Reponse from addBookmark : " + JSON.stringify(data));
-          alert("bookmark added")
+          // alert("bookmark added")
         },
         error => {
           console.log("Error from addBookmark : " + JSON.stringify(error));
 
         }
       )
+
+      this.toastr.success(this.post.title,'has been bookmarked',{
+        positionClass:'toast-top-center',
+        timeOut:2000,
+      })
   }
 
   addLike() {
@@ -76,12 +84,16 @@ export class ReadPostComponent implements OnInit {
       .subscribe(
         data => {
           console.log("Response from like : " + JSON.stringify(data));
-          alert("You Liked this post");
+          // alert("You Liked this post");
         },
         error => {
           console.log("Error in liking : " + error);
         }
       )
+      this.toastr.success(this.post.title,'You liked this post',{
+        positionClass:'toast-top-center',
+        timeOut:2000,
+      })
   }
 
   unLike() {
@@ -93,12 +105,16 @@ export class ReadPostComponent implements OnInit {
       .subscribe(
         data => {
           console.log("Response from unlike : " + JSON.stringify(data));
-          alert("you unliked this post");
+          // alert("you unliked this post");
         },
         error => {
           console.log("Error in unlike : " + error);
         }
       )
+      this.toastr.success(this.post.title,'You unliked this post',{
+        positionClass:'toast-top-center',
+        timeOut:2000,
+      })
   }
 
 }

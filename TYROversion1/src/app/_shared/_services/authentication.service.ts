@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { User } from 'src/app/_shared/models/user';
 import { environment } from 'src/environments/environment';
@@ -29,8 +29,11 @@ export class AuthenticationService {
     return this.http.post<any>(`${environment.apiUrl}/login/`, loginData, { observe: 'response' })
       // return this.http.post<any>('https://torvalds-nodejs-tyro.herokuapp.com/login/', loginData)//{observe: 'response'}
       .pipe(map(user => {
+        // console.log("In map :" + JSON.stringify(user.body));
+        // console.log("Has : " + user.body.hasOwnProperty('result'));
 
-        if (JSON.stringify(user.body.result.message)) {
+        if (user.body.hasOwnProperty('result')) {
+
           const data = { 'token': user.headers.get('authorization').substring(7) }
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(data));
@@ -38,10 +41,11 @@ export class AuthenticationService {
           return data;
         }
         else {
-          console.log("In error : " + JSON.stringify(user.body.error.message));
+          // console.log("In error : " + JSON.stringify(user.body.error.message));
           throw new Error(JSON.stringify(user.body.error.message))
         }
       }))
+
   }
 
   logout() {
@@ -52,7 +56,7 @@ export class AuthenticationService {
 
   signUp(username: string, email: string, password: string) {
     const signupData = { name: username, email: email, password: password };
-    return this.http.post<any>(`${environment.apiUrl}/register/`, signupData,{ observe: 'response' })
+    return this.http.post<any>(`${environment.apiUrl}/register/`, signupData, { observe: 'response' })
       .pipe(map(user => {
         if (JSON.stringify(user.body.result.message)) {
           const data = { 'token': user.headers.get('authorization').substring(7) }
