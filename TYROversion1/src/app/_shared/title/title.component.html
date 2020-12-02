@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,14 +8,14 @@
    
   
 </head>
-<body>
+<body> -->
    <!-- Navbar Start -->
    <nav class="navbar navbar-expand-sm fixed-top">  
      
     <a class="navbar-brand" href="#"> <img src="../assets/brand-logo-light(1).png"  alt="logo"></a>
     <a class="tyro" href="#">tyro</a>
     <span class="line"></span>
-    <span class="good">Good evening</span>
+    <span class="good">{{ displayMessage }}</span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,7 +26,7 @@
           <a class="nav-link" href="#" ><img src="../assets/bell.png" alt="notificaiton" ></a>
         </li>        
         <li class="nav-item" class="bookmark">
-          <a class="nav-link" href="/blogger/bookmark" ><img src="../assets/wish-list.png" alt="bookmark" ></a>
+          <a *ngIf="displayBookMark" class="nav-link" href="/blogger/bookmark" ><img src="../assets/wish-list.png" alt="bookmark" ></a>
         </li>
         <li class="nav-item post">
           <a class="nav-link" routerLink="/blogger/newpost" ><button type="submit" class="btn">NEW POST</button></a>
@@ -50,5 +50,5 @@
 
   </div> -->
   
-</body>
-</html>
+<!-- </body>
+</html> -->

@@ -11,7 +11,8 @@ export class BookmarkComponent implements OnInit {
 
   public bookmarks;
   public totalBookamrks : number;
-
+  displayMessage:string = "Post";
+  displayBookMark:boolean = false;
   constructor(
     private bookmarkService : BookmarkService
   ) { }

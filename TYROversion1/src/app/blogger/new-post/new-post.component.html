@@ -26,6 +26,8 @@
 
 </nav> 
 
+<!-- <app-title></app-title> -->
+
 <div class="container-fluid" [formGroup]="publishForm" (ngSubmit)="onSubmit()">
 <input type="text" autocomplete="off" (click)="change()" placeholder="Title" #title1 formControlName="Title" id="title" class="title"> 
 <textarea placeholder="Type something" autocomplete="off" #Content1  formControlName="Content"  id="content"   class="typeSomething"></textarea>

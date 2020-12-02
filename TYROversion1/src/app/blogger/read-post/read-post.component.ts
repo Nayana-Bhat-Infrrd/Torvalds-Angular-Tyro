@@ -15,6 +15,8 @@ export class ReadPostComponent implements OnInit {
   public postLiked;
   public postBookmarked;
   public likes;
+  displayMessage: string = "Post";
+  displayBookMark: boolean = false;
   constructor(
     private readpostService: ReadpostService
   ) {this.showSpinner = true; }

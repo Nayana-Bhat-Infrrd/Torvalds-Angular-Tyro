@@ -11,7 +11,8 @@ import { AuthenticationService } from 'src/app/_shared/_services/authentication.
 })
 export class DashboardComponent implements OnInit {
   returnUrl: string;
-
+  displayMessage: string = "Good evening";
+  displayBookMark : boolean = true;
   constructor(
     private authenticationService: AuthenticationService,
     private route: ActivatedRoute,
