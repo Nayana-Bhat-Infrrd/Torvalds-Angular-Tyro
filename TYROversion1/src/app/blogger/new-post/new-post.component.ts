@@ -66,22 +66,9 @@ constructor(private fb: FormBuilder,private newpostService: NewpostService,publi
     
   });
   
-  showSuccess(){
-    this.toastr.success('Post Submission',' Congrats...Your Post has been added successfully!!!',{
-      positionClass:'toast-top-left',
-      timeOut:1500,
-    })
-   
-  
-  }
-   
+ 
 
-  showWarning(){
-    this.toastr.error('Post Error','The title and content are required and title must be more than 5 and content must be more than 10 characters'),{
-      positionClass:'toast-top-center',
-      timeOut:1500,
-    }
-  }
+ 
 
   
   add(event: MatChipInputEvent): void {
@@ -169,9 +156,9 @@ change()
 }
 
 addPost(title:string,Content:string){
-    console.log(title+" "+Content);
-    console.log(this.listOfTopics);
-    console.log(this.Topics);
+ //   console.log(title+" "+Content);
+   // console.log(this.listOfTopics);
+   // console.log(this.Topics);
     for(this.j=0;this.j<this.Topics.length;this.j++)
       {
              for(this.i=0;this.i<this.allTopics.length;this.i++)
@@ -183,10 +170,9 @@ addPost(title:string,Content:string){
             }
             this.i=0;
       }
-      console.log(this.FilteredIds);
+    //  console.log(this.FilteredIds);
           
        this.newpostService.addPost(title,Content,this.FilteredIds); 
-       this.showSuccess();
        this.FilteredIds.length=0; 
        this.listOfTopics.length=0;
        this.allTopics.length=0;

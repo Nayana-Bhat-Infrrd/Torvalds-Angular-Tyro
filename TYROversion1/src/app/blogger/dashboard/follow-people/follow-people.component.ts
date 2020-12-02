@@ -84,10 +84,10 @@ export class FollowPeopleComponent implements OnInit {
           console.log("Response from onFollowPerson " + JSON.stringify(data));
          // alert(JSON.stringify(data))
           this.dashboardService.onFeedChange();
-          // this.document.location.reload();
+           this.document.location.reload();
         //  console.log("Response from onFollowPerson " + JSON.stringify(data));
          
-          this.document.location.reload();
+        //  this.document.location.reload();
 
         },
         error => {
