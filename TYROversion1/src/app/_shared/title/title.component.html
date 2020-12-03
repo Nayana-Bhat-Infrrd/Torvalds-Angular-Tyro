@@ -26,10 +26,11 @@
           <a class="nav-link" href="#" ><img src="../assets/bell.png" alt="notificaiton" ></a>
         </li>        
         <li class="nav-item" class="bookmark">
-          <a *ngIf="displayBookMark" class="nav-link" href="/blogger/bookmark" ><img src="../assets/wish-list.png" alt="bookmark" ></a>
+          <a  [ngStyle]="{'display':displayBookMark?'block' : 'none' }" class="nav-link" href="/blogger/bookmark" ><img src="../assets/wish-list.png" alt="bookmark" ></a>
         </li>
         <li class="nav-item post">
-          <a class="nav-link" routerLink="/blogger/newpost" ><button type="submit" class="btn">NEW POST</button></a>
+          <a class="nav-link"  routerLink="/blogger/newpost" ><button type="submit" class="btn">NEW POST</button></a>
+         
         </li>
         
         <li class="nav-item profile">

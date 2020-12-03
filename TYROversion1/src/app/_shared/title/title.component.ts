@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import {FormControl,FormGroup, Validators,FormBuilder} from '@angular/forms';
 @Component({
   selector: 'app-title',
   templateUrl: './title.component.html',
@@ -8,10 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TitleComponent implements OnInit {
   @Input() displayMessage: string;
   @Input() displayBookMark: boolean;
-  constructor() { 
+ 
+  
+  
+  constructor(private fb:FormBuilder) { 
     
   }
 
+ 
   ngOnInit(): void {console.log("displayBookMark : " + this.displayBookMark);
     
   }
