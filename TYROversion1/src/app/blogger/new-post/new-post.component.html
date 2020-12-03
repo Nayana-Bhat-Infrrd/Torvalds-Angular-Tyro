@@ -1,5 +1,5 @@
 <!-- Navbar Start  -->
-<nav class="navbar navbar-expand-sm">  
+<!-- <nav class="navbar navbar-expand-sm">  
   <a class="navbar-brand" href="#"> <img src="../assets/brand-logo-light(1).png"  alt="logo"></a>
   <a class="tyro" href="#">tyro</a>
   <span class="line"></span>
@@ -24,9 +24,9 @@
 </ul> 
 </div>
 
-</nav> 
+</nav>  -->
 
-<!-- <app-title></app-title> -->
+<app-title (childEvent)="on()" [displayMessage]="displayMessage" [displayBookMark]="displayBookMark" [buttonName]="buttonName" [disableButton]="disableButton"></app-title>
 
 <div class="container-fluid" [formGroup]="publishForm" (ngSubmit)="onSubmit()">
 <input type="text" autocomplete="off" (click)="change()" placeholder="Title" #title1 formControlName="Title" id="title" class="title"> 

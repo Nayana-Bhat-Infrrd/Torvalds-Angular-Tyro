@@ -17,7 +17,7 @@ export class BookmarkComponent implements OnInit {
 
   displayMessage:string = "Post";
   displayBookMark:boolean = false;
-
+  buttonName : string = "New Post";
   // public removedBookmark : boolean=false;
   // public postBookmarked;
   

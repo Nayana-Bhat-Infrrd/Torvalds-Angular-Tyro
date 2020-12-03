@@ -10,7 +10,7 @@
 </head>
 <body> -->
 <!-- Navbar Start -->
-<nav class="navbar navbar-expand-sm fixed-top">
+<nav *ngIf="!disableButton" class="navbar navbar-expand-sm fixed-top">
 
   <a class="navbar-brand" href="#"> <img src="../assets/brand-logo-light(1).png" alt="logo"></a>
   <a class="tyro" href="#">tyro</a>
@@ -31,7 +31,9 @@
             alt="bookmark"></a>
       </li>
       <li class="nav-item post">
-        <a class="nav-link" routerLink="/blogger/newpost"><button type="submit" class="btn">NEW POST</button></a>
+        <a class="nav-link" *ngIf="buttonName !== 'Publish'" routerLink="/blogger/newpost"><button type="submit" class="btn">New Post</button></a>
+        <a class="nav-link" *ngIf="buttonName === 'Publish'" ><button (click) = "on()" class="btn">Publish</button></a>
+        <!-- <a class="nav-link" routerLink="/blogger/newpost"><button type="submit" class="btn">NEW POST</button></a> -->
       </li>
 
       <li class="nav-item profile">

@@ -137,6 +137,7 @@ a:hover{
 }
 .title
 {
+    margin-top: 3em;
     /*width: 83px;*/
     height: 33px; 
     width:100%;

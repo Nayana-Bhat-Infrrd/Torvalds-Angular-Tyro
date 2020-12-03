@@ -16,6 +16,11 @@ declare var $:any;
 export class NewPostComponent implements OnInit{
 
   listOfTopics:Array<any>=[];
+  displayMessage : string = "New Post";
+  displayBookMark : boolean = false;
+  buttonName:string = "Publish";
+  disableButton : boolean = false;
+
   Published: boolean = false;
   submitted = false;
   visible = true;
@@ -51,24 +56,27 @@ export class NewPostComponent implements OnInit{
   }  
 
 
-constructor(private fb: FormBuilder,private newpostService: NewpostService,public toastr:ToastrService) {
+constructor(
+  private fb: FormBuilder,
+  private newpostService: NewpostService,
+  public toastr:ToastrService) {
     
   this.filteredTopics = this.TopicCtrl.valueChanges.pipe(
       startWith(''),
       map((Topic: string | null) => Topic ? this._filter(Topic) : this.allTopics.slice()));
       
   }
-
+//   test(){
+//     console.log("msg");
+// }
 
   publishForm = this.fb.group({
     Title: new FormControl('',[Validators.required,Validators.minLength(5)]) ,
     Content: new FormControl('', [Validators.required,Validators.minLength(10)]),
     
+    
   });
   
- 
-
- 
 
   
   add(event: MatChipInputEvent): void {
@@ -126,12 +134,24 @@ get f() {
 }
 onSubmit()
 {
+  
+
   alert("Enter topic and description");
 
 }
 
 on()
 {
+  console.log("validity : " + this.publishForm.valid);
+  if(this.publishForm.invalid){
+    // alert("Enter topic and description");
+    this.toastr.error('Cannot Publish','Topic and content is required',{
+      positionClass:'toast-top-center',
+      timeOut:2000,
+     })
+    return;
+  }
+  this.disableButton = this.publishForm.valid;
   $("#overlay").css("display","block");
   for(this.i=0;this.i<this.listOfTopics.length;this.i++)
   {
@@ -143,6 +163,7 @@ on()
 }
 off()
 {  
+  this.disableButton = false;
   $("#overlay").css("display","none");
 }
 
