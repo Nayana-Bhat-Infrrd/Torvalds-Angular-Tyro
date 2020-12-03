@@ -1,16 +1,20 @@
 <div class="container my-follow-topic-container">
     <p class="title">TOPICS TO FOLLOW</p>
     <mat-spinner [diameter]="50" class="followTopic-spinner" mode="indeterminate" *ngIf="showSpinner"></mat-spinner>
-    <table *ngFor="let topic of listOfFewTopics.slice(0,3); let i = index;" class="table table-sm table-borderless">
-        <!-- <tbody> -->
-        <tr>
-            <td class="topics">{{ topic.name }}</td>
-            <td>
-                <button id="{{ 'topic ' + i }}" *ngIf="!topic.isFollowing" type="button" class="btn btn-sm follow" (click)="onTopicFollow(i)">Follow</button>
-                <button id="{{ 'topic ' + i }}" *ngIf="topic.isFollowing" type="button" class="btn btn-sm following" (click)="onTopicUnfollow(i)">Following</button>
-            </td>
-        </tr>
-    </table>
+    <div *ngIf="listOfFewTopics !== undefined" class="checkConatent">
+        <table *ngFor="let topic of listOfFewTopics.slice(0,3); let i = index;" class="table table-sm table-borderless">
+            <!-- <tbody> -->
+            <tr>
+                <td class="topics">{{ topic.name }}</td>
+                <td>
+                    <button id="{{ 'topic ' + i }}" *ngIf="!topic.isFollowing" type="button" class="btn btn-sm follow"
+                        (click)="onTopicFollow(i)">Follow</button>
+                    <button id="{{ 'topic ' + i }}" *ngIf="topic.isFollowing" type="button" class="btn btn-sm following"
+                        (click)="onTopicUnfollow(i)">Following</button>
+                </td>
+            </tr>
+        </table>
+    </div>
     <a *ngIf="!showSpinner" routerLink="/" (click)="onMoreTopics()">See More</a>
 
     <!-- <button (click)="onMoreTopics()">See More</button> -->

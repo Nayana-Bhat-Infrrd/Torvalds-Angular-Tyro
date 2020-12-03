@@ -1,55 +1,32 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-   
-  
-</head>
-<body> -->
-   <!-- Navbar Start -->
-   <nav class="navbar navbar-expand-sm fixed-top">  
-     
-    <a class="navbar-brand" href="#"> <img src="../assets/brand-logo-light(1).png"  alt="logo"></a>
-    <a class="tyro" href="#">tyro</a>
-    <span class="line"></span>
-    <span class="good">{{ displayMessage }}</span>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse my-list-content" id="navbarSupportedContent">
-      
-        <ul class="navbar-nav">
-        <li class="nav-item" class="notification">
-          <a class="nav-link" href="#" ><img src="../assets/bell.png" alt="notificaiton" ></a>
-        </li>        
-        <li class="nav-item" class="bookmark">
-          <a  [ngStyle]="{'display':displayBookMark?'block' : 'none' }" class="nav-link" href="/blogger/bookmark" ><img src="../assets/wish-list.png" alt="bookmark" ></a>
-        </li>
-        <li class="nav-item post">
-          <a class="nav-link"  routerLink="/blogger/newpost" ><button type="submit" class="btn">NEW POST</button></a>
-         
-        </li>
-        
-        <li class="nav-item profile">
-          <a class="nav-link" href="#" ><img src="../assets/download (1).jpg" alt="profilePic" ></a>
-        </li>
-      </ul> 
-    </div>
-  
-  </nav>
-   <!-- Navbar end copy till here only -->
+<!-- Navbar Start -->
+<nav *ngIf="!disableButton" class="navbar navbar-expand-sm fixed-top">
 
+  <a class="navbar-brand" href="#"> <img src="../assets/brand-logo-light(1).png" alt="logo"></a>
+  <a class="tyro" href="#">tyro</a>
+  <span class="line"></span>
+  <span class="good">{{ displayMessage }}</span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse my-list-content" id="navbarSupportedContent">
 
+    <ul class="navbar-nav">
+      <li class="nav-item" class="notification">
+        <a class="nav-link" href="#"><img src="../assets/bell.png" alt="notificaiton"></a>
+      </li>
+      <li class="nav-item" class="bookmark">
+        <a *ngIf="displayBookMark" class="nav-link" href="/blogger/bookmark"><img src="../assets/wish-list.png"
+            alt="bookmark"></a>
+      </li>
+      <li class="nav-item post">
+        <a class="nav-link" *ngIf="buttonName !== 'Publish'" routerLink="/blogger/newpost"><button type="submit" class="btn">New Post</button></a>
+        <a class="nav-link" *ngIf="buttonName === 'Publish'" ><button (click) = "on()" class="btn">Publish</button></a>
+        <!-- <a class="nav-link" routerLink="/blogger/newpost"><button type="submit" class="btn">NEW POST</button></a> -->
+      </li>
 
-  <!-- <div class="container-fluid">
-     <input type="text" placeholder="Title" class="title"> 
-      <textarea placeholder="Type something"  rows="26"    class="typeSomething"></textarea>
-
-
-  </div> -->
-  
-<!-- </body>
-</html> -->
+      <li class="nav-item profile">
+        <a class="nav-link" routerLink="/blogger/profile"><img src="../assets/download (1).jpg" alt="profilePic"></a>
+      </li>
+    </ul>
+  </div>

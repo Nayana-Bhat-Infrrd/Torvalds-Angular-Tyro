@@ -13,10 +13,13 @@ export class BookmarkComponent implements OnInit {
   public totalBookamrks : number;
   displayMessage:string = "Post";
   displayBookMark:boolean = false;
+  buttonName : string = "New Post";
+
   showSpinner = false;
   constructor(private bookmarkService : BookmarkService,public toastr : ToastrService){}
   ngOnInit(): void 
   {
+
     this.getBookmarks();
   }
   getBookmarks()

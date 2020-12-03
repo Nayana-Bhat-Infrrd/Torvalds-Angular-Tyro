@@ -29,6 +29,7 @@ img{
     align-content: center;
     justify-content: center;
     padding-top: 35px;
+    padding-left: 1em;
 }
 .img-circular{
     border-radius: 50%;

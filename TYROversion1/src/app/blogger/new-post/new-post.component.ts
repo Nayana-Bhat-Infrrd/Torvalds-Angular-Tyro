@@ -1,21 +1,26 @@
 import { NewpostService } from 'src/app/_shared/_services/newpost.service';
-import {FormControl,FormGroup, Validators,FormBuilder} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component,OnInit, ElementRef, ViewChild} from '@angular/core';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {ToastrService} from 'ngx-toastr';
-declare var $:any;
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { ToastrService } from 'ngx-toastr';
+declare var $: any;
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
   styleUrls: ['./new-post.component.css']
 })
-export class NewPostComponent implements OnInit{
- 
-  listOfTopics:Array<any>=[];
+export class NewPostComponent implements OnInit {
+
+  listOfTopics: Array<any> = [];
+  displayMessage: string = "New Post";
+  displayBookMark: boolean = false;
+  buttonName: string = "Publish";
+  disableButton: boolean = false;
+
   Published: boolean = false;
   submitted = false;
   visible = true;
@@ -27,141 +32,153 @@ export class NewPostComponent implements OnInit{
   filteredTopics: Observable<string[]>;
   Topics: string[] = [];
   allTopics: string[] = [];
-  allIds:string[]=[];
-  i:any;
-  j:any;
-  FilteredIds:Array<any>=[];
-  @ViewChild('TopicInput')TopicInput: ElementRef<any>;
-  @ViewChild('auto')matAutocomplete: MatAutocomplete;
-  ngOnInit():void
-  {
+  allIds: string[] = [];
+  i: any;
+  j: any;
+  FilteredIds: Array<any> = [];
+  @ViewChild('TopicInput') TopicInput: ElementRef<any>;
+  @ViewChild('auto') matAutocomplete: MatAutocomplete;
+  ngOnInit(): void {
     this.newpostService.getTopics()
-    .subscribe
-    (
-       data=>
-       {
-        this.listOfTopics = data;
-       },
-       error=>
-       {
+      .subscribe
+      (
+        data => {
+          this.listOfTopics = data;
+        },
+        error => {
           console.log("error : " + error);
-       }
-    )                   
-  }  
-  constructor(private fb: FormBuilder,private newpostService: NewpostService,public toastr:ToastrService) 
-  {
-    
-        this.filteredTopics = this.TopicCtrl.valueChanges.pipe(
-            startWith(''),
-            map((Topic: string | null) => Topic ? this._filter(Topic) : this.allTopics.slice()));
+        }
+      )
   }
+
+
+
+  constructor(
+    private fb: FormBuilder,
+    private newpostService: NewpostService,
+    public toastr: ToastrService) {
+
+
+    this.filteredTopics = this.TopicCtrl.valueChanges.pipe(
+      startWith(''),
+      map((Topic: string | null) => Topic ? this._filter(Topic) : this.allTopics.slice()));
+  }
+
   publishForm = this.fb.group
-  (
-    {
-      Title: new FormControl('',[Validators.required,Validators.minLength(5)]) ,
-      Content: new FormControl('', [Validators.required,Validators.minLength(10)]),  
-    }
-  );
-  add(event: MatChipInputEvent): void 
-  {
+    (
+      {
+        Title: new FormControl('', [Validators.required, Validators.minLength(5)]),
+        Content: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      }
+    );
+  add(event: MatChipInputEvent): void {
+
     // Add Topic only when MatAutocomplete is not open
     // To make sure this does not conflict with OptionSelected Event
-    if (!this.matAutocomplete.isOpen) 
-    {
+    if (!this.matAutocomplete.isOpen) {
       const input = event.input;
       const value = event.value;
-      
+
       // Add our Topic
-      
-      if ((value || '').trim() && this.Topics.length < 1) 
-      {
-        let index =   this.Topics.indexOf(value.trim())
-        if(index == -1)
-        {
+
+      if ((value || '').trim() && this.Topics.length < 1) {
+        let index = this.Topics.indexOf(value.trim())
+        if (index == -1) {
           this.Topics.push(value.trim());
         }
       }
 
       // Reset the input value
-      if (input) 
-      {
+      if (input) {
         input.value = '';
       }
 
       this.TopicCtrl.setValue(null);
     }
-    
+
   }
-  remove(value: string): void 
-  {
+  remove(value: string): void {
     const index = this.Topics.indexOf(value);
-    if (index >= 0) 
-    {
+    if (index >= 0) {
       this.Topics.splice(index, 1);
     }
   }
 
-  selected(event: MatAutocompleteSelectedEvent): void 
-  {
-    if (this.Topics.length < 5 && !this.Topics.includes(event.option.viewValue)) 
-    {
+  selected(event: MatAutocompleteSelectedEvent): void {
+    if (this.Topics.length < 5 && !this.Topics.includes(event.option.viewValue)) {
       this.Topics.push(event.option.viewValue);
-    } 
-     this.TopicInput.nativeElement.value = '';
-      this.TopicCtrl.setValue(null);
+    }
+    this.TopicInput.nativeElement.value = '';
+    this.TopicCtrl.setValue(null);
   }
 
-  private _filter(value: string): string[] 
-  {
+  private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.allTopics.filter(Topic => Topic.toLowerCase().indexOf(filterValue) === 0);
-  }  
-  get f()  
-  {
-     return this.publishForm.controls;
   }
-  onSubmit()
-  {
-   alert("Enter topic and description");
+  get f() {
+    return this.publishForm.controls;
+
   }
-  on()
-  {
-    $("#overlay").css("display","block");
-    for(this.i=0;this.i<this.listOfTopics.length;this.i++)
-    {
-        this.allTopics[this.i] = this.listOfTopics[this.i].name; 
-        this.allIds[this.i] = this.listOfTopics[this.i].id; 
+  onSubmit() {
+
+
+    alert("Enter topic and description");
+
+  }
+
+  on() {
+    console.log("validity : " + this.publishForm.valid);
+    if (this.publishForm.invalid) {
+      // alert("Enter topic and description");
+      this.toastr.error('Cannot Publish', 'Topic and content is required', {
+        positionClass: 'toast-top-center',
+        timeOut: 2000,
+      })
+      return;
+    }
+    this.disableButton = this.publishForm.valid;
+    $("#overlay").css("display", "block");
+    for (this.i = 0; this.i < this.listOfTopics.length; this.i++) {
+
+      this.allTopics[this.i] = this.listOfTopics[this.i].name;
+      this.allIds[this.i] = this.listOfTopics[this.i].id;
     }
   }
-  off()
-  {  
-    $("#overlay").css("display","none");
+
+
+
+  off() {
+    this.disableButton = false;
+    $("#overlay").css("display", "none");
   }
-  change()
-  {
-    $("#title").css("color","#333333");
-    $("#title").css("font-weight","bold");
-    $("#title").css("font-size","24px");
-    $("#title").css("font-family","Open-sans,sans-serif;");
+
+  change() {
+    $("#title").css("color", "#333333");
+    $("#title").css("font-weight", "bold");
+    $("#title").css("font-size", "24px");
+    $("#title").css("font-family", "Open-sans,sans-serif;");
+    // $("#title").removeAttr('placeholder');
   }
-  addPost(title:string,Content:string)
-  {
-    for(this.j=0;this.j<this.Topics.length;this.j++)
-    {
-      for(this.i=0;this.i<this.allTopics.length;this.i++)
-      {        
-        if((this.Topics[this.j])==(this.allTopics[this.i]))
-        {      
-             console.log(this.i);
-             this.FilteredIds[this.j]=this.allIds[this.i];
+
+  addPost(title: string, Content: string) {
+    //   console.log(title+" "+Content);
+    // console.log(this.listOfTopics);
+    // console.log(this.Topics);
+
+    for (this.j = 0; this.j < this.Topics.length; this.j++) {
+      for (this.i = 0; this.i < this.allTopics.length; this.i++) {
+        if ((this.Topics[this.j]) == (this.allTopics[this.i])) {
+          console.log(this.i);
+          this.FilteredIds[this.j] = this.allIds[this.i];
         }
       }
-        this.i=0;
+      this.i = 0;
     }
-    this.newpostService.addPost(title,Content,this.FilteredIds); 
-    this.FilteredIds.length=0; 
-    this.listOfTopics.length=0;
-    this.allTopics.length=0;
+    this.newpostService.addPost(title, Content, this.FilteredIds);
+    this.FilteredIds.length = 0;
+    this.listOfTopics.length = 0;
+    this.allTopics.length = 0;
   }
 }
 

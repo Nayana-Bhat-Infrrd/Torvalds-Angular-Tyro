@@ -22,7 +22,7 @@ export class BookmarkService {
 
   getBookmarks(){
     console.log("In bookmark service : ");
-    return this.http.get<any>('https://node-torvalds.herokuapp.com/posts/bookmarks')
+    return this.http.get<any>(`${environment.apiUrl}/posts/bookmarks`)
     
   }
 
