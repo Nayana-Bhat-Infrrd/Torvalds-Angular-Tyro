@@ -11,7 +11,7 @@
     <div class="title">{{ post.title }}</div>
 
     <div class="authorimg">
-        <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
+        <img class="img-circular" src="{{ post.profileImageUrl }}" onerror =" this.src='../assets/download (1).jpg';" alt="profilepicture">
         <span class="author"> {{ post.authorName }} </span>
         <div class="timeAgo"> {{ post.timeAgoDate }}</div>
         

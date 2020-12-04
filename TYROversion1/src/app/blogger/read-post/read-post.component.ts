@@ -21,12 +21,12 @@ export class ReadPostComponent implements OnInit {
   displayMessage: string = "Post";
   displayBookMark: boolean = false;
   // displayButton:string = "NEW POST";
- // publishButton:boolean=false;
+  // publishButton:boolean=false;
   constructor(
     private readpostService: ReadpostService,
-    private bookmarkService : BookmarkService,
-    public toastr:ToastrService,
-  ) {this.showSpinner = true; }
+    private bookmarkService: BookmarkService,
+    public toastr: ToastrService,
+  ) { this.showSpinner = true; }
 
   ngOnInit(): void {
     // if (this.readpostService.currentPostValue !== null)
@@ -35,7 +35,7 @@ export class ReadPostComponent implements OnInit {
     // if(this.readpostService.subsRead == undefined){
     //   this.readpostService.subsRead = this.readpostService.loadRead.subscribe(() =>{
     //     this.readPost();
-      // })
+    // })
     // }
   }
 
@@ -51,13 +51,21 @@ export class ReadPostComponent implements OnInit {
         this.postLiked = this.post.isLiked;
         this.postBookmarked = this.post.isBookmarked;
         console.log("isBookmarked : " + this.postBookmarked);
-        
-          
-        
-        
+
+        this.bookmarkService.getProfilePicture(this.post.authorId)
+          .subscribe(
+            profileData => {
+              this.post.profileImageUrl = profileData.profilePictureUrl;
+            },
+            profileError => {
+              console.log("Error from profile picture ; " + JSON.stringify(profileError));
+            }
+          )
+
+
         this.likes = this.post.likes;
         console.log("Post : " + JSON.stringify(this.post));
-        
+
       }
     );
 
@@ -78,27 +86,29 @@ export class ReadPostComponent implements OnInit {
         }
       )
 
-      this.toastr.success('has been bookmarked',this.post.title,{
-        positionClass:'toast-top-center',
-        timeOut:2000,
-      })
+    this.toastr.success('has been bookmarked', this.post.title, {
+      positionClass: 'toast-top-center',
+      timeOut: 2000,
+    })
   }
 
-  removeBookmark(){
+  removeBookmark() {
     console.log("To removeBookmarked");
     this.postBookmarked = false;
     this.bookmarkService.removeBookmark(this.post._id)
-    .subscribe(
-      data =>{console.log("Response from remove bookmark : " + JSON.stringify(data));
-      },
-      error => {console.log("Error from remove bookmark : " + JSON.stringify(error));
-      }
+      .subscribe(
+        data => {
+          console.log("Response from remove bookmark : " + JSON.stringify(data));
+        },
+        error => {
+          console.log("Error from remove bookmark : " + JSON.stringify(error));
+        }
 
-    )
+      )
 
-    this.toastr.warning('has been removed from bookmarked',this.post.title,{
-      positionClass:'toast-top-center',
-      timeOut:2000,
+    this.toastr.warning('has been removed from bookmarked', this.post.title, {
+      positionClass: 'toast-top-center',
+      timeOut: 2000,
     })
   }
 
@@ -106,7 +116,7 @@ export class ReadPostComponent implements OnInit {
     console.log("Liked the post");
     this.post.isLiked = true;
     this.postLiked = true;
-    this.likes = this.likes+1;
+    this.likes = this.likes + 1;
     this.readpostService.addLike(this.post._id)
       .subscribe(
         data => {
@@ -117,10 +127,10 @@ export class ReadPostComponent implements OnInit {
           console.log("Error in liking : " + error);
         }
       )
-      this.toastr.success(this.post.title,'You liked this post',{
-        positionClass:'toast-top-center',
-        timeOut:2000,
-      })
+    this.toastr.success(this.post.title, 'You liked this post', {
+      positionClass: 'toast-top-center',
+      timeOut: 2000,
+    })
   }
 
   unLike() {
@@ -138,10 +148,10 @@ export class ReadPostComponent implements OnInit {
           console.log("Error in unlike : " + error);
         }
       )
-      this.toastr.success(this.post.title,'You unliked this post',{
-        positionClass:'toast-top-center',
-        timeOut:2000,
-      })
+    this.toastr.success(this.post.title, 'You unliked this post', {
+      positionClass: 'toast-top-center',
+      timeOut: 2000,
+    })
   }
 
 }
