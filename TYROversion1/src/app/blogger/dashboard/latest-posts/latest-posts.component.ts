@@ -34,7 +34,7 @@ export class LatestPostsComponent implements OnInit {
           // var oneDay = 24 * 60 * 60 * 1000;
           this.showSpinner = false;
           console.log("Feed data : " + JSON.stringify(data));
-          this.latestPosts = data.result;
+          this.latestPosts = data;
           this.latestPosts.forEach(element => {
             element.date = new Date(element.date);
             // console.log("Format from timeAgo : " + format(element.date));

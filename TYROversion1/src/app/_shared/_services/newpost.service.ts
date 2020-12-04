@@ -17,7 +17,7 @@ export class NewpostService {
     return this.http.post<any>(`${environment.apiUrl}/posts/add`, postData).subscribe
     (
       data=>{
-              this.toastr.success('Post Submission',data.result.message,
+              this.toastr.success('Post Submission',data.message,
               {
                 positionClass:'toast-top-center',
                 timeOut:1500,
@@ -30,7 +30,7 @@ export class NewpostService {
     return this.http.get<any>(`${environment.apiUrl}/topics`)
     .pipe(map(data=>
     {
-        data.result.forEach((element)=>
+        data.forEach((element)=>
         {
            this.listOfTopics.push({ 'id': element.id, 'name': element.name });
         });

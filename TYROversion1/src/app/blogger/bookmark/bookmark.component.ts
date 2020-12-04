@@ -30,7 +30,7 @@ export class BookmarkComponent implements OnInit {
                 data=>
                 {
                   this.showSpinner = false;
-                  this.bookmarks = data.Success;
+                  this.bookmarks = data;
                   this.totalBookamrks = this.bookmarks.length;
                 },
                 error=> 
@@ -45,7 +45,7 @@ export class BookmarkComponent implements OnInit {
       .subscribe(
                   data=>
                   {
-                    this.toastr.success('Post Submission',data.result.message,
+                    this.toastr.success('Post Submission',data.message,
                     {
                       positionClass:'toast-top-center',
                       timeOut:2000,
