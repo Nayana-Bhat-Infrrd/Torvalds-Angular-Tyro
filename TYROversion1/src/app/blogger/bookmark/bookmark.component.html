@@ -15,7 +15,7 @@
                 <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
                 <span class="author"> {{ post.author.name }} </span>
             </div>
-            <p class="postTitle"> {{ post.title }}</p>
+            <a routerLink="/blogger/readpost" (click)="onReadPost(i)" class="postTitle"> {{ post.title }}</a>
             <p *ngIf="post.description.length > 200 " class="intro" style="height: 40px;" ellipsis> {{ post.description }}</p>
             <p *ngIf="post.description.length <= 200  " class="intro"> {{ post.description }} </p>
             <span class="postTimeAgo" >Just now</span>

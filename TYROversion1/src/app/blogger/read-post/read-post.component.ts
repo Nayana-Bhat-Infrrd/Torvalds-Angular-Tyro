@@ -5,6 +5,7 @@ import { ReadpostService } from 'src/app/_shared/_services/readpost.service';
 import { format, render, cancel, register } from 'timeago.js';
 
 import { ToastrService } from 'ngx-toastr';
+import { BookmarkService } from 'src/app/_shared/_services/bookmark.service';
 
 @Component({
   selector: 'app-read-post',
@@ -23,6 +24,7 @@ export class ReadPostComponent implements OnInit {
  // publishButton:boolean=false;
   constructor(
     private readpostService: ReadpostService,
+    private bookmarkService : BookmarkService,
     public toastr:ToastrService,
   ) {this.showSpinner = true; }
 
@@ -48,6 +50,8 @@ export class ReadPostComponent implements OnInit {
         this.post.timeAgoDate = format(this.post.date);
         this.postLiked = this.post.isLiked;
         this.postBookmarked = this.post.isBookmarked;
+        console.log("isBookmarked : " + this.postBookmarked);
+        
         this.likes = this.post.likes;
         console.log("Post : " + JSON.stringify(this.post));
         
@@ -71,10 +75,28 @@ export class ReadPostComponent implements OnInit {
         }
       )
 
-      this.toastr.success(this.post.title,'has been bookmarked',{
+      this.toastr.success('has been bookmarked',this.post.title,{
         positionClass:'toast-top-center',
         timeOut:2000,
       })
+  }
+
+  removeBookmark(){
+    console.log("To removeBookmarked");
+    this.postBookmarked = false;
+    this.bookmarkService.removeBookmark(this.post._id)
+    .subscribe(
+      data =>{console.log("Response from remove bookmark : " + JSON.stringify(data));
+      },
+      error => {console.log("Error from remove bookmark : " + JSON.stringify(error));
+      }
+
+    )
+
+    this.toastr.warning('has been removed from bookmarked',this.post.title,{
+      positionClass:'toast-top-center',
+      timeOut:2000,
+    })
   }
 
   addLike() {

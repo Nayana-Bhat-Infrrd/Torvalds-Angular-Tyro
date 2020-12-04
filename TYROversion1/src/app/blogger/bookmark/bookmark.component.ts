@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { BookmarkService } from 'src/app/_shared/_services/bookmark.service';
+import { ReadpostService } from 'src/app/_shared/_services/readpost.service';
 
 @Component({
   selector: 'app-bookmark',
@@ -16,11 +17,18 @@ export class BookmarkComponent implements OnInit {
   buttonName : string = "New Post";
 
   showSpinner = false;
-  constructor(private bookmarkService : BookmarkService,public toastr : ToastrService){}
+  constructor(private bookmarkService : BookmarkService,
+    private readpostService : ReadpostService,
+    public toastr : ToastrService){}
   ngOnInit(): void 
   {
 
     this.getBookmarks();
+  }
+
+  onReadPost(index){
+    console.log("from onReadPost from bookmark.ts : " + JSON.stringify(this.bookmarks[index]));
+    this.readpostService.setPostValue(this.bookmarks[index]);
   }
   getBookmarks()
   { 
@@ -45,7 +53,7 @@ export class BookmarkComponent implements OnInit {
       .subscribe(
                   data=>
                   {
-                    this.toastr.success('Post Submission',data.message,
+                    this.toastr.success('Bookmark successfully deleted',data.message,
                     {
                       positionClass:'toast-top-center',
                       timeOut:2000,

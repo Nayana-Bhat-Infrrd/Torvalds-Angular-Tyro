@@ -42,6 +42,10 @@
   margin-top: 0.5em;
   margin-bottom: 0.25em;
 }
+.postTitle:hover{
+  color: #1c437e;
+  text-decoration: none;
+}
 .description{
   font-family: 'Open Sans',sans-serif;
   font-size: 14px;

@@ -23,7 +23,7 @@
             {{ likes }}
             <!-- {{ post.isBookmarked }} -->
             <img *ngIf="!postBookmarked" (click)="addBookmark()" class="bookmark" src="../assets/wish-list.png" alt="bookmark">
-            <img *ngIf="postBookmarked" (click)="addBookmark()" class="bookmarked" src="../assets/bookmarked.jpg" alt="bookmark">
+            <img *ngIf="postBookmarked" (click)="removeBookmark()" class="bookmarked" src="../assets/bookmarked.jpg" alt="bookmark">
             <!-- <img [ngStyle]="{'cursor': postBookmarked === true ? 'no-drop' : 'pointer' }"(click)="addBookmark()" class="bookmark" src="../assets/wish-list.png" alt="bookmark"> -->
         </div>
     </div>
