@@ -17,6 +17,9 @@ export class DashboardService {
   listOfPeople: Array<any> = [];
   listOfTopics: Array<any> = [];
 
+  listOfFewPeople: Array<any> = [];
+  listOfFewTopics: Array<any> = [];
+
   constructor(
     private http: HttpClient,
   ) { }
@@ -26,6 +29,7 @@ export class DashboardService {
   }
 
   getFewPeople(count){
+    // this.listOfPeople.length = 0;
     // const returnType = Array<{ 'id':number, 'name': string ,'isFollowing': boolean}>();
     let params = new HttpParams().set("count",count);
     return this.http.get<any>(`${environment.apiUrl}/people`,{params : params})
@@ -34,13 +38,14 @@ export class DashboardService {
       data.forEach(element => {
         
         
-        this.listOfPeople.push({ 'id': element.id, 'name': element.name ,'isFollowing': element.isFollowing})
+        this.listOfFewPeople.push({ 'id': element.id, 'name': element.name ,'isFollowing': element.isFollowing})
       });
-      return this.listOfPeople;
+      return this.listOfFewPeople;
     }));
   }
 
   getPeople() {
+    // this.listOfPeople.length = 0;
     return this.http.get<any>(`${environment.apiUrl}/people/`)
       .pipe(map(data => {
         data.forEach(element => {
@@ -71,9 +76,9 @@ export class DashboardService {
     return this.http.get<any>(`${environment.apiUrl}/topics`,{params : params})
     .pipe(map(data => {
       data.forEach(element => {
-        this.listOfTopics.push({ 'id': element.id, 'name': element.name ,'isFollowing': element.isFollowing})
+        this.listOfFewTopics.push({ 'id': element.id, 'name': element.name ,'isFollowing': element.isFollowing})
       });
-      return this.listOfTopics;
+      return this.listOfFewTopics;
     }));
   }
 
