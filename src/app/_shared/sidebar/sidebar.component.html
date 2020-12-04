@@ -1,0 +1,80 @@
+<div *ngIf="reqdType === 'TOPICS'" class="sidebarForTopic">
+
+  <div class="headerForTopics">
+    <div class="heading">TOPICS TO FOLLOW </div>
+  </div>
+
+  <div class="topicsToFollow">
+
+    <div class="topics" *ngFor="let element of list; let i = index">
+      <div class="topicsRow">
+        <span class="topic"> {{ element.name}} </span>
+        <button *ngIf="!element.isFollowing" type="button" (click)="toFollowTopic(i)"
+          class="btn btn-sm followTopic">Follow</button>
+        <button *ngIf="element.isFollowing" type="button" (click)="toUnfollowTopic(i)"
+          class="btn btn-sm followingTopic">Following</button>
+      </div>
+    </div>
+    <div class="endOfTopics">All good things must come to an end</div>
+  </div>
+
+</div>
+
+<div *ngIf="reqdType === 'PEOPLE'" class="sidebarForPeople">
+  <div class="headerForPeople">
+    <div class="heading">PEOPLE TO FOLLOW </div>
+  </div>
+  <!-- class="topicsToFollow" -->
+  <table class="peopleTable">
+    <div class="peopleToFollow">
+      <div class="listOfPeople" *ngFor="let element of list; let i = index">
+        <tr>
+          <div class="personRow">
+            <td class="profileimage"><img class="img-circular" src="{{ element.profilePictureUrl }}" alt="profilepicture" onerror="this.src='../assets/download (1).jpg';">
+            </td>
+            <!-- <td class="profileimage"><img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture"> -->
+            <!-- </td> -->
+            <td class="profiledetails">
+              <div class="name">
+                {{ element.name}}
+              </div>
+              <div class="followbuttons">
+                <button *ngIf="!element.isFollowing" type="button" (click)="toFollowPeople(i)"
+                  class="btn btn-sm followPeople">Follow</button>
+                <button *ngIf="element.isFollowing" type="button" (click)="toUnfollowPeople(i)"
+                  class="btn btn-sm followingPeople">Following</button>
+              </div>
+            </td>
+          </div>
+        </tr>
+      </div>
+      <tr>
+        <td>
+          <div class="endOfPeople">All good things must come to an end</div>
+        </td>
+      </tr>
+    </div>
+  </table>
+
+</div>
+<!-- <div class="topics" *ngFor="let element of list; let i = index">
+      <div class="topicsRow">
+        <div class="eachRecord">
+          <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
+        <span class="topic"> {{ element.name}} </span>
+        <button *ngIf="!element.isFollowing" type="button" (click)="toFollowPeople(i)"
+          class="btn btn-sm follow">Follow</button>
+        <button *ngIf="element.isFollowing" type="button" (click)="toUnfollowPeople(i)"
+          class="btn btn-sm following">Following</button>
+        </div>
+      </div> -->
+
+
+
+
+<!-- <div class="endOfTopics">All good things must come to an end</div> -->
+
+<!-- <mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
+    <mat-sidenav-content>Main content</mat-sidenav-content>
+  </mat-sidenav-container> -->

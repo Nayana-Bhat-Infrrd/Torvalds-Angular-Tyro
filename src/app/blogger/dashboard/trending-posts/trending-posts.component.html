@@ -1,0 +1,90 @@
+
+<div class="conatiner my-trending-posts-container">
+    <div class="title">
+        <img class="trendlogo" src="../assets/profits.png" alt="profilepicture">
+        <span class="titletyro">TRENDING ON TYRO</span>
+    </div>
+</div>
+
+<!-- <div *ngFor="let post of trendingPosts ; let i = index">
+    {{ i }} Post {{ post.title }}
+</div> -->
+
+<mat-spinner [diameter]="50" class="trending-spinner" mode="indeterminate" *ngIf="showSpinner"></mat-spinner>
+
+<div class="container my-posts-container">
+    <div class="row">
+
+        <div *ngFor="let post of trendingPosts ; let i = index" class="col-sm-3">
+            <div class="row" style="padding-left: 0.5em;">
+                <div class="col-sm-2 article-number">
+                    0{{ i+1 }}
+                </div>
+                <div class="col-sm-10">
+                    <div class="article">
+                        <div class="authorOfArticle">
+                            <img class="img-circular" src="{{ post.author.profilePictureUrl }}" alt="profilepicture" onerror="this.src='../assets/download (1).jpg';">
+                            <span class="author"> {{ post.author.name }}</span>
+                        </div>
+                        <a routerLink="/blogger/readpost" class="titleOfArticle" (click)="onReadPost(i)">{{ post.title }}</a>
+                        <div class="dateOfArticle">{{ post.date.toLocaleString('default',{ month : 'short'}) }} {{ post.date.getDate()+','}} {{ post.date.getFullYear()}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="col-sm-3">
+            <div class="row">
+                <div class="col-sm-2 article-number">
+                    02
+                </div>
+                <div class="col-sm-10">
+                    <div class="article">
+                        <div class="authorOfArticle">
+                            <img class="img-circular" src="../assets/profilepicture.png" alt="profilepicture">
+                            <span class="author">Nayana Bhat</span>
+                        </div>
+                        <div class="titleOfArticle">Fundamentals of Software Architecture</div>
+                        <div class="dateOfArticle">Nov 2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="row">
+                <div class="col-sm-2 article-number">
+                    03
+                </div>
+                <div class="col-sm-10">
+                    <div class="article">
+                        <div class="authorOfArticle">
+                            <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
+                            <span class="author">Nayana Bhat</span>
+                        </div>
+                        <div class="titleOfArticle">Fundamentals of Software Architecture</div>
+                        <div class="dateOfArticle">Nov 2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="row">
+                <div class="col-sm-2 article-number">
+                    04
+                </div>
+                <div class="col-sm-10">
+                    <div class="article">
+                        <div class="authorOfArticle">
+                            <img class="img-circular" src="../assets/profilepicture.png" alt="profilepicture">
+                            <span class="author">Nayana Bhat</span>
+                        </div>
+                        <div class="titleOfArticle">Fundamentals of Software Architecture</div>
+                        <div class="dateOfArticle">Nov 2</div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>

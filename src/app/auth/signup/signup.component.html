@@ -1,0 +1,52 @@
+<div class="form-container">
+
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+
+    <div class="inputFields">
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="Name" id="Name" aria-describedby="Name"
+          placeholder="NAME" [ngClass]="{ 'is-invalid': submitted && sf.Name.errors }" required>
+        <div class="formValidations" *ngIf="submitted && sf.Name.errors">
+          <img *ngIf="sf.Name.errors.required" ngbTooltip="Username is required" triggers="hover:blur"
+            src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e">
+        </div>
+      </div>
+    </div>
+
+    <div class="inputFields">
+      <div class="form-group">
+        <input type="email" class="form-control" formControlName="Email" id="Email" aria-describedby="emailHelp"
+          placeholder="EMAIL" [ngClass]="{ 'is-invalid': submitted && sf.Email.errors }" required>
+        <div class="formValidations" *ngIf="submitted && sf.Email.errors">
+          <img *ngIf="sf.Email.errors.required" ngbTooltip="Email is required" triggers="hover:blur"
+            src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e">
+          <img *ngIf="sf.Email.errors.email" ngbTooltip="Email should have a format" triggers="hover:blur"
+            src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e">
+        </div>
+      </div>
+    </div>
+
+    <div class="inputFields">
+      <div class="form-group">
+        <input type="password" class="form-control" formControlName="Password" id="Password" placeholder="PASSWORD"
+          [ngClass]="{ 'is-invalid': submitted && sf.Password.errors }" required>
+        <div class="formValidations" *ngIf="submitted && sf.Password.errors">
+          <img *ngIf="sf.Password.errors.required" ngbTooltip="Password is required" triggers="hover:blur"
+            src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e">
+          <img *ngIf="sf.Password.errors.minlength" ngbTooltip="Password should have more than 8 characters"
+            triggers="hover:blur"
+            src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e">
+          <img *ngIf="sf.Password.errors.maxlength" ngbTooltip="Password should have less than 100 characters"
+            triggers="hover:blur"
+            src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e">
+
+        </div>
+      </div>
+    </div>
+    <div class="signup">
+      <button type="submit" class="btn">SIGNUP</button>
+
+    </div>
+
+  </form>
+</div>

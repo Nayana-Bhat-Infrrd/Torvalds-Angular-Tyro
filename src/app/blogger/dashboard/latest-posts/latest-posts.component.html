@@ -1,0 +1,27 @@
+<mat-spinner [diameter]="50" class="latest-spinner" mode="indeterminate" *ngIf="showSpinner"></mat-spinner>
+
+<div *ngFor="let post of latestPosts; let i = index" class="container my-latest-posts-container">
+    <!-- {{ post.title }} -->
+    <div class="post">
+        <div class="authorimg">
+            <img class="img-circular" src="{{ post.author.profilePictureUrl }}" alt="profilepicture" onerror="this.src='../assets/download (1).jpg';">
+            <!-- <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture"> -->
+            <span class="author"> {{ post.author.name }} </span>
+        </div>
+        <a routerLink ="/blogger/readpost" class="title" (click)="onReadPost(i)">{{ post.title }}
+        </a>
+        <p *ngIf="post.description.length > 200" class="intro" style="height: 40px;" ellipsis> {{ post.description }}</p>
+            <p *ngIf="post.description.length <= 200" class="intro"> {{ post.description }}
+            <!-- Software architecture refers to the fundamental structures of a software system and the
+            discipline of creating such structures and systems. Each structure comprises software elements, relations
+            among them, and properties of both elements and relations. -->
+        </p>
+        <!-- <div id="fos">
+            <p>
+                {{ post.description }}
+            </p>  
+        </div> -->
+        <!-- <p class="timestamp">{{ post.date.toLocaleString('default',{ month : 'short'}) }} {{ post.date.getDate()+','}} {{ post.date.getFullYear()}}</p> -->
+        <p class="timestamp">{{ post.timeAgoDate }}</p>
+    </div>
+</div>
