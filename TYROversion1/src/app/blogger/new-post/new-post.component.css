@@ -1,11 +1,10 @@
 *{
     box-sizing: border-box;
-}
+} 
 nav
 {
     background-color: #1c437e;
-    /* height: 70px; */
-    width:100%;
+     width:100%;
     height:70px;
     padding:0px 74px; 
 }
@@ -23,6 +22,7 @@ nav
     width:33px;
     height:28px;
 }
+
 .tyro
 {
     width: 41px;
@@ -41,9 +41,10 @@ nav
 a:hover{
     text-decoration: none;
 }
+
 .line
 {
-    /* width: 1px; */
+ 
   height: 28px;
   margin: 21px 27.5px 21px 0px;
   border: solid 1px #dbe1e9;
@@ -54,26 +55,20 @@ a:hover{
     width: 233px;
     height: 28px;
     margin: 21px 623px 21px 0px;
-  font-family: 'Open Sans',sans-serif;
-  font-size: 21px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #f7f8f9;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 21px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #f7f8f9;
 }
-
-/* .nav-item
-{
-    margin-right:39px;
-} */
 
 .notification
 {
     
     margin: 23px 18px 23px 0px;
-  
 }
 
 .notification img
@@ -162,10 +157,11 @@ a:hover{
     outline:none;
 }
 
-textarea
+.container-fluid textarea
 {
     width:  100%;
     height: 400px;
+    resize: none;
 }
 
  .typeSomething
@@ -190,7 +186,7 @@ textarea
 {
     border:0;
     outline:none;
-    overflow:hiden;
+    overflow:hidden;
 } 
 
 
@@ -252,6 +248,9 @@ textarea
   border-radius: 5px;
   background-color:#ff8900;   
   }
+
+
+
 #close
 {
     margin-left:700px;
@@ -263,44 +262,79 @@ textarea
 .wrap
   {  width: 600px;
      height: 54px;
-     padding-top: 11px;
-     padding-bottom:11px;
-     /* padding-left: 2px; */
-     /* padding-right: 4px; */
+     padding: 0px 0px 0px 10px;
+     border-radius: 5px; 
+     background-color:#dbe1e9;
+    overflow-x:auto; 
+      overflow-y:hidden;
+      display:flex;
+     flex-wrap: wrap;
      margin-left:100px;
      margin-right:70px;
      margin-bottom: 37px;
-     border-radius: 5px;
-     background-color:#dbe1e9;
-     
+     border-radius: 5px; 
+
   }
   
-.chips
+  ::-webkit-scrollbar {
+    width:10px;
+    border-radius: 5px;
+    
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 5px;
+    
+    
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:green;
+    border-radius: 5px; 
+    
+  }
+  
+ 
+  
+  
+   .example-chip-list
+  {
+      width:100%;   
+  } 
+
+  ::ng-deep .mat-form-field-underline { 
+      display: none; 
+}
+
+.mat-chip
 {
-    border: none;
+    background-color: #007500;
+    border-radius: 5px;
+    border-radius: 5px;
+    font-family: "Open Sans",sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #f7f5f9;
+    text-decoration: none;
     outline: none;
-    background-color:#dbe1e9;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    width: 600px;
+    border:none;
+} 
+ .mat-chip-list
+{
+    display:flex;
+    flex-direction: row;
+    width:max-content;
+    align-items: center;
+     margin-top:-10px; 
+     margin-bottom:-10px;
 } 
 
-.list
-{
-   background-color: #007500;
-   border-radius: 5px;
-   /* width: 100px;
-   height: 25px;
-  /* margin: 0 14px 0 0; 
-   padding: 5px 28px 5px 28px; */
-   border-radius: 5px;
-   font-family: OpenSans;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #f7f5f9;
-}
+
 

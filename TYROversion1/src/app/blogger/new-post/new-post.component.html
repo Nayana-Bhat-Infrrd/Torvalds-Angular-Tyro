@@ -29,46 +29,46 @@
 <app-title (childEvent)="on()" [displayMessage]="displayMessage" [displayBookMark]="displayBookMark" [buttonName]="buttonName" [disableButton]="disableButton"></app-title>
 
 <div class="container-fluid" [formGroup]="publishForm" (ngSubmit)="onSubmit()">
-<input type="text" autocomplete="off" (click)="change()" placeholder="Title" #title1 formControlName="Title" id="title" class="title"> 
-<textarea placeholder="Type something" autocomplete="off" #Content1  formControlName="Content"  id="content"   class="typeSomething"></textarea>
+    <input type="text" autocomplete="off" (click)="change()" placeholder="Title" #title1 formControlName="Title" id="title" class="title"> 
+    <textarea placeholder="Type something"  autocomplete="off" #Content1  formControlName="Content"  id="content"   class="typeSomething"></textarea>
 </div> 
 
 <div id="overlay" class="full">
-<div id="text">
-  <a routerLink="/blogger/newpost" (click) = "off()" ><img id="close" img src="../assets/cancel.png"></a>
-  <p class="topics1">Add upto 5 topics so that readers know what your post is about</p>
-  <form class="example-chip-list" #validForm="ngForm">
-  <div class="wrap" >
-    <mat-chip-list  #chipList aria-label="Topic selection" class="chiplists">
-        <mat-chip 
-         *ngFor="let Topic of Topics"
-          [selectable]="selectable"
-          [removable]="removable"
-          (removed)="remove(Topic)" style="text-transform: capitalize;" class="list">
-            {{Topic}}
-            <mat-icon class="icon" matChipRemove *ngIf="removable" style="color:#f7f5f9;">cancel</mat-icon>
-          </mat-chip>
-          <input
-          #TopicInput
-          placeholder="New Topic..."
-          [formControl]="TopicCtrl"
-          [matAutocomplete]="auto"
-          [matChipInputFor]="chipList"
-          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-          [matChipInputAddOnBlur]="addOnBlur"
-          (matChipInputTokenEnd)="add($event)"
-          class="chips"
-          >
-        </mat-chip-list>
+  <div id="text">
+    <a routerLink="/blogger/newpost" (click) = "off()" ><img id="close" img src="../assets/cancel.png"></a>
+    <p class="topics1">Add upto 5 topics so that readers know what your post is about</p>
+    <form #validForm="ngForm">
+      <div class="wrap">
+        <mat-form-field floatLabel="never" appearance="none" class="example-chip-list">
+          <mat-chip-list  #chipList aria-label="Topic selection"> 
+            <mat-chip 
+              *ngFor="let Topic of Topics"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="remove(Topic)"
+              style="text-transform: capitalize;">
+              {{Topic}}
+              <mat-icon class="icon" matChipRemove *ngIf="removable" style="color:#f7f5f9;">cancel</mat-icon>
+            </mat-chip>
+            <input
+              #TopicInput
+              [formControl]="TopicCtrl"
+              [matAutocomplete]="auto"
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)"/>
+          </mat-chip-list>
+        </mat-form-field>
         <mat-autocomplete  #auto="matAutocomplete" (optionSelected)="selected($event)">
           <mat-option class="autocomplete" *ngFor="let Topic of filteredTopics | async" style="text-transform: capitalize;" [value]="Topic">
-            {{Topic}}
+              {{Topic}}
           </mat-option>
         </mat-autocomplete> 
-      </div> 
+      </div>  
     </form>
-  <button routerLink="/blogger" [disabled]="!validForm.valid || this.Topics.length===0"  (click) = "addPost(title1.value,Content1.value)" type="submit"  class="btn publish">PUBLISH</button>       
-</div>
+    <button routerLink="/blogger" [disabled]="!validForm.valid || this.Topics.length===0"  (click) = "addPost(title1.value,Content1.value)" type="submit"  class="btn publish">PUBLISH</button>       
+  </div>
 </div>
 
  

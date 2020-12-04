@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 
+
 @Component({
   selector: 'app-title',
   templateUrl: './title.component.html',
@@ -8,6 +9,8 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
 export class TitleComponent implements OnInit, OnChanges {
   @Input() displayMessage: string;
   @Input() displayBookMark: boolean;
+
+
   @Input() buttonName: string;
   @Input() disableButton: boolean;
 
@@ -17,6 +20,7 @@ export class TitleComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     console.log("disableButton : " + this.disableButton);
+
 
   }
 

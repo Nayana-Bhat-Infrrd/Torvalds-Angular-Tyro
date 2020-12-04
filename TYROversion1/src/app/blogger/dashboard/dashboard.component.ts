@@ -13,6 +13,8 @@ export class DashboardComponent implements OnInit {
   returnUrl: string;
   displayMessage: string = "Good evening";
   displayBookMark : boolean = true;
+ // displayButton :string = "NEW POST";
+// publishButton : boolean=false;
   constructor(
     private authenticationService: AuthenticationService,
     private route: ActivatedRoute,

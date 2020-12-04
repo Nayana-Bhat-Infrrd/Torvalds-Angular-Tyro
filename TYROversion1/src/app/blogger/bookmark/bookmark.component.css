@@ -13,6 +13,9 @@
   height: 15px;
   width: 15px;
 }
+.bookmark-spinner{
+  margin:auto auto;
+}
 .title{
   font-family:  'Open Sans',sans-serif;
   font-size: 18px;

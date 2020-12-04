@@ -1,7 +1,10 @@
+
+
 <app-title [displayMessage]="displayMessage" [displayBookMark]="displayBookMark"></app-title>
 <div *ngIf="post === null" class="loading">
     <mat-spinner [diameter]="50" class="latest-spinner" mode="indeterminate" *ngIf="showSpinner"></mat-spinner>
 </div>
+
 
 <div *ngIf="post !== null" class="read-posts-conatiner">
     
