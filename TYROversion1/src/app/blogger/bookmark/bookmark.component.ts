@@ -15,7 +15,7 @@ export class BookmarkComponent implements OnInit {
   displayMessage:string = "Post";
   displayBookMark:boolean = false;
   buttonName : string = "New Post";
-
+  public profilePicture;
   showSpinner = false;
   constructor(private bookmarkService : BookmarkService,
     private readpostService : ReadpostService,
@@ -40,6 +40,23 @@ export class BookmarkComponent implements OnInit {
                   this.showSpinner = false;
                   this.bookmarks = data;
                   this.totalBookamrks = this.bookmarks.length;
+                  this.bookmarks.forEach(element => {
+                      this.bookmarkService.getProfilePicture(element.author._id).subscribe(
+                        data=>
+                        {  
+                           
+                           element.author.profilePictureUrl = data.profilePictureUrl;
+                        },
+                        error=>{
+                              console.log("error");
+                        }
+                      )
+
+
+
+                  });
+                    
+                  
                 },
                 error=> 
                 {
@@ -47,6 +64,12 @@ export class BookmarkComponent implements OnInit {
                 }
               )
   }
+
+
+
+
+
+
   ondeleteBookmark(id)
   {
       this.bookmarkService.removeBookmark(this.bookmarks[id]._id)
@@ -66,4 +89,8 @@ export class BookmarkComponent implements OnInit {
                   }
                 )
   }
+
+  
+
+
 }

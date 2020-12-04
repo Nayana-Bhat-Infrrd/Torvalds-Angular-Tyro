@@ -52,6 +52,9 @@ export class ReadPostComponent implements OnInit {
         this.postBookmarked = this.post.isBookmarked;
         console.log("isBookmarked : " + this.postBookmarked);
         
+          
+        
+        
         this.likes = this.post.likes;
         console.log("Post : " + JSON.stringify(this.post));
         

@@ -64,6 +64,13 @@ export class DashboardService {
       
   }
 
+
+ getProfile()
+ {
+     return this.http.get<any>(`${environment.apiUrl}/profile`);
+ }
+
+
   onUnfollowPerson(id){
     console.log("from dashboardService : " + id);
     const postData = { id : id}
