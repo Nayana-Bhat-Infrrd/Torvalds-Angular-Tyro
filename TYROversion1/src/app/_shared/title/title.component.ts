@@ -20,7 +20,7 @@ export class TitleComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     console.log("disableButton : " + this.disableButton);
-
+    
 
   }
 

@@ -6,7 +6,8 @@
     <div *ngFor="let person of fewPeople.slice(0, 3); let i = index">
         <!-- {{ person }} -->
         <figure>
-            <input id="{{ 'person ' + i }}" type="image" class="img-circular" src="../assets/profilepicture.png" alt="profilepicture" (click)="onFollowPerson(i)">
+            <input id="{{ 'person ' + i }}" type="image" class="img-circular" src="{{ person.profilePictureUrl }}" alt="profilepicture" (click)="onFollowPerson(i)" onerror="this.src='../assets/download (1).jpg';">
+            <!-- <input id="{{ 'person ' + i }}" type="image" class="img-circular" src="../assets/profilepicture.png" alt="profilepicture" (click)="onFollowPerson(i)"> -->
             <figcaption>{{ person.name }}</figcaption> 
         </figure>
     </div>

@@ -30,8 +30,10 @@
       <div class="listOfPeople" *ngFor="let element of list; let i = index">
         <tr>
           <div class="personRow">
-            <td class="profileimage"><img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
+            <td class="profileimage"><img class="img-circular" src="{{ element.profilePictureUrl }}" alt="profilepicture" onerror="this.src='../assets/download (1).jpg';">
             </td>
+            <!-- <td class="profileimage"><img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture"> -->
+            <!-- </td> -->
             <td class="profiledetails">
               <div class="name">
                 {{ element.name}}

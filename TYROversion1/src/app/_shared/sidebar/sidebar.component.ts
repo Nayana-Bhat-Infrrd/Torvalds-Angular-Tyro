@@ -21,9 +21,15 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.list = this.followService.currentValue;
+    this.getProfilePicture();
     console.log("from ngOnInit in sidebarcomp Current Value: " + JSON.stringify(this.list));
     this.reqdType = this.followService.reqdTypeValue;
     console.log("Type from side bar : " + this.reqdType);
+  }
+
+  getProfilePicture(){
+    console.log("In profile picture sidebar.ts : list : " + JSON.stringify(this.list));
+    
   }
 
   toFollowTopic(id) {

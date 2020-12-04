@@ -23,7 +23,7 @@
                 <div class="col-sm-10">
                     <div class="article">
                         <div class="authorOfArticle">
-                            <img class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
+                            <img class="img-circular" src="{{ post.author.profilePictureUrl }}" alt="profilepicture" onerror="this.src='../assets/download (1).jpg';">
                             <span class="author"> {{ post.author.name }}</span>
                         </div>
                         <a routerLink="/blogger/readpost" class="titleOfArticle" (click)="onReadPost(i)">{{ post.title }}</a>

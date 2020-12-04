@@ -13,7 +13,7 @@ export class LatestPostsComponent implements OnInit {
   public latestPosts: Array<any> = []
   constructor(
     private dashboardService: DashboardService,
-    private readpostService : ReadpostService
+    private readpostService: ReadpostService
   ) { }
 
   ngOnInit(): void {
@@ -33,11 +33,21 @@ export class LatestPostsComponent implements OnInit {
         data => {
           // var oneDay = 24 * 60 * 60 * 1000;
           this.showSpinner = false;
-          console.log("Feed data : " + JSON.stringify(data));
+          // console.log("Feed data : " + JSON.stringify(data));
           this.latestPosts = data;
           this.latestPosts.forEach(element => {
             element.date = new Date(element.date);
-            // console.log("Format from timeAgo : " + format(element.date));
+            // console.log("Author id : " + element.author._id);
+            this.dashboardService.getProfilePicture(element.author._id)
+              .subscribe(
+                data => {
+                  // console.log("url : " + data.profilePictureUrl);
+                  element.author.profilePictureUrl = data.profilePictureUrl;
+                },
+                error => {
+                  console.log("Error from profile pic : " + JSON.stringify(error));
+                }
+              )
             element.timeAgoDate = format(element.date);
 
           })
@@ -56,7 +66,7 @@ export class LatestPostsComponent implements OnInit {
     // }
 
   }
-  onReadPost(index){
+  onReadPost(index) {
     console.log("from onReadPost from latest.ts : " + JSON.stringify(this.latestPosts[index]));
     this.readpostService.setPostValue(this.latestPosts[index])
     // this.readpostService.onLoadingRead();

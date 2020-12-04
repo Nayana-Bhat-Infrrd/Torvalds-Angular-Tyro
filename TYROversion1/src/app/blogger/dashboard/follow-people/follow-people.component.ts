@@ -9,6 +9,7 @@ import { FollowService } from 'src/app/_shared/_services/follow.service';
 
 import { DOCUMENT } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/_shared/models/user';
 
 @Component({
   selector: 'app-follow-people',
@@ -18,7 +19,7 @@ import { ToastrService } from 'ngx-toastr';
 export class FollowPeopleComponent implements OnInit {
   showSpinner = false;
   listOfPeople: Array<any> = [];
-  fewPeople : Array<any> = [];
+  fewPeople: Array<any> = [];
 
   constructor(
     private overlay: Overlay,
@@ -30,7 +31,7 @@ export class FollowPeopleComponent implements OnInit {
 
 
 
-    public toastr:ToastrService,
+    public toastr: ToastrService,
     @Inject(DOCUMENT) private document: Document
 
   ) { }
@@ -40,23 +41,34 @@ export class FollowPeopleComponent implements OnInit {
     this.getPeople();
   }
 
-  getFewPeople(count){
+  getFewPeople(count) {
     this.showSpinner = true;
     this.dashboardService.getFewPeople(count)
-    .subscribe(
-      data => {
-        this.showSpinner = false;
-        this.fewPeople = data;
-        console.log("People data : " + JSON.stringify(this.fewPeople));
+      .subscribe(
+        data => {
+          this.showSpinner = false;
+          this.fewPeople = data;
+          console.log("People data : " + JSON.stringify(this.fewPeople));
+          data.forEach(element => {
+            this.dashboardService.getProfilePicture(element.id)
+              .subscribe(
+                data => {
+                  console.log("Profile url : " + JSON.stringify(data));
+                  element.profilePictureUrl = data.profilePictureUrl;
+                },
+                error => {console.log("Error from profile pictire");
+                }
+              )
 
-      },
-      error => {
-        console.log("Error : " + error);
+          });
+        },
+        error => {
+          console.log("Error : " + error);
 
-      }
-    );
+        }
+      );
   }
-  getPeople(){
+  getPeople() {
     // this.showSpinner = true;
     this.dashboardService.getPeople()
       .subscribe(
@@ -64,7 +76,18 @@ export class FollowPeopleComponent implements OnInit {
           // this.showSpinner = false
           this.listOfPeople = data;
           console.log("People data : " + JSON.stringify(data));
+          data.forEach(element => {
+            this.dashboardService.getProfilePicture(element.id)
+              .subscribe(
+                data => {
+                  console.log("Profile url : " + JSON.stringify(data));
+                  element.profilePictureUrl = data.profilePictureUrl;
+                },
+                error => {console.log("Error from profile pictire");
+                }
+              )
 
+          });
         },
         error => {
           console.log("Error : " + error);
@@ -82,12 +105,12 @@ export class FollowPeopleComponent implements OnInit {
         data => {
 
           console.log("Response from onFollowPerson " + JSON.stringify(data));
-         // alert(JSON.stringify(data))
+          // alert(JSON.stringify(data))
           this.dashboardService.onFeedChange();
-           this.document.location.reload();
-        //  console.log("Response from onFollowPerson " + JSON.stringify(data));
-         
-        //  this.document.location.reload();
+          this.document.location.reload();
+          //  console.log("Response from onFollowPerson " + JSON.stringify(data));
+
+          //  this.document.location.reload();
 
         },
         error => {
@@ -95,14 +118,14 @@ export class FollowPeopleComponent implements OnInit {
 
         }
       )
-      this.toastr.success(this.listOfPeople[id].name,'You are following',{
-        positionClass:'toast-top-center',
-        timeOut:2000,
-      })
+    this.toastr.success(this.listOfPeople[id].name, 'You are following', {
+      positionClass: 'toast-top-center',
+      timeOut: 2000,
+    })
   }
 
   onMorePeople() {
-    
+
     console.log("Call side bar");
     // this.router.navigate(['/blogger/newpost'])
     // this.followService.setPeople(this.listOfPeople)

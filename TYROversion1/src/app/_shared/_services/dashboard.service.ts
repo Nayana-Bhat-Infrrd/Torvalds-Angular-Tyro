@@ -26,6 +26,7 @@ export class DashboardService {
   }
 
   getFewPeople(count){
+    // const returnType = Array<{ 'id':number, 'name': string ,'isFollowing': boolean}>();
     let params = new HttpParams().set("count",count);
     return this.http.get<any>(`${environment.apiUrl}/people`,{params : params})
     .pipe(map(data => {
@@ -117,5 +118,21 @@ export class DashboardService {
     //   }
     // )
     
+  }
+
+  getProfilePicture(id){
+    // console.log("In get profile picture");
+    let params = new HttpParams().set("id",id);
+    return this.http.get<any>(`${environment.apiUrl}/profile/getProfilePicture`,{params : params})
+    // .subscribe(
+    //   data => {
+    //     // console.log("Response from get profile pic : " + JSON.stringify(data));
+    //   return data.profilePictureUrl;
+    //   },
+    //   error => {
+    //     // console.log("Error from get profile pic : " + JSON.stringify(error));
+    //     return error
+    //   }
+    // )
   }
 }
