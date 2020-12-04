@@ -69,7 +69,7 @@ export class DashboardService {
     let params = new HttpParams().set("count",count);
     return this.http.get<any>(`${environment.apiUrl}/topics`,{params : params})
     .pipe(map(data => {
-      data.result.forEach(element => {
+      data.forEach(element => {
         this.listOfTopics.push({ 'id': element.id, 'name': element.name ,'isFollowing': element.isFollowing})
       });
       return this.listOfTopics;
@@ -80,7 +80,7 @@ export class DashboardService {
   getTopics() {
     return this.http.get<any>(`${environment.apiUrl}/topics`)
       .pipe(map(data => {
-        data.result.forEach(element => {
+        data.forEach(element => {
           this.listOfTopics.push({ 'id': element.id, 'name': element.name ,'isFollowing': element.isFollowing})
         });
         return this.listOfTopics;
