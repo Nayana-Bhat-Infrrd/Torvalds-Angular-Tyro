@@ -1,0 +1,34 @@
+<form #validForm="ngForm">
+    <div class="wrap">
+      <mat-form-field floatLabel="never" appearance="none" class="example-chip-list">
+        <mat-chip-list  #chipList aria-label="Topic selection"> 
+          <mat-chip 
+            *ngFor="let Topic of Topics"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(Topic)"
+            style="text-transform: capitalize;">
+            {{Topic}}
+            <mat-icon class="icon" matChipRemove *ngIf="removable" style="color:#f7f5f9;">cancel</mat-icon>
+          </mat-chip>
+          <input
+            #TopicInput
+            [formControl]="TopicCtrl"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)"/>
+        </mat-chip-list>
+      </mat-form-field>
+      <mat-autocomplete  #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option class="autocomplete" *ngFor="let Topic of filteredTopics | async" style="text-transform: capitalize;" [value]="Topic">
+            {{Topic}}
+        </mat-option>
+      </mat-autocomplete> 
+    </div>  
+  
+ 
+</form>
+
+<button routerLink="/blogger" [disabled]="!validForm.valid||this.Topics.length===0"  (click) = "getId()" type="submit"  class="btn publish">PUBLISH</button>       
