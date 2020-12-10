@@ -24,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { OverlayModule } from '@angular/cdk/overlay';
 import { EllipsisModule } from 'ngx-ellipsis';
+import { AddTopicsComponent } from './new-post/add-topics/add-topics.component';
 
 // import { MatSidenavModule } from '@angular/material/sidenav'
 
@@ -37,7 +38,8 @@ import { EllipsisModule } from 'ngx-ellipsis';
     TrendingPostsComponent,
     FollowPeopleComponent,
     FollowTopicComponent,
-    LatestPostsComponent
+    LatestPostsComponent,
+    AddTopicsComponent
   ],
   imports: [
     RouterModule,

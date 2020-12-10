@@ -8,37 +8,21 @@ import { DashboardService } from 'src/app/_shared/_services/dashboard.service';
   styleUrls: ['./title.component.css']
 })
 export class TitleComponent implements OnInit, OnChanges {
-  @Input() displayMessage: string;
-  @Input() displayBookMark: boolean;
-
-
+  @Input() displayTitleMessage: string;
+  @Input() isDisplayBookMark: boolean;
   @Input() buttonName: string;
-  @Input() disableButton: boolean;
+  @Input() isDisabledButton: boolean;
   public profilePicture;
-  constructor(private dashboardService:DashboardService) {
-
-  }
-
-
-  
-
-
-
+  constructor(private dashboardService:DashboardService) {}
 
   ngOnInit(): void {
-    console.log("disableButton : " + this.disableButton);
-    this.dashboardService.getProfile().subscribe(
-       data=>{
+    console.log("disableButton : " + this.isDisabledButton);
+    this.dashboardService.getProfile().subscribe(data=>{
             console.log("Profile from title:"+data.profilePictureUrl);
             this.profilePicture = data.profilePictureUrl;
-       },
-       error=>
-       {
+       },error=>{
                 console.log("error");
-       }
-
-    )
-
+       })
   }
 
   ngOnChanges(changes) {

@@ -12,8 +12,8 @@ export class BookmarkComponent implements OnInit {
   public post;
   public bookmarks;
   public totalBookamrks : number;
-  displayMessage:string = "Post";
-  displayBookMark:boolean = false;
+  displayTitleMessage:string = "Post";
+  isDisplayBookMark:boolean = false;
   buttonName : string = "New Post";
   public profilePicture;
   showSpinner = false;
