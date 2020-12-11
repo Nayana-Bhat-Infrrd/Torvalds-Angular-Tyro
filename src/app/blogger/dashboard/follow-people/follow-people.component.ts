@@ -2,14 +2,14 @@ import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { error } from 'protractor';
+
 import { SidebarComponent } from 'src/app/_shared/sidebar/sidebar.component';
 import { DashboardService } from 'src/app/_shared/_services/dashboard.service';
 import { FollowService } from 'src/app/_shared/_services/follow.service';
 
 import { DOCUMENT } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-import { User } from 'src/app/_shared/models/user';
+
 
 @Component({
   selector: 'app-follow-people',
@@ -38,7 +38,6 @@ export class FollowPeopleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFewPeople("3")
-    this.getPeople();
   }
 
   getFewPeople(count) {
@@ -53,37 +52,11 @@ export class FollowPeopleComponent implements OnInit {
             this.dashboardService.getProfilePicture(element.id)
               .subscribe(
                 data => {
-                  console.log("Profile url : " + JSON.stringify(data));
+                  // console.log("Profile url : " + JSON.stringify(data));
                   element.profilePictureUrl = data.profilePictureUrl;
                 },
-                error => {console.log("Error from profile pictire");
-                }
-              )
-
-          });
-        },
-        error => {
-          console.log("Error : " + error);
-
-        }
-      );
-  }
-  getPeople() {
-    // this.showSpinner = true;
-    this.dashboardService.getPeople()
-      .subscribe(
-        data => {
-          // this.showSpinner = false
-          this.listOfPeople = data;
-          console.log("People data : " + JSON.stringify(data));
-          data.forEach(element => {
-            this.dashboardService.getProfilePicture(element.id)
-              .subscribe(
-                data => {
-                  console.log("Profile url : " + JSON.stringify(data));
-                  element.profilePictureUrl = data.profilePictureUrl;
-                },
-                error => {console.log("Error from profile pictire");
+                error => {
+                  console.log("Error from profile pictire");
                 }
               )
 
@@ -107,7 +80,7 @@ export class FollowPeopleComponent implements OnInit {
           console.log("Response from onFollowPerson " + JSON.stringify(data));
           // alert(JSON.stringify(data))
           this.dashboardService.onFeedChange();
-          this.document.location.reload();
+          // this.document.location.reload();
           //  console.log("Response from onFollowPerson " + JSON.stringify(data));
 
           //  this.document.location.reload();
@@ -129,27 +102,49 @@ export class FollowPeopleComponent implements OnInit {
     console.log("Call side bar");
     // this.router.navigate(['/blogger/newpost'])
     // this.followService.setPeople(this.listOfPeople)
+    this.dashboardService.getPeople()
+      .subscribe(
+        data => {
+          this.listOfPeople = data;
+          this.followService.setValue(this.listOfPeople, "PEOPLE")
+          console.log("People data : " + JSON.stringify(data));
+          data.forEach(element => {
+            this.dashboardService.getProfilePicture(element.id)
+              .subscribe(
+                data => {
+                  // console.log("Profile url : " + JSON.stringify(data));
+                  element.profilePictureUrl = data.profilePictureUrl;
 
-    this.followService.setValue(this.listOfPeople, "PEOPLE")
-    console.log("List of people : " + this.listOfPeople);
+                },
+                error => {
+                  console.log("Error from profile pictire");
+                }
+              )
 
-    let config = new OverlayConfig();
-    config.scrollStrategy = this.overlay.scrollStrategies.block();
-    config.positionStrategy = this.overlay
-      .position()
-      .global()
-      .right();
+          });
+          let config = new OverlayConfig();
+          config.scrollStrategy = this.overlay.scrollStrategies.block();
+          config.positionStrategy = this.overlay
+            .position()
+            .global()
+            .right();
 
-    config.hasBackdrop = true;
-    // config.backdropClass = "cdk-overlay-transparent-backdrop";
-    let overlayRef = this.overlay.create(config);
+          config.hasBackdrop = true;
+          // config.backdropClass = "cdk-overlay-transparent-backdrop";
+          let overlayRef = this.overlay.create(config);
 
-    overlayRef.backdropClick().subscribe(() => {
-      overlayRef.dispose();
-      this.dashboardService.onFeedChange();
-      // this.document.location.reload();
-    });
+          overlayRef.backdropClick().subscribe(() => {
+            overlayRef.dispose();
+            this.dashboardService.onFeedChange();
+            // this.document.location.reload();
+          });
 
-    overlayRef.attach(new ComponentPortal(SidebarComponent, this.viewContainerRef));
+          overlayRef.attach(new ComponentPortal(SidebarComponent, this.viewContainerRef));
+        },
+        error => {
+          console.log("Error : " + error);
+
+        }
+      );
   }
 }

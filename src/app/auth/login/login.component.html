@@ -1,38 +1,29 @@
 <div class="form-container">
-  
-  <mat-spinner [diameter] = "20" class="login-spinner" mode="indeterminate" *ngIf="showspinner"></mat-spinner>
-  
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
-    <div class="inputFields">
-      <div class="form-group">
-        <input type="email" class="form-control" formControlName="email" id="Email" placeholder="EMAIL"
-          [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-        <div class="formValidations" *ngIf="submitted && f.email.errors">
-          <img *ngIf="f.email.errors.required" ngbTooltip="Email is required" triggers="hover:blur"
-            src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e">
-          <img *ngIf="f.email.errors.email" ngbTooltip="Email should have a format" triggers="hover:blur"
+    <mat-spinner [diameter] = "20" class="login-spinner" mode="indeterminate" *ngIf="showspinner"></mat-spinner>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+      <div class="input-fields">
+        <div class="form-group">
+          <input type="email" class="form-control" formControlName="email" id="Email" placeholder="EMAIL"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+        <div class="form-validations" *ngIf="submitted && f.email.errors">
+          <img *ngIf="f.email.errors.required || f.email.errors.email" ngbTooltip="Email is required && must follow format" triggers="hover:blur"
             src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e">
         </div>
       </div>
     </div>
-    <div class="inputFields">
+    <div class="input-fields">
       <div class="form-group">
         <input type="password" class="form-control" id="Password" formControlName="password" placeholder="PASSWORD"
           [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-
-
-        <div class="formValidations" *ngIf="submitted && f.password.errors">
-          <img *ngIf="f.password.errors.required" ngbTooltip="Password is required!" triggers="hover:blur"
-            src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e">
-          <img *ngIf="f.password.errors.minlength" ngbTooltip="Should be more than 8 characters" triggers="hover:blur"
+        <div class="form-validations" *ngIf="submitted && f.password.errors">
+          <img *ngIf="f.password.errors.required || f.password.errors.minlength" ngbTooltip="Password is required and should be more than 8 characters" triggers="hover:blur"
             src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e">
         </div>
       </div>
     </div>
 
     <div class="login">
-      <button type="submit" class="btn">LOGIN</button>
-      
+      <button type="submit" class="login-button">LOGIN</button>      
     </div>
    <div class="login-spinner-background" *ngIf="showspinner"></div>
   </form>

@@ -33,15 +33,15 @@ export class LatestPostsComponent implements OnInit {
         data => {
           // var oneDay = 24 * 60 * 60 * 1000;
           this.showSpinner = false;
-          // console.log("Feed data : " + JSON.stringify(data));
+          console.log("Feed data : " + JSON.stringify(data));
           this.latestPosts = data;
           this.latestPosts.forEach(element => {
             element.date = new Date(element.date);
-            // console.log("Author id : " + element.author._id);
+            // console.log("Author id : " + element.author._id + "author name : " + element.author.name);
             this.dashboardService.getProfilePicture(element.author._id)
               .subscribe(
                 data => {
-                  // console.log("url : " + data.profilePictureUrl);
+                  // console.log("url : " + data + " author id : " + element.author._id);
                   element.author.profilePictureUrl = data.profilePictureUrl;
                 },
                 error => {
@@ -57,14 +57,6 @@ export class LatestPostsComponent implements OnInit {
 
         }
       )
-    // var p=$('#fos p');
-    // var divh=$('#fos').height();
-    // while ($(p).outerHeight()>divh) {
-    //     $(p).text(function (index, text) {
-    //         return text.replace(/\W*\s(\S)*$/, '.....');
-    //     });
-    // }
-
   }
   onReadPost(index) {
     console.log("from onReadPost from latest.ts : " + JSON.stringify(this.latestPosts[index]));

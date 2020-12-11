@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { BookmarkService } from 'src/app/_shared/_services/bookmark.service';
 import { ReadpostService } from 'src/app/_shared/_services/readpost.service';
+import { format } from 'timeago.js';
 
 @Component({
   selector: 'app-bookmark',
@@ -12,8 +13,8 @@ export class BookmarkComponent implements OnInit {
   public post;
   public bookmarks;
   public totalBookamrks : number;
-  displayMessage:string = "Post";
-  displayBookMark:boolean = false;
+  displayTitleMessage:string = "Post";
+  isDisplayBookMark:boolean = false;
   buttonName : string = "New Post";
   public profilePicture;
   showSpinner = false;
@@ -39,8 +40,11 @@ export class BookmarkComponent implements OnInit {
                 {
                   this.showSpinner = false;
                   this.bookmarks = data;
+                  console.log("Bookmarks data : " + JSON.stringify(data));
+                  
                   this.totalBookamrks = this.bookmarks.length;
                   this.bookmarks.forEach(element => {
+                    element.timeAgo = format(element.date);
                       this.bookmarkService.getProfilePicture(element.author._id).subscribe(
                         data=>
                         {  

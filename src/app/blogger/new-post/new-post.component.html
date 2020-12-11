@@ -1,80 +1,15 @@
-<!-- Navbar Start  -->
-<!-- <nav class="navbar navbar-expand-sm">  
-  <a class="navbar-brand" href="#"> <img src="../assets/brand-logo-light(1).png"  alt="logo"></a>
-  <a class="tyro" href="#">tyro</a>
-  <span class="line"></span>
-  <span class="good">New Post</span>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-    <ul class="navbar-nav">
-      <li class="nav-item" class="notification">
-        <a class="nav-link" href="#" ><img src="../assets/bell.png" alt="notificaiton" ></a>
-      </li>         
-
-  <li class="nav-item post">
-    <a class="nav-link" ><button type="submit" [disabled]="!publishForm.valid" (click) = "on()"  class="btn pubIt">PUBLISH</button></a>
-  </li>
-  
-  <li class="nav-item profile">
-    <a class="nav-link" href="#" ><img src="../assets/download (1).jpg" alt="profilePic" ></a>
-  </li>
-</ul> 
-</div>
-
-</nav>  -->
-
-<app-title (childEvent)="on()" [displayMessage]="displayMessage" [displayBookMark]="displayBookMark" [buttonName]="buttonName" [disableButton]="disableButton"></app-title>
-
+<app-title (childEvent)="on()" [displayTitleMessage]="displayTitleMessage" [isDisplayBookMark]="isDisplayBookMark"
+  [buttonName]="buttonName" [isDisabledButton]="isDisabledButton"></app-title>
 <div class="container-fluid" [formGroup]="publishForm" (ngSubmit)="onSubmit()">
-    <input type="text" autocomplete="off" (click)="change()" placeholder="Title" #title1 formControlName="Title" id="title" class="title"> 
-    <textarea placeholder="Type something"  autocomplete="off" #Content1  formControlName="Content"  id="content"   class="typeSomething"></textarea>
-</div> 
-
+  <input type="text" autocomplete="off" (click)="change()" placeholder="Title" #title1 formControlName="Title"
+    id="title" class="title">
+  <textarea placeholder="Type something" autocomplete="off" #Content1 formControlName="Content" id="content"
+    class="type-something"></textarea>
+</div>
 <div id="overlay" class="full">
   <div id="text">
-    <a routerLink="/blogger/newpost" (click) = "off()" ><img id="close" img src="../assets/cancel.png"></a>
-    <p class="topics1">Add upto 5 topics so that readers know what your post is about</p>
-    <form #validForm="ngForm">
-      <div class="wrap">
-        <mat-form-field floatLabel="never" appearance="none" class="example-chip-list">
-          <mat-chip-list  #chipList aria-label="Topic selection"> 
-            <mat-chip 
-              *ngFor="let Topic of Topics"
-              [selectable]="selectable"
-              [removable]="removable"
-              (removed)="remove(Topic)"
-              style="text-transform: capitalize;">
-              {{Topic}}
-              <mat-icon class="icon" matChipRemove *ngIf="removable" style="color:#f7f5f9;">cancel</mat-icon>
-            </mat-chip>
-            <input
-              #TopicInput
-              [formControl]="TopicCtrl"
-              [matAutocomplete]="auto"
-              [matChipInputFor]="chipList"
-              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-              [matChipInputAddOnBlur]="addOnBlur"
-              (matChipInputTokenEnd)="add($event)"/>
-          </mat-chip-list>
-        </mat-form-field>
-        <mat-autocomplete  #auto="matAutocomplete" (optionSelected)="selected($event)">
-          <mat-option class="autocomplete" *ngFor="let Topic of filteredTopics | async" style="text-transform: capitalize;" [value]="Topic">
-              {{Topic}}
-          </mat-option>
-        </mat-autocomplete> 
-      </div>  
-    </form>
-    <button routerLink="/blogger" [disabled]="!validForm.valid || this.Topics.length===0"  (click) = "addPost(title1.value,Content1.value)" type="submit"  class="btn publish">PUBLISH</button>       
+    <a routerLink="/blogger/newpost" (click)="off()"><img id="close" img src="../assets/cancel.png"></a>
+    <p class="topics-limit">Add upto 5 topics so that readers know what your post is about</p>
+    <app-add-topics [title]="title1.value" [content]="Content1.value"></app-add-topics>
   </div>
 </div>
-
- 
-
-
-
-
-
-

@@ -1,10 +1,10 @@
 <!-- Navbar Start -->
-<nav *ngIf="!disableButton" class="navbar navbar-expand-sm fixed-top">
+<nav *ngIf="!isDisabledButton" class="navbar navbar-expand-sm fixed-top">
 
   <a class="navbar-brand" href="#"> <img src="../assets/brand-logo-light(1).png" alt="logo"></a>
   <a class="tyro" href="#">tyro</a>
   <span class="line"></span>
-  <span class="good">{{ displayMessage }}</span>
+  <span class="good">{{ displayTitleMessage }}</span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -16,12 +16,12 @@
         <a class="nav-link" href="#"><img src="../assets/bell.png" alt="notificaiton"></a>
       </li>
       <li class="nav-item" class="bookmark">
-        <a *ngIf="displayBookMark" class="nav-link" href="/blogger/bookmark"><img src="../assets/wish-list.png"
+        <a *ngIf="isDisplayBookMark" class="nav-link" href="/blogger/bookmark"><img src="../assets/wish-list.png"
             alt="bookmark"></a>
       </li>
       <li class="nav-item post">
-        <a class="nav-link" *ngIf="buttonName !== 'Publish'" routerLink="/blogger/newpost"><button type="submit" class="btn">New Post</button></a>
-        <a class="nav-link" *ngIf="buttonName === 'Publish'" ><button (click) = "on()" class="btn">Publish</button></a>
+        <a class="nav-link" *ngIf="buttonName !== 'Publish'" routerLink="/blogger/newpost"><button type="submit" class="btn">NEW POST</button></a>
+        <a class="nav-link" *ngIf="buttonName === 'Publish'" ><button (click) = "on()" class="btn">PUBLISH</button></a>
         <!-- <a class="nav-link" routerLink="/blogger/newpost"><button type="submit" class="btn">NEW POST</button></a> -->
       </li>
 

@@ -1,43 +1,39 @@
+<app-title [displayTitleMessage]="displayTitleMessage" [isDisplayBookMark]="isDisplayBookMark"></app-title>
 
 
 
+<div class="container-fluid outer-container">
 
-    <app-title [displayMessage]="displayMessage" [displayBookMark]="displayBookMark"></app-title>
+    <div class="row trending-row">
+        <div class="col trending-posts">
+            <app-trending-posts></app-trending-posts>
+        </div>
+    </div>
 
+    <div class="row feed-follow-row">
 
-
-    <div class="container-fluid my-container">
-
-        <div class="row my-row1">
-            <div class="col my-trending-posts">
-                <app-trending-posts></app-trending-posts>
-            </div>
+        <div class="col-md-7">
+            <app-latest-posts></app-latest-posts>
         </div>
 
-        <div class="row my-row2">
 
-            <div class="col-md-7 my-col">
-                <app-latest-posts></app-latest-posts>
-            </div>
-
-
-            <div class="col-md-5 my-col">
-                <div class="followWrap sticky-top">
-                    <div class="row">
-                        <div class="col col-follow-people">
-                            <app-follow-people></app-follow-people>
-                        </div>
+        <div class="col-md-5">
+            <div class="followWrap sticky-top">
+                <div class="row">
+                    <div class="col col-follow-people">
+                        <app-follow-people></app-follow-people>
                     </div>
-                    <div class="row">
-                        <div class="col col-follow-topic">
-                            <app-follow-topic></app-follow-topic>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col col-follow-topic">
+                        <app-follow-topic></app-follow-topic>
                     </div>
                 </div>
             </div>
-
         </div>
+
     </div>
+</div>
 
 <!-- <app-sidebar>Loading sidebar</app-sidebar> -->
 <!-- <mat-sidenav #sidenavright position="end">
@@ -96,4 +92,66 @@
             </div>
         </div>
     </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <app-title [displayTitleMessage]="displayTitleMessage" [isDisplayBookMark]="isDisplayBookMark"></app-title>
+
+
+
+<div class="container-fluid outer-container">
+
+    <div class="row trending-row">
+        <div class="col trending-posts">
+            <app-trending-posts></app-trending-posts>
+        </div>
+    </div>
+</div>
+
+<div class="row feed-follow-row">
+
+    <div class="col-md-7">
+        <app-latest-posts></app-latest-posts>
+    </div>
+
+
+    <div class="col-md-5">
+        <div class="followWrap sticky-top">
+            <div class="row">
+                <div class="col col-follow-people">
+                    <app-follow-people></app-follow-people>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-follow-topic">
+                    <app-follow-topic></app-follow-topic>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div> -->

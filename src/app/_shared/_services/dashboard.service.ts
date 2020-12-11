@@ -46,6 +46,7 @@ export class DashboardService {
 
   getPeople() {
     // this.listOfPeople.length = 0;
+    this.listOfPeople = [] ;
     return this.http.get<any>(`${environment.apiUrl}/people/`)
       .pipe(map(data => {
         data.forEach(element => {
@@ -93,6 +94,7 @@ export class DashboardService {
   getTopics() {
     return this.http.get<any>(`${environment.apiUrl}/topics`)
       .pipe(map(data => {
+        this.listOfTopics = [] ;
         data.forEach(element => {
           this.listOfTopics.push({ 'id': element.id, 'name': element.name ,'isFollowing': element.isFollowing})
         });

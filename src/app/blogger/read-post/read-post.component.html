@@ -1,6 +1,6 @@
 
 
-<app-title [displayMessage]="displayMessage" [displayBookMark]="displayBookMark"></app-title>
+<app-title [displayTitleMessage]="displayTitleMessage" [isDisplayBookMark]="isDisplayBookMark"></app-title>
 <div *ngIf="post === null" class="loading">
     <mat-spinner [diameter]="50" class="latest-spinner" mode="indeterminate" *ngIf="showSpinner"></mat-spinner>
 </div>
@@ -13,7 +13,7 @@
     <div class="authorimg">
         <img class="img-circular" src="{{ post.profileImageUrl }}" onerror =" this.src='../assets/download (1).jpg';" alt="profilepicture">
         <span class="author"> {{ post.authorName }} </span>
-        <div class="timeAgo"> {{ post.timeAgoDate }}</div>
+        <div class="timeago"> {{ post.timeAgoDate }}</div>
         
         <div *ngIf="showSpinner">Loading....</div>
         <div class="like-bookmark">

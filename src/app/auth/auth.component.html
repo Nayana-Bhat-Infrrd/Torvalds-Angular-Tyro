@@ -1,70 +1,33 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>TYRO</title>
-   <link rel="preconnect" href="https://fonts.gstatic.com">
-   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-    -->
-
-   <div class="flex-container">
-      <div class="first">
-         <div class="box">
-            <div class="logo">
-               <img src="../assets/brand-logo-light.png" alt="logo">
-            </div>
-            <div class="tyro">
-               <p>tyro</p>
-            </div>
+<div class="flex-container">
+   <div class="first">
+      <div class="box">
+         <div class="logo">
+            <img src="../assets/brand-logo-light.png" alt="logo">
          </div>
-
+         <div class="tyro">
+            <p>tyro</p>
+         </div>
       </div>
-      <div class="second">
-         <p class="medium">A medium clone</p>
-         <p class="who">Who says training projects don’t have to look pretty?</p>
+   </div>
 
-         <div class="form-build">
+   <div class="second">
+      <p class="medium">A medium clone</p>
+      <p class="who">Who says training projects don’t have to look pretty?</p>
+
+      <div class="form-build">
          <div class="topnav">
             <div>
-            <a routerLink="/auth/login" routerLinkActive="active" (click) = "onLogin()">LOGIN</a>
-         </div>
-         <div>
-            <a routerLink="/auth/signup" routerLinkActive="active" (click) = "onSignUp()">SIGNUP</a>
-         </div>
-          </div>
-         </div>
-          <!-- <div class="form-build">
-            <div class="inner-form-build">
-               <div class="Login" id="Login">
-                  <a routerLink="/auth/login" (click)="onLogin()">
-                     <p style="color:#1c437e;font-weight:700;">LOGIN</p>
-                  </a>
-               </div>
-               <div routerLink="/auth/signup" class="Signup" id="Signup">
-                  <a (click)="onSignUp()">
-                     <p style="color:#1c437e;font-weight:700;">SIGNUP</p>
-                  </a>
-               </div>
+               <a routerLink="/auth/login" routerLinkActive="active" (click)="onLogin()">LOGIN</a>
             </div>
 
-         </div> -->
-
-         <!--<div>
-         <a style="cursor: pointer;" (click)="onLogin()" class="login">LOGIN</a>
-         <a style="cursor: pointer;" (click)="onSignUp()" class="signup">SIGNUP</a> 
-        </div>-->
-
-         <app-login *ngIf="isLogin"></app-login>
-         <app-signup *ngIf="isSignUp"></app-signup>
-
+            <div>
+               <a routerLink="/auth/signup" routerLinkActive="active" (click)="onSignUp()">SIGNUP</a>
+            </div>
+         </div>
       </div>
-   </div> 
-<!-- </body>
 
-</html> -->
+   <app-login *ngIf="isLogin"></app-login>
+   <app-signup *ngIf="!isLogin"></app-signup>
+
+</div>
+</div>

@@ -30,7 +30,7 @@
   margin-top: 2em;
   margin-right : 3em;
 }
-.postTitle{
+.post-title{
   font-family:  'Open Sans',sans-serif;
   font-size: 18px;
   font-weight: bold;
@@ -42,7 +42,7 @@
   margin-top: 0.5em;
   margin-bottom: 0.25em;
 }
-.postTitle:hover{
+.post-title:hover{
   color: #1c437e;
   text-decoration: none;
 }
@@ -57,7 +57,7 @@
   color: #333333;
   margin-bottom: 0.5em;
 }
-.postTimeAgo{
+.post-time-ago{
   font-family: 'Open Sans',sans-serif;
   font-size: 11px;
   font-weight: 300;
@@ -67,7 +67,7 @@
   letter-spacing: normal;
   color: #333333;
 }
-.deletebookmark{
+.delete-bookmark{
   padding-left: 0.5em;
   height: 0.75em;
   cursor: pointer;
