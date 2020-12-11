@@ -6,7 +6,7 @@
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
-    color: var(--color-neutral-black);
+    color: #333333;
     padding-bottom: 20px;
   }
   .img-circular{
@@ -32,6 +32,6 @@
     padding-top: 8px;
     color: var(--color-neutral-black);
   }
-  .followPeople-spinner{
+  .follow-people-spinner{
     margin: 0 auto;
   }

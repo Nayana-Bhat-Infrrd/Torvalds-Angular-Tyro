@@ -1,10 +1,10 @@
-.my-latest-posts-container{
+.latest-posts-container{
     display: flex;
     flex-direction: column;
     background-color: #f7f5f9;
     padding-left: 0px;
 }
-.authorimg{
+.author-img{
   padding-left: 42px;
   padding-right: 0px;
 }

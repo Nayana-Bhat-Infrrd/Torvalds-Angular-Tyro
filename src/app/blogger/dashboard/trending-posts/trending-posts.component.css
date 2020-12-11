@@ -3,7 +3,7 @@ img{
     width: 23px;
     height: 15px;
 }
-.trendlogo{
+.trend-logo{
   width: 40px;
   height: 25px
 }
@@ -11,7 +11,7 @@ img{
     padding-left: 43px;
     padding-bottom: 30px;
 }
-.titletyro{
+.title-tyro{
     font-family: 'Open Sans',sans-serif;
   font-size: 20px;
   font-weight: 600;
@@ -25,7 +25,7 @@ img{
 .article{
     padding-left: 15px;
 }
-.my-trending-posts-container{
+.trending-posts-container{
     align-content: center;
     justify-content: center;
     padding-top: 35px;
@@ -47,7 +47,7 @@ img{
     letter-spacing: normal;
     color: #333333;
 }
-.titleOfArticle{
+.title-of-article{
     padding-top: 0px;
     padding-right: 25px;
     font-family: 'Open Sans',sans-serif;
@@ -59,7 +59,7 @@ img{
   letter-spacing: normal;
   color: #333333;
 }
-.dateOfArticle{
+.date-of-article{
     padding-top: 7px;
     font-family: 'Open Sans',sans-serif;
   font-size: 10px;
@@ -83,14 +83,14 @@ img{
   color: #1c437e;
   padding-right: 15px;
 }
-.my-posts-container{
+.posts-container{
   padding-left: 0px;
   padding-right: 0px;
 }
 .trending-spinner{
   margin:0 auto;
 }
-.titleOfArticle:hover{
+.title-of-article:hover{
   text-decoration: none;
   color: #1c437e;
 }

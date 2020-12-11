@@ -34,7 +34,8 @@ export class AuthenticationService {
 
         if (user.body.hasOwnProperty('result')) {
 
-          const data = { 'token': user.headers.get('authorization').substring(7) }
+          const data = { 'token': user.headers.get('authorization') }
+          // const data = { 'token': user.headers.get('authorization').substring(7) }
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(data));
           this.currentUserSubject.next(data);

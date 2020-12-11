@@ -15,11 +15,11 @@
                 <img class="img-circular" src="{{ post.author.profilePictureUrl }}" onerror="this.src='../assets/download (1).jpg';"  alt="profilepicture">
                 <span class="author"> {{ post.author.name }} </span>
             </div>
-            <a routerLink="/blogger/readpost" (click)="onReadPost(i)" class="postTitle"> {{ post.title }}</a>
-            <p *ngIf="post.description.length > 200 " class="intro" style="height: 40px;" ellipsis> {{ post.description }}</p>
+            <a routerLink="/blogger/readpost" (click)="onReadPost(i)" class="post-title"> {{ post.title }}</a>
+            <p *ngIf="post.description.length > 200 " class="intro" [ngStyle]="{'height' : '40px'}" ellipsis> {{ post.description }}</p>
             <p *ngIf="post.description.length <= 200  " class="intro"> {{ post.description }} </p>
-            <span class="postTimeAgo" >Just now</span>
-            <img (click)="ondeleteBookmark(i)" class="deletebookmark" src="../assets/delete.png" alt="deletebookmark">
+            <span class="post-time-ago" >{{ post.timeAgo }}</span>
+            <img (click)="ondeleteBookmark(i)" class="delete-bookmark" src="../assets/delete.png" alt="deletebookmark">
         </div>
     </div>
 </div>

@@ -46,17 +46,14 @@ export class FollowTopicComponent implements OnInit {
 
 
 
-    public toastr:ToastrService,
+    public toastr: ToastrService,
     @Inject(DOCUMENT) private document: Document
-    
+
 
   ) { }
 
   ngOnInit(): void {
-
     this.getFewTopics("3");
-    // console.log(("ngOnInit called : topics : " + this.listOfTopics));
-    this.getTopics();
 
   }
 
@@ -68,26 +65,12 @@ export class FollowTopicComponent implements OnInit {
         data => {
           // console.log("Response from few topics : " + JSON.stringify(data));
           this.showSpinner = false;
-          this.listOfFewTopics = data;
+          this.listOfTopics = data;
+          console.log("Done from few topics");
+
         },
         error => {
           console.log("Error from getFewTopics : " + JSON.stringify(error));
-        }
-      )
-  }
-
-  getTopics() {
-    // this.showSpinner = true;
-    return this.dashboardService.getTopics()
-      .subscribe(
-        data => {
-          // console.log("Topics from ngOnInit in .ts : " + JSON.stringify(data));
-          // this.showSpinner = false;
-          this.listOfTopics = data;
-        },
-        error => {
-          console.log("error : " + error);
-
         }
       )
   }
@@ -103,19 +86,19 @@ export class FollowTopicComponent implements OnInit {
         data => {
           // console.log("Response from onTopicFollow : " + JSON.stringify(data))
           this.listOfTopics[id].isFollowing = true;
-         // alert("You are now following : " + this.listOfTopics[id].name)
+          // alert("You are now following : " + this.listOfTopics[id].name)
           this.dashboardService.onFeedChange();
           // this.document.location.reload();
         },
         error => {
           console.log("Error from onTopicFollow : " + JSON.stringify(error));
         }
-      
+
       )
-      this.toastr.success(this.listOfTopics[id].name,'You are following',{
-        positionClass:'toast-top-center',
-        timeOut:2000,
-      })
+    this.toastr.success(this.listOfTopics[id].name, 'You are following', {
+      positionClass: 'toast-top-center',
+      timeOut: 2000,
+    })
 
   }
 
@@ -130,7 +113,7 @@ export class FollowTopicComponent implements OnInit {
         data => {
           // console.log("Response from onUnfollowTopic : " + JSON.stringify(data));
           this.listOfTopics[id].isFollowing = false;
-         // alert("You unfollowed : " + this.listOfTopics[id].name)
+          // alert("You unfollowed : " + this.listOfTopics[id].name)
           this.dashboardService.onFeedChange();
           // this.document.location.reload();
         },
@@ -138,10 +121,10 @@ export class FollowTopicComponent implements OnInit {
           console.log("Error from onUnFollowTopic : " + JSON.stringify(error));
         }
       )
-      this.toastr.warning(this.listOfTopics[id].name,'You Unfollowed',{
-        positionClass:'toast-top-center',
-        timeOut:2000,
-      })
+    this.toastr.warning(this.listOfTopics[id].name, 'You Unfollowed', {
+      positionClass: 'toast-top-center',
+      timeOut: 2000,
+    })
 
   }
 
@@ -149,25 +132,36 @@ export class FollowTopicComponent implements OnInit {
   onMoreTopics() {
     this.istitle = false;
     this.moreTopics = true;
-    this.getTopics();
-    this.followService.setValue(this.listOfTopics, "TOPICS");
-    let config = new OverlayConfig();
-    config.scrollStrategy = this.overlay.scrollStrategies.block();
-    config.positionStrategy = this.overlay
-      .position()
-      .global()
-      .right();
+    // this.getTopics();
+    this.dashboardService.getTopics()
+      .subscribe(
+        topics => {
+          this.listOfTopics = topics;
+          this.followService.setValue(this.listOfTopics, "TOPICS");
+          let config = new OverlayConfig();
+          config.scrollStrategy = this.overlay.scrollStrategies.block();
+          config.positionStrategy = this.overlay
+            .position()
+            .global()
+            .right();
 
-    config.hasBackdrop = true;
-    // config.backdropClass = "cdk-overlay-transparent-backdrop";
-    let overlayRef = this.overlay.create(config);
-    overlayRef.backdropClick().subscribe(() => {
-      overlayRef.dispose();
-      this.dashboardService.onFeedChange();
-      // this.document.location.reload();
-    });
+          config.hasBackdrop = true;
+          // config.backdropClass = "cdk-overlay-transparent-backdrop";
+          let overlayRef = this.overlay.create(config);
+          overlayRef.backdropClick().subscribe(() => {
+            overlayRef.dispose();
+            this.dashboardService.onFeedChange();
+            // this.document.location.reload();
+          });
 
-    overlayRef.attach(new ComponentPortal(SidebarComponent, this.viewContainerRef));
+          overlayRef.attach(new ComponentPortal(SidebarComponent, this.viewContainerRef));
+        },
+        error => {
+          console.log("Error from all topics");
+        }
+      )
+
+
   }
 
 }

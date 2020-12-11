@@ -1,33 +1,19 @@
 <div class="container">
     <p class="title">PEOPLE TO FOLLOW</p>
-    <mat-spinner [diameter]="50" class="followPeople-spinner" mode="indeterminate" *ngIf="showSpinner"></mat-spinner>
-    
-<!-- {{ listOfPeople }} -->
+    <mat-spinner [diameter]="50" class="follow-people-spinner" mode="indeterminate" *ngIf="showSpinner"></mat-spinner>
+
     <div *ngFor="let person of fewPeople.slice(0, 3); let i = index">
-        <!-- {{ person }} -->
         <figure>
-            <input id="{{ 'person ' + i }}" type="image" class="img-circular" src="{{ person.profilePictureUrl }}" alt="profilepicture" (click)="onFollowPerson(i)" onerror="this.src='../assets/download (1).jpg';">
+            <input id="{{ 'person ' + i }}" type="image" class="img-circular" src="{{ person.profilePictureUrl }}"
+                alt="profilepicture" (click)="onFollowPerson(i)" onerror="this.src='../assets/download (1).jpg';">
             <!-- <input id="{{ 'person ' + i }}" type="image" class="img-circular" src="../assets/profilepicture.png" alt="profilepicture" (click)="onFollowPerson(i)"> -->
-            <figcaption>{{ person.name }}</figcaption> 
+            <figcaption>{{ person.name }}</figcaption>
         </figure>
     </div>
-    <!-- <figure>
-        <input type="image" class="img-circular" src="../assets/profilepicture.png" alt="profilepicture">
-        <figcaption>Rachita</figcaption>
-    </figure>
-
-    <figure>
-        <input type="image" class="img-circular" src="../assets/download (1).jpg" alt="profilepicture">
-        <figcaption>Rachita</figcaption>
-    </figure>
-
-    <figure>
-        <input type="image" class="img-circular" src="../assets/profilepicture.png" alt="profilepicture">
-        <figcaption>Rachita</figcaption>
-    </figure> -->
 
     <figure *ngIf="!showSpinner">
-        <input type="image" class="img-circular" src="../assets/group_2.png" alt="profilepicture" (click)="onMorePeople()">
+        <input type="image" class="img-circular" src="../assets/group_2.png" alt="profilepicture"
+            (click)="onMorePeople()">
         <figcaption>See more</figcaption>
-    </figure> 
+    </figure>
 </div>
