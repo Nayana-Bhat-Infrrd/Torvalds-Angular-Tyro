@@ -1,24 +1,27 @@
-
-
-<app-title [displayMessage]="displayMessage" [displayBookMark]="displayBookMark" [buttonName]="buttonName"></app-title>
+<app-title [displayTitleMessage]="displayTitleMessage" [isDisplayBookMark]="isDisplayBookMark"
+    [buttonName]="buttonName"></app-title>
 
 
 <div class="bookmark-conatiner">
     <div class="title">
-        BOOKMARKS({{totalBookamrks}})    
+        BOOKMARKS({{totalBookamrks}})
     </div>
     <mat-spinner [diameter]="50" class="bookmark-spinner" mode="indeterminate" *ngIf="showSpinner"></mat-spinner>
 
     <div class="wrapper">
         <div *ngFor="let post of bookmarks;let i=index" class="post">
-            <div class="authorimg">
-                <img class="img-circular" src="{{ post.author.profilePictureUrl }}" onerror="this.src='../assets/download (1).jpg';"  alt="profilepicture">
+            <div class="author-img">
+                <img class="img-circular" src="{{ post.author.profilePictureUrl }}"
+                    onerror="this.src='../assets/download (1).jpg';" alt="profilepicture">
                 <span class="author"> {{ post.author.name }} </span>
             </div>
             <a routerLink="/blogger/readpost" (click)="onReadPost(i)" class="post-title"> {{ post.title }}</a>
-            <p *ngIf="post.description.length > 200 " class="intro" [ngStyle]="{'height' : '40px'}" ellipsis> {{ post.description }}</p>
+
+            <p *ngIf="post.description.length > 200 " class="intro" [ngStyle]="{'height' : '40px'}" ellipsis>
+                {{ post.description }}</p>
             <p *ngIf="post.description.length <= 200  " class="intro"> {{ post.description }} </p>
-            <span class="post-time-ago" >{{ post.timeAgo }}</span>
+            <span class="post-time-ago">{{ post.timeAgo }}</span>
+
             <img (click)="ondeleteBookmark(i)" class="delete-bookmark" src="../assets/delete.png" alt="deletebookmark">
         </div>
     </div>

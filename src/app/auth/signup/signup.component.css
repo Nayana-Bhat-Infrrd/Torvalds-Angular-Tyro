@@ -13,14 +13,17 @@
     margin-left: 200px;
     margin-top: 20px;
 }
-.btn
+.signup-button
 {
     width:160px; 
+    height: 36px;
     color:white;
     background-color:#1c437e; 
     font-family: 'Open Sans',sans-serif;
     font-weight: bold;
     border-radius: 0;
+    outline:none;
+    border:none;
 }
 .form-control.is-invalid{
     background-image: none;
@@ -28,13 +31,13 @@
  #Name, #Email, #Password{
      float: left;
  }
- .formValidations{
+ .form-validations{
      float: left;
      padding-left: 2%;
      position: absolute;
      left: 85%;
      padding-top: 7px;
  }
-.inputFields{
+.input-fields{
     padding-bottom: 40px;
 }

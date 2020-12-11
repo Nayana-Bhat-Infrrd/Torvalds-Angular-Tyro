@@ -18,8 +18,8 @@ export class ReadPostComponent implements OnInit {
   public postLiked;
   public postBookmarked;
   public likes;
-  displayMessage: string = "Post";
-  displayBookMark: boolean = false;
+  displayTitleMessage: string = "Post";
+  isDisplayBookMark: boolean = false;
   // displayButton:string = "NEW POST";
   // publishButton:boolean=false;
   constructor(

@@ -8,8 +8,8 @@
             <p>tyro</p>
          </div>
       </div>
-
    </div>
+
    <div class="second">
       <p class="medium">A medium clone</p>
       <p class="who">Who says training projects don’t have to look pretty?</p>
@@ -19,14 +19,15 @@
             <div>
                <a routerLink="/auth/login" routerLinkActive="active" (click)="onLogin()">LOGIN</a>
             </div>
+
             <div>
                <a routerLink="/auth/signup" routerLinkActive="active" (click)="onSignUp()">SIGNUP</a>
             </div>
          </div>
       </div>
 
-      <app-login *ngIf="isLogin"></app-login>
-      <app-signup *ngIf="isSignUp"></app-signup>
-
    </div>
+   <app-login *ngIf="isLogin"></app-login>
+   <app-signup *ngIf="!isLogin"></app-signup>
+
 </div>

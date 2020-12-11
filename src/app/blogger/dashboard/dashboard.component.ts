@@ -11,8 +11,8 @@ import { AuthenticationService } from 'src/app/_shared/_services/authentication.
 })
 export class DashboardComponent implements OnInit {
   returnUrl: string;
-  displayMessage: string = "Good evening";
-  displayBookMark : boolean = true;
+  displayTitleMessage: string = "Good evening";
+  isDisplayBookMark : boolean = true;
  // displayButton :string = "NEW POST";
 // publishButton : boolean=false;
   constructor(

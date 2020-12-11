@@ -1,4 +1,4 @@
-<app-title [displayMessage]="displayMessage" [displayBookMark]="displayBookMark"></app-title>
+<app-title [displayTitleMessage]="displayTitleMessage" [isDisplayBookMark]="isDisplayBookMark"></app-title>
 
 
 
@@ -9,28 +9,29 @@
             <app-trending-posts></app-trending-posts>
         </div>
     </div>
+</div>
 
-    <div class="row feed-follow-row">
+<div class="row feed-follow-row">
 
-        <div class="col-md-7 my-col">
-            <app-latest-posts></app-latest-posts>
-        </div>
+    <div class="col-md-7 my-col">
+        <app-latest-posts></app-latest-posts>
+    </div>
 
 
-        <div class="col-md-5 my-col">
-            <div class="followWrap sticky-top">
-                <div class="row">
-                    <div class="col col-follow-people">
-                        <app-follow-people></app-follow-people>
-                    </div>
+    <div class="col-md-5 my-col">
+        <div class="followWrap sticky-top">
+            <div class="row">
+                <div class="col col-follow-people">
+                    <app-follow-people></app-follow-people>
                 </div>
-                <div class="row">
-                    <div class="col col-follow-topic">
-                        <app-follow-topic></app-follow-topic>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col col-follow-topic">
+                    <app-follow-topic></app-follow-topic>
                 </div>
             </div>
         </div>
-
     </div>
+
+</div>
 </div>

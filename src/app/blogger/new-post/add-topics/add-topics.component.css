@@ -1,0 +1,97 @@
+.wrap
+  {  width: 600px;
+     height: 54px;
+     padding: 0px 0px 0px 10px;
+     border-radius: 5px; 
+     background-color:#dbe1e9;
+    overflow-x:auto; 
+      overflow-y:hidden;
+      display:flex;
+     flex-wrap: wrap;
+     margin-left:100px;
+     margin-right:70px;
+     margin-bottom: 37px;
+     border-radius: 5px; 
+
+  }
+  
+  ::-webkit-scrollbar {
+    width:10px;
+    border-radius: 5px;
+    
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 5px;
+    
+    
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:green;
+    border-radius: 5px; 
+    
+  }
+  
+ 
+  
+  
+   .example-chip-list
+  {
+      width:100%;   
+  } 
+
+  ::ng-deep .mat-form-field-underline { 
+      display: none; 
+}
+
+.mat-chip
+{
+    background-color: #007500;
+    border-radius: 5px;
+    border-radius: 5px;
+    font-family: "Open Sans",sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #f7f5f9;
+    text-decoration: none;
+    outline: none;
+    border:none;
+} 
+ .mat-chip-list
+{
+    display:flex;
+    flex-direction: row;
+    width:max-content;
+    align-items: center;
+     margin-top:-10px; 
+     margin-bottom:-10px;
+} 
+
+
+
+.publish
+{
+
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+font-weight: bold;
+font-stretch: normal;
+font-style: normal;
+line-height: normal;
+letter-spacing: normal;
+text-align: center;
+ width: 115px;
+ height: 36px;
+ margin:0px 342px;
+
+border-radius: 5px;
+background-color:#ff8900;   
+}
