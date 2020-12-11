@@ -4,12 +4,12 @@
   <input type="text" autocomplete="off" (click)="change()" placeholder="Title" #title1 formControlName="Title"
     id="title" class="title">
   <textarea placeholder="Type something" autocomplete="off" #Content1 formControlName="Content" id="content"
-    class="typeSomething"></textarea>
+    class="type-something"></textarea>
 </div>
 <div id="overlay" class="full">
   <div id="text">
     <a routerLink="/blogger/newpost" (click)="off()"><img id="close" img src="../assets/cancel.png"></a>
-    <p class="topics1">Add upto 5 topics so that readers know what your post is about</p>
+    <p class="topics-limit">Add upto 5 topics so that readers know what your post is about</p>
     <app-add-topics [title]="title1.value" [content]="Content1.value"></app-add-topics>
   </div>
 </div>

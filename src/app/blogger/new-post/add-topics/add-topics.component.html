@@ -1,4 +1,4 @@
-<form #validForm="ngForm">
+<form #postForm="ngForm">
     <div class="wrap">
       <mat-form-field floatLabel="never" appearance="none" class="example-chip-list">
         <mat-chip-list  #chipList aria-label="Topic selection"> 
@@ -27,8 +27,5 @@
         </mat-option>
       </mat-autocomplete> 
     </div>  
-  
- 
 </form>
-
-<button routerLink="/blogger" [disabled]="!validForm.valid||this.Topics.length===0"  (click) = "getId()" type="submit"  class="btn publish">PUBLISH</button>       
+<button routerLink="/blogger" [disabled]="!postForm.valid||this.Topics.length===0"  (click) = "getId()" type="submit"  class="btn publish">PUBLISH</button>       

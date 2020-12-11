@@ -11,16 +11,6 @@ export class NewpostService {
   listOfTopics: Array<any>=[];
   constructor(private http: HttpClient,public toastr:ToastrService){}
 
-  title:string;
-  content:string;
-
-  // addContent(title:string,content:string)
-  // {
-  //   this.title=title;
-  //   this.content=content;
-  // }
-
-
   addPost(title:string,content:string,filteredIds:Array<any>) {
     const postData = { title:title,description:content,topics:filteredIds }
     return this.http.post<any>(`${environment.apiUrl}/posts/add`, postData)
@@ -30,7 +20,8 @@ export class NewpostService {
                 timeOut:1500,
               })
     })
-  }        
+  }
+  
   getTopics(){
     return this.http.get<any>(`${environment.apiUrl}/topics`)
     .pipe(map(data=>{
@@ -39,6 +30,5 @@ export class NewpostService {
         });
         return this.listOfTopics;    
     }));
-    
   }
 }

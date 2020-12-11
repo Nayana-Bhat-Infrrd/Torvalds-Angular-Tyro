@@ -15,7 +15,6 @@ import { NewpostService } from 'src/app/_shared/_services/newpost.service';
 })
 export class AddTopicsComponent implements OnInit {  
   listOfTopics: Array<any> = [];
- 
   visible = true;
   selectable = true;
   removable = true;
@@ -31,11 +30,9 @@ export class AddTopicsComponent implements OnInit {
   filteredIds:Array<any>=[];
   @ViewChild('TopicInput') TopicInput: ElementRef<any>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
-
   @Input() title:string;
   @Input() content:string;
- 
-  ngOnInit(): void {
+   ngOnInit(): void {
     this.newpostService.getTopics()
       .subscribe
       (
@@ -51,7 +48,7 @@ export class AddTopicsComponent implements OnInit {
         }
       )
      
-    // this.getId();
+    
   }
  
 
@@ -117,8 +114,6 @@ export class AddTopicsComponent implements OnInit {
   
   getId()
   { 
-    
-
       for (this.j = 0; this.j < this.Topics.length; this.j++) {
         for (this.i = 0; this.i < this.allTopics.length; this.i++) {
           if ((this.Topics[this.j]) == (this.allTopics[this.i])) {
@@ -127,20 +122,9 @@ export class AddTopicsComponent implements OnInit {
         }
         this.i = 0;
       }
-      console.log(this.title+" "+this.content);
       this.newpostService.addPost(this.title,this.content,this.filteredIds);
-    
       this.filteredIds.length = 0;
       this.listOfTopics.length = 0;
       this.allTopics.length = 0;
-      
   }  
-
-
-   
-  
-    
-    
- 
-   
-  }
+}
