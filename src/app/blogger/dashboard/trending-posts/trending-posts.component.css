@@ -91,6 +91,7 @@ img{
   margin:0 auto;
 }
 .title-of-article:hover{
+  cursor: pointer;
   text-decoration: none;
   color: #1c437e;
 }

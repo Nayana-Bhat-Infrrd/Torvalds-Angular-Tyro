@@ -1,51 +1,20 @@
-import { HttpClient } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import {  Injectable } from '@angular/core';
 import { error } from 'protractor';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReadpostService {
-     
-  // loadRead = new EventEmitter(); 
-  // subsRead: Subscription;
-
-  private currentPostSubject: BehaviorSubject<any>;
-  public currentPost: Observable<any>;
   constructor(
     private http : HttpClient
-  ) { 
-    this.currentPostSubject = new BehaviorSubject<any>(null);
-    this.currentPost = this.currentPostSubject.asObservable();
-  }
-  // onLoadingRead(){
-  //   this.loadRead.emit();
-  // }
-  
-  public get currentPostValue(){
-    const postData = {"postId" : this.currentPostSubject.value._id}
-    return this.http.post<any>(`${environment.apiUrl}/posts/view`,postData);
-  }
-
-  public setPostValue(post){
-    this.currentPostSubject.next(post);
-    console.log("Post from read service : " + JSON.stringify(post));
-    
-  }
+  ) {}
 
   readPost(id){
-    const postData = { "postId" : id }
-    this.http.post<any>(`${environment.apiUrl}/posts/view`,postData)
-      .subscribe(
-        data => {
-          this.setPostValue(data)
-        },
-        error => {console.log("error from read post : " + error);
-        }
-      )
-    
+    console.log("In readpost method in readpostservice : " + id);
+    let params = new HttpParams().set("postId",id);
+    return this.http.get<any>(`${environment.apiUrl}/posts/view`,{params : params})
   }
 
 

@@ -1,7 +1,10 @@
 /* -----------------------------------------
    Timeline
 ----------------------------------------- */
-.timeline {
+.bodyDoc{
+  background-color: black;
+}
+/* .timeline {
     list-style: none;
     padding-left: 0;
     position: relative;
@@ -164,11 +167,11 @@
     margin-right: 5px;
   }
   
-  
+   */
   /* -----------------------------------------
      Dropdown
   ----------------------------------------- */
-  .dropdown-menu{
+  /* .dropdown-menu{
       padding:0 0 0 0;
   }
   a.dropdown-menu-header {
@@ -179,7 +182,7 @@
   .dropdown-menu > li a {
       padding: 10px 20px;
   }
-  
+   */
   /* -----------------------------------------
      Badge
   ----------------------------------------- */

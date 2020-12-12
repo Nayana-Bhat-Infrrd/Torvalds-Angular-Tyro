@@ -28,7 +28,7 @@ const routes: Routes = [
       path: 'newpost', component: NewPostComponent 
     },
     { 
-      path: 'readpost', component: ReadPostComponent 
+      path: 'readpost/:postId', component: ReadPostComponent 
     },
     { 
       path: 'profile', component: ProfileComponent 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DashboardService } from 'src/app/_shared/_services/dashboard.service';
 import { ReadpostService } from 'src/app/_shared/_services/readpost.service';
 import { format, render, cancel, register } from 'timeago.js';
@@ -12,6 +13,8 @@ export class LatestPostsComponent implements OnInit {
   showSpinner = false;
   public latestPosts: Array<any> = []
   constructor(
+    private router : Router,
+    private route : ActivatedRoute,
     private dashboardService: DashboardService,
     private readpostService: ReadpostService
   ) { }
@@ -60,7 +63,7 @@ export class LatestPostsComponent implements OnInit {
   }
   onReadPost(index) {
     console.log("from onReadPost from latest.ts : " + JSON.stringify(this.latestPosts[index]));
-    this.readpostService.setPostValue(this.latestPosts[index])
+    this.router.navigate(['/blogger/readpost', this.latestPosts[index]._id ]);
     // this.readpostService.onLoadingRead();
     // this.readpostService.readPost(this.latestPosts[index]._id);
     // .subscribe(

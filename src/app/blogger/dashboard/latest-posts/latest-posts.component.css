@@ -20,6 +20,7 @@
     padding-left: 43px;
     padding-top: 10px;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 .title:hover{
   text-decoration: none;

@@ -26,7 +26,7 @@
                                 onerror="this.src='../assets/download (1).jpg';">
                             <span class="author"> {{ post.author.name }}</span>
                         </div>
-                        <a routerLink="/blogger/readpost" class="title-of-article"
+                        <a class="title-of-article"
                             (click)="onReadPost(i)">{{ post.title }}</a>
                         <div class="date-of-article">{{ post.date.toLocaleString('default',{ month : 'short'}) }}
                             {{ post.date.getDate()+','}} {{ post.date.getFullYear()}}</div>

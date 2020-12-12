@@ -6,6 +6,7 @@ import { format, render, cancel, register } from 'timeago.js';
 
 import { ToastrService } from 'ngx-toastr';
 import { BookmarkService } from 'src/app/_shared/_services/bookmark.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-read-post',
@@ -23,52 +24,47 @@ export class ReadPostComponent implements OnInit {
   // displayButton:string = "NEW POST";
   // publishButton:boolean=false;
   constructor(
+    private route: ActivatedRoute,
     private readpostService: ReadpostService,
     private bookmarkService: BookmarkService,
     public toastr: ToastrService,
   ) { this.showSpinner = true; }
 
   ngOnInit(): void {
-    // if (this.readpostService.currentPostValue !== null)
+    console.log("Snapshot url : " + this.route.snapshot.params.postId);
     this.showSpinner = true;
     this.readPost();
-    // if(this.readpostService.subsRead == undefined){
-    //   this.readpostService.subsRead = this.readpostService.loadRead.subscribe(() =>{
-    //     this.readPost();
-    // })
-    // }
+
   }
 
   readPost() {
-    this.showSpinner = true;
-    console.log("from readpost.ts : " + JSON.stringify(this.readpostService.currentPostValue));
-    this.readpostService.currentPostValue.subscribe(
-      data => {
-        this.showSpinner = false;
-        console.log("from readpost.ts : " + JSON.stringify(data));
-        this.post = data;
-        this.post.timeAgoDate = format(this.post.date);
-        this.postLiked = this.post.isLiked;
-        this.postBookmarked = this.post.isBookmarked;
-        console.log("isBookmarked : " + this.postBookmarked);
+    this.readpostService.readPost(this.route.snapshot.params.postId)
+      .subscribe(
+        data => {
+          this.showSpinner = false;
+          console.log("Data from readpost : " + JSON.stringify(data)); this.post = data;
+          this.post.timeAgoDate = format(this.post.date);
+          this.postLiked = this.post.isLiked;
+          this.postBookmarked = this.post.isBookmarked;
+          console.log("isBookmarked : " + this.postBookmarked);
+          this.likes = this.post.likes;
+          console.log("Post : " + JSON.stringify(this.post));
 
-        this.bookmarkService.getProfilePicture(this.post.authorId)
-          .subscribe(
-            profileData => {
-              this.post.profileImageUrl = profileData.profilePictureUrl;
-            },
-            profileError => {
-              console.log("Error from profile picture ; " + JSON.stringify(profileError));
-            }
-          )
+          this.bookmarkService.getProfilePicture(this.post.authorId)
+            .subscribe(
+              profileData => {
+                this.post.profileImageUrl = profileData.profilePictureUrl;
+              },
+              profileError => {
+                console.log("Error from profile picture ; " + JSON.stringify(profileError));
+              }
+            )
 
-
-        this.likes = this.post.likes;
-        console.log("Post : " + JSON.stringify(this.post));
-
-      }
-    );
-
+        },
+        error => {
+          console.log("error from readpost : " + JSON.stringify(error));
+        }
+      )
   }
 
   addBookmark() {
