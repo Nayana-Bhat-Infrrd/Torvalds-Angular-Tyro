@@ -1,0 +1,122 @@
+.notification
+{
+    margin: 23px 18px 23px 0px;
+  
+}
+
+.notification img
+{
+    width: 18px;
+    height: 23px;
+    object-fit: contain;
+    
+}
+
+
+.wrapper
+{
+  overflow-y: auto; 
+}
+
+.notification-arrow
+{
+  content: "";
+position: absolute;
+
+	top: -30px;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 15px solid;
+	border-color: transparent transparent #fff transparent;
+}
+::-webkit-scrollbar {
+  width:10px;
+  border-radius: 5px;
+  
+}
+
+
+::-webkit-scrollbar-track {
+  background: #fff; 
+  border-radius: 5px;
+  
+  
+}
+ 
+
+::-webkit-scrollbar-thumb {
+  background:grey;
+  border-radius: 5px; 
+  
+}
+
+
+.notification-item{
+  display: flex;  
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #dbdaff;
+  margin-left:30px;
+  padding-right:20px;
+}
+
+ .notification-item:last-child{
+    border-bottom: 0px;
+    padding-bottom: 15px;
+}
+
+ .notification-item .notification-image{
+    margin-right: 15px;
+    object-fit: contain; 
+   
+   
+}
+
+.notification-item .notification-image img{
+   width:40px;
+   height:40px;
+   border-radius: 50%;
+   border: solid 1px #979797;
+   
+  
+}
+
+
+ .notification-item .notification-info p{
+    margin-bottom: 5px;
+    margin-top:10px;
+    font-family: "Open Sans",sans-serif;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+}
+
+
+
+.notification-item .notification-info .notification-time{
+	   
+    font-family: "Open Sans",sans-serif;
+    font-size: 12px;
+    font-weight: 300px;
+    font-stretch: normal;
+    font-style: normal;
+    color:#333333;
+    line-height: normal;
+    letter-spacing: normal;
+    
+}
+
+.dropdown-menu
+{
+  width: 400px;
+  height:250px;
+  flex-direction: column;   
+  margin-top:-9px;  
+  margin-left: 690px;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.5);
+} 

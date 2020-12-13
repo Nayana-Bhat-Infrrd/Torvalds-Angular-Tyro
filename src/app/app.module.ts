@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+
 // import {OverlayModule} from '@angular/cdk/overlay';
 import { from } from 'rxjs';
 import {ToastrModule} from 'ngx-toastr'
@@ -26,7 +27,8 @@ import {ToastrModule} from 'ngx-toastr'
     AuthComponent,
     SignupComponent,
     LoginComponent,
-    ErrorComponent,
+    ErrorComponent
+ 
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import {ToastrModule} from 'ngx-toastr'
     FontAwesomeModule,
     MatProgressSpinnerModule,
     ToastrModule.forRoot()
+   
 
   ],
   providers: [

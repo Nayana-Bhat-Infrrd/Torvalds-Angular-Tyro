@@ -4,7 +4,7 @@
 
     <div class="input-fields">
       <div class="form-group">
-        <input type="text" class="form-control" formControlName="Name" id="Name" aria-describedby="Name"
+        <input type="text" autocomplete="off"  formControlName="Name" id="Name" aria-describedby="Name"
           placeholder="NAME" [ngClass]="{ 'is-invalid': submitted && sf.Name.errors }">
         <div class="form-validations" *ngIf="submitted && sf.Name.errors">
           <img *ngIf="sf.Name.errors.required" ngbTooltip="Username is required" triggers="hover:blur"
@@ -15,7 +15,7 @@
 
     <div class="input-fields">
       <div class="form-group">
-        <input type="email" class="form-control" formControlName="Email" id="Email" aria-describedby="emailHelp"
+        <input type="email" autocomplete="off" formControlName="Email" id="Email" aria-describedby="emailHelp"
           placeholder="EMAIL" [ngClass]="{ 'is-invalid': submitted && sf.Email.errors }">
         <div class="form-validations" *ngIf="submitted && sf.Email.errors">
           <img *ngIf="sf.Email.errors.required||sf.Email.errors.email" ngbTooltip="Email is required and must follow format" triggers="hover:blur"
@@ -25,7 +25,7 @@
     </div>
     <div class="input-fields">
       <div class="form-group">
-        <input type="password" class="form-control" formControlName="Password" id="Password" placeholder="PASSWORD"
+        <input type="password" autocomplete="off" formControlName="Password" id="Password" placeholder="PASSWORD"
           [ngClass]="{ 'is-invalid': submitted && sf.Password.errors }">
         <div class="form-validations" *ngIf="submitted && sf.Password.errors">
           <img *ngIf="sf.Password.errors.required||sf.Password.errors.minlength||sf.Password.errors.maxlength" ngbTooltip="Password is required and should have more than 8 characters" triggers="hover:blur"

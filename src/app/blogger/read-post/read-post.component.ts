@@ -3,9 +3,9 @@ import { read } from 'fs';
 import { error } from 'protractor';
 import { ReadpostService } from 'src/app/_shared/_services/readpost.service';
 import { format, render, cancel, register } from 'timeago.js';
-
 import { ToastrService } from 'ngx-toastr';
 import { BookmarkService } from 'src/app/_shared/_services/bookmark.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-read-post',
@@ -26,6 +26,7 @@ export class ReadPostComponent implements OnInit {
     private readpostService: ReadpostService,
     private bookmarkService: BookmarkService,
     public toastr: ToastrService,
+    private route:ActivatedRoute
   ) { this.showSpinner = true; }
 
   ngOnInit(): void {
@@ -39,36 +40,63 @@ export class ReadPostComponent implements OnInit {
     // }
   }
 
+  // readPost() {
+  //   this.showSpinner = true;
+  //   console.log("from readpost.ts : " + JSON.stringify(this.readpostService.currentPostValue));
+  //   this.readpostService.currentPostValue.subscribe(
+  //     data => {
+  //       this.showSpinner = false;
+  //       console.log("from readpost.ts : " + JSON.stringify(data));
+  //       this.post = data;
+  //       this.post.timeAgoDate = format(this.post.date);
+  //       this.postLiked = this.post.isLiked;
+  //       this.postBookmarked = this.post.isBookmarked;
+  //       console.log("isBookmarked : " + this.postBookmarked);
+
+  //       this.bookmarkService.getProfilePicture(this.post.authorId)
+  //         .subscribe(
+  //           profileData => {
+  //             this.post.profileImageUrl = profileData.profilePictureUrl;
+  //           },
+  //           profileError => {
+  //             console.log("Error from profile picture ; " + JSON.stringify(profileError));
+  //           }
+  //         )
+
+
+  //       this.likes = this.post.likes;
+  //       console.log("Post : " + JSON.stringify(this.post));
+
+  //     }
+  //   );
+
+  // }
   readPost() {
-    this.showSpinner = true;
-    console.log("from readpost.ts : " + JSON.stringify(this.readpostService.currentPostValue));
-    this.readpostService.currentPostValue.subscribe(
-      data => {
-        this.showSpinner = false;
-        console.log("from readpost.ts : " + JSON.stringify(data));
-        this.post = data;
-        this.post.timeAgoDate = format(this.post.date);
-        this.postLiked = this.post.isLiked;
-        this.postBookmarked = this.post.isBookmarked;
-        console.log("isBookmarked : " + this.postBookmarked);
-
-        this.bookmarkService.getProfilePicture(this.post.authorId)
-          .subscribe(
-            profileData => {
-              this.post.profileImageUrl = profileData.profilePictureUrl;
-            },
-            profileError => {
-              console.log("Error from profile picture ; " + JSON.stringify(profileError));
-            }
-          )
-
-
-        this.likes = this.post.likes;
-        console.log("Post : " + JSON.stringify(this.post));
-
-      }
-    );
-
+    this.readpostService.readPost(this.route.snapshot.params.postId)
+      .subscribe(
+        data => {
+          this.showSpinner = false;
+          console.log("Data from readpost : " + JSON.stringify(data)); this.post = data;
+          this.post.timeAgoDate = format(this.post.date);
+          this.postLiked = this.post.isLiked;
+          this.postBookmarked = this.post.isBookmarked;
+          console.log("isBookmarked : " + this.postBookmarked);
+          this.likes = this.post.likes;
+          console.log("Post : " + JSON.stringify(this.post));
+          this.bookmarkService.getProfilePicture(this.post.authorId)
+            .subscribe(
+              profileData => {
+                this.post.profileImageUrl = profileData.profilePictureUrl;
+              },
+              profileError => {
+                console.log("Error from profile picture ; " + JSON.stringify(profileError));
+              }
+            )
+        },
+        error => {
+          console.log("error from readpost : " + JSON.stringify(error));
+        }
+      )
   }
 
   addBookmark() {

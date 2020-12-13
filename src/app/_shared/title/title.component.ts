@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { data } from 'jquery';
+import { interval } from 'rxjs';
 import { DashboardService } from 'src/app/_shared/_services/dashboard.service';
-
+declare var $:any;
 @Component({
   selector: 'app-title',
   templateUrl: './title.component.html',
@@ -12,6 +13,7 @@ export class TitleComponent implements OnInit, OnChanges {
   @Input() isDisplayBookMark: boolean;
   @Input() buttonName: string;
   @Input() isDisabledButton: boolean;
+  
   public profilePicture;
   constructor(private dashboardService:DashboardService) {}
 
@@ -23,7 +25,19 @@ export class TitleComponent implements OnInit, OnChanges {
        },error=>{
                 console.log("error");
        })
+
+     
+
+
   }
+ 
+
+
+
+
+
+
+
 
   ngOnChanges(changes) {
     console.log("Changes : " + JSON.stringify(changes));

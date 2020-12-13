@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { error } from 'protractor';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
@@ -35,19 +35,23 @@ export class ReadpostService {
     
   }
 
-  readPost(id){
-    const postData = { "postId" : id }
-    this.http.post<any>(`${environment.apiUrl}/posts/view`,postData)
-      .subscribe(
-        data => {
-          this.setPostValue(data)
-        },
-        error => {console.log("error from read post : " + error);
-        }
-      )
+  // readPost(id){
+  //   const postData = { "postId" : id }
+  //   this.http.post<any>(`${environment.apiUrl}/posts/view`,postData)
+  //     .subscribe(
+  //       data => {
+  //         this.setPostValue(data)
+  //       },
+  //       error => {console.log("error from read post : " + error);
+  //       }
+  //     )
     
+  // }
+  readPost(id){
+    console.log("In readpost method in readpostservice : " + id);
+    let params = new HttpParams().set("postId",id);
+    return this.http.get<any>(`${environment.apiUrl}/posts/view`,{params : params})
   }
-
 
   addBookmark(id){
     console.log("In service bookmark : " + id);

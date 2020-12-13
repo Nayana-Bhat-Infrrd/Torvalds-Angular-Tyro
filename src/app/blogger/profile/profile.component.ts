@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/_shared/_services/authentication.service';
-
+declare var $:any
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -16,14 +16,8 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    // console.log("Logout in dashboard");
-    // this.authenticationService.logout();
-    // this.router.navigate([this.returnUrl+"auth/login"]);
+   
   }
-
-  
-
   logout(){
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     console.log("Logout in dashboard");

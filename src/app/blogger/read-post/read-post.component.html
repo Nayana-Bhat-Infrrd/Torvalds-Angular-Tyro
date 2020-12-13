@@ -19,7 +19,7 @@
         <div class="like-bookmark">
             <!-- <img class="like" [ngStyle]="{'src' : post.isLiked === true ? '../assets/liked.jpg' : '../assets/heart.png'}"> -->
             <img *ngIf="postLiked === false" class="like" src="../assets/heart.png" alt="like" (click)="addLike()">
-            <img *ngIf="postLiked === true" class="liked" src="../assets/liked.jpg" alt="like" (click)="unLike()">
+            <img *ngIf="postLiked === true" class="liked" src="../assets/liked.jpg" alt="like" (click)="unLike()">           
             {{ likes }}
             <!-- {{ post.isBookmarked }} -->
             <img *ngIf="!postBookmarked" (click)="addBookmark()" class="bookmark" src="../assets/wish-list-read.png" alt="bookmark">
