@@ -25,7 +25,7 @@ export class AuthenticationService {
     const loginData = { email: username, password: password };
     return this.http.post<any>(`${environment.apiUrl}/login/`, loginData, { observe: 'response' })
       .pipe(map(user => {
-        this.setLocalStorage(user);
+        var result = this.setLocalStorage(user);
       }))
   }
 

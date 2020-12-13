@@ -78,7 +78,9 @@ export class LoginComponent implements OnInit {
           })
         },
         error => {
-          this.toastr.error('Credentials Error : ' + error.message, 'Try Again', {
+          console.log("error from login : " +JSON.stringify(error));
+          
+          this.toastr.error('Credentials Error', 'Try Again', {
             positionClass: 'toast-top-center',
             timeOut: 3500,
           })
