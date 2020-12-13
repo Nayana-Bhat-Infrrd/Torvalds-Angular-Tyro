@@ -13,9 +13,10 @@ export class TrendingPostsComponent implements OnInit {
   showSpinner = false;
 
   constructor(
-    private router : Router,
+
     private dashboardService: DashboardService,
-    private readpostService: ReadpostService
+    private readpostService: ReadpostService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +41,7 @@ export class TrendingPostsComponent implements OnInit {
 
   onReadPost(index){
     console.log("In onReadPost from comp.ts : " + JSON.stringify(this.trendingPosts[index]));
-    // this.readpostService.setPostValue(this.trendingPosts[index]);
+
     this.router.navigate(['/blogger/readpost', this.trendingPosts[index]._id ]);
 
   }

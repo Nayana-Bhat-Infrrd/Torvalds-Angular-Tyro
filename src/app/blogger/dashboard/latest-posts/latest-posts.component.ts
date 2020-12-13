@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { DashboardService } from 'src/app/_shared/_services/dashboard.service';
 import { ReadpostService } from 'src/app/_shared/_services/readpost.service';
 import { format, render, cancel, register } from 'timeago.js';
@@ -11,12 +13,14 @@ import { format, render, cancel, register } from 'timeago.js';
 })
 export class LatestPostsComponent implements OnInit {
   showSpinner = false;
+  isNewUser:boolean=false;
   public latestPosts: Array<any> = []
   constructor(
-    private router : Router,
+    
     private route : ActivatedRoute,
     private dashboardService: DashboardService,
-    private readpostService: ReadpostService
+    private readpostService: ReadpostService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -35,9 +39,18 @@ export class LatestPostsComponent implements OnInit {
       .subscribe(
         data => {
           // var oneDay = 24 * 60 * 60 * 1000;
+          if(this.latestPosts.length===0)
+          {
+            this.isNewUser=true;
+          }
+          else
+          {
+            this.isNewUser=false;
+          }
           this.showSpinner = false;
           console.log("Feed data : " + JSON.stringify(data));
           this.latestPosts = data;
+         
           this.latestPosts.forEach(element => {
             element.date = new Date(element.date);
             // console.log("Author id : " + element.author._id + "author name : " + element.author.name);

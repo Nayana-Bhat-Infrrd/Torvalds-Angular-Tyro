@@ -4,10 +4,11 @@ import { TitleComponent } from './title/title.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 
-import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { NotificationComponent } from './title/notification/notification.component';
 
 @NgModule({
-  declarations: [TitleComponent,SidebarComponent],
+  declarations: [TitleComponent,SidebarComponent, NotificationComponent],
   imports: [
     CommonModule,
     RouterModule,

@@ -20,10 +20,12 @@ export class BookmarkComponent implements OnInit {
   public profilePicture;
   showSpinner = false;
   constructor(
-    private router : Router,
+    
     private bookmarkService : BookmarkService,
     private readpostService : ReadpostService,
-    public toastr : ToastrService){}
+    public toastr : ToastrService,
+    private router:Router
+    ){}
   ngOnInit(): void 
   {
 
@@ -32,7 +34,7 @@ export class BookmarkComponent implements OnInit {
 
   onReadPost(index){
     console.log("from onReadPost from bookmark.ts : " + JSON.stringify(this.bookmarks[index]));
-    // this.readpostService.setPostValue(this.bookmarks[index]);
+
     this.router.navigate(['/blogger/readpost', this.bookmarks[index]._id ]);
   }
   getBookmarks()

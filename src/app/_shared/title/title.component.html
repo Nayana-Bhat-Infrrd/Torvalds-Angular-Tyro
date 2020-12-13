@@ -1,6 +1,4 @@
-<!-- Navbar Start -->
 <nav *ngIf="!isDisabledButton" class="navbar navbar-expand-sm fixed-top">
-
   <a class="navbar-brand" href="#"> <img src="../assets/brand-logo-light(1).png" alt="logo"></a>
   <a class="tyro" href="#">tyro</a>
   <span class="line"></span>
@@ -10,35 +8,21 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse my-list-content" id="navbarSupportedContent">
-
     <ul class="navbar-nav">
-      <li class="nav-item" class="notification">
-        <div class="dropdown show">
-          <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            <img src="../assets/bell.png" alt="notificaiton">
-          </a>
-          <!-- <div class="newUpdates"> -->
-            <div *ngFor="let item of notificationList" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">{{ item.title }}</a>
-              <!-- <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a> -->
-            <!-- </div> -->
-          </div>
-        </div>
-        <!-- <a class="nav-link" href="#"><img src="../assets/bell.png" alt="notificaiton"></a> -->
-      </li>
+
+    
+      <app-notification></app-notification>
+
       <li class="nav-item" class="bookmark">
         <a *ngIf="isDisplayBookMark" class="nav-link" href="/blogger/bookmark"><img src="../assets/wish-list.png"
             alt="bookmark"></a>
-      </li>
+       </li>
       <li class="nav-item post">
-        <a class="nav-link" *ngIf="buttonName !== 'Publish'" routerLink="/blogger/newpost"><button type="submit"
-            class="btn">NEW POST</button></a>
-        <a class="nav-link" *ngIf="buttonName === 'Publish'"><button (click)="on()" class="btn">PUBLISH</button></a>
-        <!-- <a class="nav-link" routerLink="/blogger/newpost"><button type="submit" class="btn">NEW POST</button></a> -->
-      </li>
 
+             <a class="nav-link" *ngIf="buttonName !== 'Publish'" routerLink="/blogger/newpost"><button type="submit" >NEW POST</button></a>
+        <a class="nav-link" *ngIf="buttonName === 'Publish'" ><button (click) = "on()" >PUBLISH</button></a>
+
+      </li>
       <li class="nav-item profile">
         <a class="nav-link" routerLink="/blogger/profile"><img src="{{ profilePicture }}"
             onerror="this.src='../assets/download (1).jpg';" alt="profilePic"></a>

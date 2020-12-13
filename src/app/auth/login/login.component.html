@@ -3,7 +3,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
       <div class="input-fields">
         <div class="form-group">
-          <input type="email" class="form-control" formControlName="email" id="Email" placeholder="EMAIL"
+          <input type="email" autocomplete="off" formControlName="email" id="Email" placeholder="EMAIL"
           [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
         <div class="form-validations" *ngIf="submitted && f.email.errors">
           <img *ngIf="f.email.errors.required || f.email.errors.email" ngbTooltip="Email is required && must follow format" triggers="hover:blur"
@@ -13,7 +13,7 @@
     </div>
     <div class="input-fields">
       <div class="form-group">
-        <input type="password" class="form-control" id="Password" formControlName="password" placeholder="PASSWORD"
+        <input type="password" autocomplete="off" id="Password" formControlName="password" placeholder="PASSWORD"
           [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
         <div class="form-validations" *ngIf="submitted && f.password.errors">
           <img *ngIf="f.password.errors.required || f.password.errors.minlength" ngbTooltip="Password is required and should be more than 8 characters" triggers="hover:blur"

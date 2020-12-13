@@ -7,7 +7,18 @@
 .form-group > input{
     background-color:#dbe1e9;
     width: 360px;
+    height: 40px;
     position: absolute;
+    outline:none;
+    border:none;
+    border-radius:8px;
+    padding-left:10px;   
+}
+
+
+::placeholder
+{
+    color:rgba(28, 67, 126, 0.52);
 }
 .login
 {
@@ -57,13 +68,14 @@
 }
 #Email, #Password{
     float: left;
+    
 }
 .form-validations{
     float: left;
     padding-left: 2%;
     position: absolute;
     left: 85%;
-    padding-top: 7px;
+    padding-top: 9px;
 }
 .input-fields{
     padding-bottom: 40px;

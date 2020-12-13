@@ -1,0 +1,18 @@
+<li class="nav-item" class="notification" >
+    <a class="nav-link" style="cursor: pointer;"  id="dropdownMenuButton" *ngIf="isShowDropdown===true"   (click)="showNotificationArrow()" ><img src="../assets/bell.png" alt="notificaiton"></a>
+    <a class="nav-link"  style="cursor: pointer;"  id="dropdownMenuButton" *ngIf="isShowDropdown===false"   (click)="hideNotificationArrow()" ><img src="../assets/bell.png" alt="notificaiton"></a>
+    <div class="dropdown-menu" id="notificaitonArrow" aria-labelledby="dropdownMenuButton">
+        <span class="notification-arrow"  ></span> 
+        <div class="wrapper" >          
+            <div class="notification-item" *ngFor="let item of notificationList">
+                <div class="notification-image">
+                    <img src="../assets/download (1).jpg"  alt="profile_pic" >
+                </div>
+                <div class="notification-info" >
+                    <p>{{item.message}}</p>
+                    <span class="notification-time">{{item.timeAgo}}</span>
+                </div>    
+            </div>    
+        </div>
+    </div>
+</li>

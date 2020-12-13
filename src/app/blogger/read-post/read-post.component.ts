@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { read } from 'fs';
-import { error } from 'protractor';
+
 import { ReadpostService } from 'src/app/_shared/_services/readpost.service';
 import { format, render, cancel, register } from 'timeago.js';
-
 import { ToastrService } from 'ngx-toastr';
 import { BookmarkService } from 'src/app/_shared/_services/bookmark.service';
 import { ActivatedRoute } from '@angular/router';
@@ -28,6 +26,7 @@ export class ReadPostComponent implements OnInit {
     private readpostService: ReadpostService,
     private bookmarkService: BookmarkService,
     public toastr: ToastrService,
+
   ) { this.showSpinner = true; }
 
   ngOnInit(): void {

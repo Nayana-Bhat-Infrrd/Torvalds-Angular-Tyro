@@ -1,6 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import {  Injectable } from '@angular/core';
-import { error } from 'protractor';
+import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -11,12 +10,12 @@ export class ReadpostService {
     private http : HttpClient
   ) {}
 
+
   readPost(id){
     console.log("In readpost method in readpostservice : " + id);
     let params = new HttpParams().set("postId",id);
     return this.http.get<any>(`${environment.apiUrl}/posts/view`,{params : params})
   }
-
 
   addBookmark(id){
     console.log("In service bookmark : " + id);

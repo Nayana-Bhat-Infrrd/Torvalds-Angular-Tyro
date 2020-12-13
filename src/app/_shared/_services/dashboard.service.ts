@@ -83,6 +83,12 @@ export class DashboardService {
     return this.http.post(`${environment.apiUrl}/people/unfollow`,postData)
      
   }
+  getNotifications(){
+  console.log("From notifications from dashboard service");
+  return this.http.get<any>(`${environment.apiUrl}/notifications`);
+}
+
+
 
   getFewTopics(count){
     let params = new HttpParams().set("count",count);
