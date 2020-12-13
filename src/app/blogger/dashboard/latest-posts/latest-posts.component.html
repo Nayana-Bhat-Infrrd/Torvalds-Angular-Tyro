@@ -1,8 +1,9 @@
 <mat-spinner [diameter]="50" class="latest-spinner" mode="indeterminate" *ngIf="showSpinner"></mat-spinner>
-<div *ngIf="isNewUser">
+<div *ngIf="latestPosts.length===0">
     <p class="new-user">Start following some topics or some user to see latests posts from them!!!</p>
 </div>
-<div  *ngFor="let post of latestPosts; let i = index" class="container latest-posts-container">
+<div *ngIf="latestPosts.length!=0">
+<div   *ngFor="let post of latestPosts; let i = index" class="container latest-posts-container">
     <!-- {{ post.title }} -->
     <div class="post">
         <div class="author-img">
@@ -27,4 +28,5 @@
         <!-- <p class="timestamp">{{ post.date.toLocaleString('default',{ month : 'short'}) }} {{ post.date.getDate()+','}} {{ post.date.getFullYear()}}</p> -->
         <p class="timestamp">{{ post.timeAgoDate }}</p>
     </div>
+</div>
 </div>

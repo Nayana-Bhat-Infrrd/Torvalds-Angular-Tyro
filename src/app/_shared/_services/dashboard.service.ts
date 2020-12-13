@@ -28,10 +28,7 @@ export class DashboardService {
     this.reloadFeed.emit();
   }
 
-  getNotifications(){
-    console.log("From notifications from dashboard service");
-    return this.http.get<any>(`${environment.apiUrl}/notifications`);
-  }
+ 
 
   getFewPeople(count){
     // this.listOfPeople.length = 0;

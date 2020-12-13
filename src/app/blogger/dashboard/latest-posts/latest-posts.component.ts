@@ -13,7 +13,7 @@ import { format, render, cancel, register } from 'timeago.js';
 })
 export class LatestPostsComponent implements OnInit {
   showSpinner = false;
-  isNewUser:boolean=false;
+  //isNewUser:boolean=false;
   public latestPosts: Array<any> = []
   constructor(
     
@@ -39,14 +39,15 @@ export class LatestPostsComponent implements OnInit {
       .subscribe(
         data => {
           // var oneDay = 24 * 60 * 60 * 1000;
-          if(this.latestPosts.length===0)
-          {
-            this.isNewUser=true;
-          }
-          else
-          {
-            this.isNewUser=false;
-          }
+          console.log(this.latestPosts.length)
+          // if(this.latestPosts.length===0)
+          // {
+          //   this.isNewUser=true;
+          // }
+          // else
+          // {
+          //   this.isNewUser=false;
+          // }
           this.showSpinner = false;
           console.log("Feed data : " + JSON.stringify(data));
           this.latestPosts = data;
