@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { interval } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 import { DashboardService } from 'src/app/_shared/_services/dashboard.service';
 import { format } from 'timeago.js';
 
@@ -9,10 +9,11 @@ declare var $:any;
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css']
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent implements OnInit, OnDestroy {
   isShowDropdown:boolean=true;
   initialNumberOfNotifications:any;
   notificationList:any;
+  notificationCall: Subscription;
   constructor(private dashboardService:DashboardService) { }
 
   ngOnInit(): void {
@@ -34,7 +35,7 @@ export class NotificationComponent implements OnInit {
   }
 
   listenToNotification(){
-    interval(10000).subscribe(x => {
+    this.notificationCall =  interval(10000).subscribe(x => {
       // x+1;
       this.dashboardService.getNotifications()
         .subscribe(
@@ -59,5 +60,10 @@ export class NotificationComponent implements OnInit {
     $("#notificaitonArrow").css("display","none")
     this.isShowDropdown=true;
   }
+
+  ngOnDestroy(): void {
+    this.notificationCall.unsubscribe();
+  }
+
 
 }

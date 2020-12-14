@@ -24,6 +24,10 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    console.log("Logout in dashboard");
+    this.authenticationService.logout();
+    this.router.navigate([this.returnUrl + "auth/login"]);
   }
   logout(){
 
